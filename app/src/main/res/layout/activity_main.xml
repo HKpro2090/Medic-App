@@ -31,9 +31,10 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.53999996">
+        app:layout_constraintVertical_bias="0.815">
 
         <EditText
             android:id="@+id/EmailField"
@@ -42,9 +43,9 @@
             android:background="@drawable/textview_border"
             android:ems="10"
             android:fontFamily="@font/nunito_semibold"
+            android:hint="Email"
             android:inputType="textPersonName"
-            android:padding="10dp"
-            android:text="Email" />
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/PasswordField"
@@ -55,9 +56,9 @@
             android:background="@drawable/textview_border"
             android:ems="10"
             android:fontFamily="@font/nunito_semibold"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:padding="10dp"
-            android:text="Password" />
+            android:padding="10dp"/>
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -70,15 +71,19 @@
                 android:id="@+id/DoctorRadioButton"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:checked="false"
                 android:fontFamily="@font/nunito_semibold"
-                android:text="Doctor" />
+                android:text="Doctor"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <RadioButton
                 android:id="@+id/PatientRadioButton"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:fontFamily="@font/nunito_semibold"
-                android:text="Patient" />
+                android:text="Patient"
+                tools:ignore="TouchTargetSizeCheck" />
         </RadioGroup>
 
         <Button
@@ -137,4 +142,16 @@
             android:textAllCaps="false"
             android:textColor="#000000" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="413dp"
+        android:layout_height="289dp"
+        android:alpha="0.6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198"
+        app:srcCompat="@drawable/loginpage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
