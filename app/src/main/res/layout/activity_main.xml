@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80E4E4E4"
+    android:background="?android:attr/colorPrimary"
 >
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:fontFamily="@font/nunito_bold"
         android:text="Medic App"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="55sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,134 +24,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
 
-    <LinearLayout
-        android:id="@+id/logininfoLayout"
-        android:layout_width="372dp"
-        android:layout_height="328dp"
-        android:orientation="vertical"
+
+    <FrameLayout
+        android:id="@+id/RegistrationFrame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815">
-
-        <EditText
-            android:id="@+id/EmailField"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:fontFamily="@font/nunito_semibold"
-            android:hint="Email"
-            android:inputType="textPersonName"
-            android:padding="10dp"/>
-
-        <EditText
-            android:id="@+id/PasswordField"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:fontFamily="@font/nunito_semibold"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="10dp"/>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/DoctorRadioButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="Doctor"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <RadioButton
-                android:id="@+id/PatientRadioButton"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:fontFamily="@font/nunito_semibold"
-                android:text="Patient"
-                tools:ignore="TouchTargetSizeCheck" />
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/ForgotPasswordButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@null"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="Forgot Password ?"
-            android:textAllCaps="false"
-            android:textColor="#000000" />
-
-        <Button
-            android:id="@+id/SignInButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#FFF700"
-            android:fontFamily="@font/nunito_semibold"
-            android:gravity="center"
-            android:text="Sign in"
-            android:textAllCaps="false"
-            android:textColor="#000000" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/SignupLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="Don't have an account?" />
-
-        <Button
-            android:id="@+id/SignUpButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="66dp"
-            android:backgroundTint="@null"
-            android:fontFamily="@font/nunito_semibold"
-            android:text="Sign up!"
-            android:textAllCaps="false"
-            android:textColor="#000000" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.01999998"
+        app:layout_constraintVertical_weight="5"
+        app:layout_constraintHeight_percent="0.52"/>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="413dp"
-        android:layout_height="289dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:alpha="0.6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.198"
-        app:srcCompat="@drawable/loginpage" />
+        app:layout_constraintTop_toBottomOf="@+id/Apptitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/loginpage"
+        tools:ignore="ImageContrastCheck"
+        app:layout_constraintHeight_percent="0.32"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
