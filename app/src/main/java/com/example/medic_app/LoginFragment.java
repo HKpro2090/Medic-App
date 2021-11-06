@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 
 public class LoginFragment extends Fragment {
 
@@ -26,6 +25,16 @@ public class LoginFragment extends Fragment {
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new SignupFragment());
+                ft.commit();
+            }
+        });
+        Button fpassbtn=(Button)view.findViewById(R.id.ForgotPasswordButton);
+        fpassbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager m=getFragmentManager();
+                FragmentTransaction ft=m.beginTransaction();
+                ft.replace(R.id.RegistrationFrame,new ChangePassword());
                 ft.commit();
             }
         });

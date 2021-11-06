@@ -159,7 +159,7 @@
                 android:text="Already have an account?" />
 
             <Button
-                android:id="@+id/SignUpButton"
+                android:id="@+id/SignInButton"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="55dp"
