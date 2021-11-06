@@ -1,9 +1,12 @@
 package com.example.medic_app;
 
+import android.app.ActionBar;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.RegistrationFrame, fragment);
         fragmentTransaction.commit();
     }
-
     public void loadtoast()
     {
         Toast.makeText(getApplicationContext(),"Signing in",Toast.LENGTH_LONG).show();
