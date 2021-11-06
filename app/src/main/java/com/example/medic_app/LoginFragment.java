@@ -1,5 +1,6 @@
 package com.example.medic_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -44,6 +45,15 @@ public class LoginFragment extends Fragment {
                 ft.commit();
             }
         });
+        Button sib=(Button)view.findViewById(R.id.SignupPasswordButton);
+        sib.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent in=new Intent(getActivity(), PatientHomePageActivity.class);
+                   startActivity(in);
+               }
+            }
+        );
         return view;
     }
 }

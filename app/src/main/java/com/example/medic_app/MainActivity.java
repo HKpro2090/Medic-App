@@ -25,10 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       Bundle users = new Bundle();
-       users.putString("ajiteshjs2001@gmail.com","");
        loadFragment(new LoginFragment());
-       //imv.setLayoutParams(lp);
     }
 
     public void loadFragment(Fragment fragment)
