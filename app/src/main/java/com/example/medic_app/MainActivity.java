@@ -21,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
        users.putString("ajiteshjs2001@gmail.com","");
        loadFragment(new LoginFragment());
 
-
-
-
     }
 
     public void loadFragment(Fragment fragment)
