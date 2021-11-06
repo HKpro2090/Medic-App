@@ -21,6 +21,7 @@ public class ChangePassword extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).signinfragmentload();
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new LoginFragment());
