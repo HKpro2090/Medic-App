@@ -22,6 +22,9 @@ public class LoginFragment extends Fragment {
         sgnupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).imageresize(0.1f);
+                ((MainActivity)getActivity()).makeimgempty();
+                ((MainActivity)getActivity()).makefragmentbig(0.77f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new SignupFragment());
@@ -32,6 +35,9 @@ public class LoginFragment extends Fragment {
         fpassbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).imageresize(0.1f);
+                ((MainActivity)getActivity()).makeimgempty();
+                ((MainActivity)getActivity()).makefragmentbig(0.77f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new ChangePassword());

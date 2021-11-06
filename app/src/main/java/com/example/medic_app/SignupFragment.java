@@ -21,6 +21,9 @@ public class SignupFragment extends Fragment {
         lginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((MainActivity)getActivity()).imageresize(0.32f);
+                ((MainActivity)getActivity()).reloadimg();
+                ((MainActivity)getActivity()).makefragmentbig(0.54f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new LoginFragment());
