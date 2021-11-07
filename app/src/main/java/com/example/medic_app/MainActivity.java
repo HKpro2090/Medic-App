@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
        loadFragment(new LoginFragment());
     }
-
     public void loadFragment(Fragment fragment)
     {
         FragmentManager fm = getSupportFragmentManager();
