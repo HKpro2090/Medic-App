@@ -8,10 +8,13 @@
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_home_page.xml" value="0.2" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_patient_recent_consultations.xml" value="0.17236467236467237" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_patient_upcoming_consultations.xml" value="0.264" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_recent_consultations_list.xml" value="0.10341880341880341" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_upcoming_consultations.xml" value="0.19298245614035087" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/login_fragment_layout.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/patientrecentconsultationslist.xml" value="0.72" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/patientupcomingconsultationslist.xml" value="0.10341880341880341" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/patientupcominglist.xml" value="0.8800000000000001" />
         <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/signup_fragment_layout.xml" value="0.20854700854700856" />
       </map>
