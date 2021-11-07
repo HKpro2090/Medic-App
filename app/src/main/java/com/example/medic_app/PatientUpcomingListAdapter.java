@@ -25,8 +25,8 @@ public class PatientUpcomingListAdapter extends ArrayAdapter<String> {
     public View getView(int position,View view,ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.patientupcomingconsultationslist, null,true);
-        TextView titleText = (TextView) rowView.findViewById(R.id.titlepul);
-        TextView subtitleText = (TextView) rowView.findViewById(R.id.doctorpul);
+        TextView titleText = (TextView) rowView.findViewById(R.id.UpcomingTime);
+        TextView subtitleText = (TextView) rowView.findViewById(R.id.UpcomingDoctorName);
         titleText.setText(maintitle[position]);
         subtitleText.setText(subtitle[position]);
         return rowView;

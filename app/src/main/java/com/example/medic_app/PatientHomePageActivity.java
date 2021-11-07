@@ -13,12 +13,12 @@ public class PatientHomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        ImageView im=(ImageView)findViewById(R.id.imageView2);
+        ImageView im=(ImageView)findViewById(R.id.PatientProfilePic);
         im.setImageResource(R.drawable.patient1);
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainerView, new PatientUpcomingConsultationsFragment());
-        fragmentTransaction.replace(R.id.fragmentContainerView2,new PatientRecentConsultationsFragment());
+        fragmentTransaction.replace(R.id.UpcomingConsultationContainer, new PatientUpcomingConsultationsFragment());
+        fragmentTransaction.replace(R.id.RecentConsultationContainer,new PatientRecentConsultationsFragment());
         fragmentTransaction.commit();
 
     }

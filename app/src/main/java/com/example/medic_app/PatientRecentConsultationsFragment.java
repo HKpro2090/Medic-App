@@ -19,7 +19,7 @@ public class PatientRecentConsultationsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_patient_recent_consultations, container, false);
-        ListView lv=(ListView) view.findViewById(R.id.listview);
+        ListView lv=(ListView) view.findViewById(R.id.RecentConsultationList);
         PatientRecentListAdapter ad=new PatientRecentListAdapter(this,doctors,upcomingdatesrc,imgid);
         lv.setAdapter(ad);
         return view;

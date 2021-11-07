@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/miHome"
+          android:title="Home"
+          android:icon="@drawable/ic_homeicon"
+    />
+
+    <item android:id="@+id/miConsultation"
+        android:title="Consultation"
+        android:icon="@drawable/ic_sethoscope_material_outline_black"/>
+</menu>

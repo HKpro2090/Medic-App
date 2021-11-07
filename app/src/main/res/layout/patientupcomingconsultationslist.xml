@@ -3,25 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/listview_design"
+    android:padding="10dp">
 
     <TextView
-        android:id="@+id/titlepul"
+        android:id="@+id/UpcomingTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:fontFamily="@font/nunito_bold"
         android:text="Date - time"
+        android:textColor="#D6000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/doctorpul"
+        android:id="@+id/UpcomingDoctorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
 
+        android:fontFamily="@font/nunito_bold"
         android:text="Dr. abcd"
+        android:textColor="#BD000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlepul" />
+        app:layout_constraintTop_toBottomOf="@+id/UpcomingTime"
+        app:layout_constraintVertical_bias="0.002" />
 </androidx.constraintlayout.widget.ConstraintLayout>
