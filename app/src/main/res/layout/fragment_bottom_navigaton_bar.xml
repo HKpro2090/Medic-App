@@ -15,8 +15,9 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/navibar_design"
         android:paddingVertical="10dp"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        app:itemIconTint="?attr/text_color"
+        app:itemTextColor="?attr/text_color"
+
         app:menu="@menu/bottom_nav_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

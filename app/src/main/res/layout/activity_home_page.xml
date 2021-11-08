@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#80E4E4E4"
+    android:background="?attr/background_color"
     tools:context=".PatientHomePageActivity">
 
     <TextView
@@ -14,7 +14,7 @@
         android:fontFamily="@font/nunito_bold"
         android:text="Home"
         android:textAllCaps="false"
-        android:textColor="#000000"
+        android:textColor="?attr/text_color"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
