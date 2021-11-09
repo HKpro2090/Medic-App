@@ -6,4 +6,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="invalid_name">Please enter a valid name</string>
+    <string name="invalid_email">Please enter a valid email id</string>
+    <string name="invalid_password">Please enter a valid password</string>
+    <string name="invalid_confirm_password">Password does not match</string>
+    <string name="invalid_phone">Please enter a valid phone no</string>
+
 </resources>

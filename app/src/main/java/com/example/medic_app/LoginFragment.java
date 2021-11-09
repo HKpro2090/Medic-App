@@ -30,6 +30,7 @@ public class LoginFragment extends Fragment {
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new SignupFragment());
                 ft.commit();
+
             }
         });
         Button fpassbtn=(Button)view.findViewById(R.id.ForgotPasswordButton);
@@ -45,7 +46,7 @@ public class LoginFragment extends Fragment {
                 ft.commit();
             }
         });
-        Button sib=(Button)view.findViewById(R.id.SignupPasswordButton);
+        Button sib=(Button)view.findViewById(R.id.SigninPasswordButton);
         sib.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {

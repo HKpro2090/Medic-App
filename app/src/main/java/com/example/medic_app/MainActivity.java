@@ -19,6 +19,9 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -60,4 +63,5 @@ public class MainActivity extends AppCompatActivity {
         ImageView imv = (ImageView) findViewById(R.id.imageView);
         imv.setImageResource(R.drawable.loginpage);
     }
+
 }
