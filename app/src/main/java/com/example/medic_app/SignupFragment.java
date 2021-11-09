@@ -27,15 +27,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignupFragment extends Fragment {
 
     EditText edit_name,edit_email,edit_phone_no,edit_password,edit_conf_passwd;
-    String name,email,phone_no,password,conf_passwd,user_type=" ";
+    String name,email,phone_no,password,conf_passwd,user_type,encrypted_password=" ";
     RadioButton doctor_btn,patient_btn;
     Button signup_btn,signin_btn;
     boolean form_validated = false;
@@ -111,11 +113,17 @@ public class SignupFragment extends Fragment {
                                         Toast.makeText(getActivity(), "User Already Exits!", Toast.LENGTH_SHORT).show();
                                     } else {
                                         user_exists_check=false;
+                                        try {
+                                            encrypted_password = ((MainActivity)getActivity()).encrypt_passwd(password);
+                                        } catch (Error e) {
+                                            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+
+                                        }
                                         Map<String,Object> user_sign_up_details = new Hashtable<>();
                                         user_sign_up_details.put("user_name_key",name);
                                         user_sign_up_details.put("email_id_key",email);
                                         user_sign_up_details.put("phone_no_key",phone_no);
-                                        user_sign_up_details.put("password_key",password);
+                                        user_sign_up_details.put("password_key",encrypted_password);
                                         user_sign_up_details.put("user_type_key",user_type);
                                         user_col.document("user_"+email).set(user_sign_up_details);
                                         Toast.makeText(getActivity(), "User Created Successfully!", Toast.LENGTH_SHORT).show();

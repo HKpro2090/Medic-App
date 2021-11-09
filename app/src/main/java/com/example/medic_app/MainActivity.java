@@ -19,8 +19,14 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.common.hash.Hashing;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,4 +70,14 @@ public class MainActivity extends AppCompatActivity {
         imv.setImageResource(R.drawable.loginpage);
     }
 
+    public String encrypt_passwd(String passwd) {
+
+        String encrypted_passwd="";
+
+        encrypted_passwd = Hashing.sha256()
+                .hashString(passwd, StandardCharsets.UTF_8)
+                .toString();
+
+        return encrypted_passwd;
+    }
 }

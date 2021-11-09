@@ -24,16 +24,18 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginFragment extends Fragment {
 
     EditText edit_email,edit_password;
-    String email,password,user_type;
-    String db_password,db_usertype="0";
+    String email,password,user_type,encrypted_password_login;
+    String db_password,db_usertype;
     RadioButton doctor_btn,patient_btn;
     boolean form_validated = false;
     boolean user_exists_check = false;
@@ -83,7 +85,7 @@ public class LoginFragment extends Fragment {
         Button sib=(Button)view.findViewById(R.id.SigninPasswordButton);
         sib.setOnClickListener(new View.OnClickListener() {
                @Override
-               public void onClick(View v) {
+               public void onClick(View view) {
 
                    try{
 
@@ -100,25 +102,35 @@ public class LoginFragment extends Fragment {
 
                        if(form_validated){
 
+                           try {
+                               encrypted_password_login = ((MainActivity)getActivity()).encrypt_passwd(password);
+                           } catch (Error e) {
+                               Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+                           }
+
                            DocumentReference user_doc = user_col.document("user_"+email);
                            user_doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                @Override
                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                    if (task.isSuccessful()) {
                                        DocumentSnapshot document = task.getResult();
+
                                        if (document.exists()) {
                                            user_exists_check=true;
 
+
                                            db_password = document.getData().get("password_key").toString();
                                            db_usertype = document.getData().get("user_type_key").toString();
-                                           if(password.matches(db_password)) {
+
+
+                                           if(db_password.matches(encrypted_password_login)) {
                                                Toast.makeText(getActivity(), "Login Successful!", Toast.LENGTH_SHORT).show();
 
-                                               if(db_usertype.matches("Patient")){
+                                               if(user_type.matches("Patient")){
                                                     Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
                                                     patient_home.putExtra("email", email);
                                                     startActivity(patient_home);
-                                               } else if(db_usertype.matches("Doctor")) {
+                                                } else if(user_type.matches("Doctor")) {
                                                    Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);     //Change Doctor Page Here
                                                    doctor_home.putExtra("email", email);
                                                    startActivity(doctor_home);
@@ -135,7 +147,7 @@ public class LoginFragment extends Fragment {
 
                                        }
                                    } else {
-                                       Toast.makeText(getContext(), task.getException().toString()+" FireBase Connection ERROR!", Toast.LENGTH_LONG).show();
+                                       Toast.makeText(getContext()," FireBase Connection ERROR!", Toast.LENGTH_LONG).show();
                                    }
                                }
                            });
@@ -176,4 +188,6 @@ public class LoginFragment extends Fragment {
 
         return form_valid;
     }
+
+
 }
