@@ -2,6 +2,7 @@ package com.example.medic_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +15,9 @@ public class PatientDinfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_dinfo);
         ImageView im=(ImageView)findViewById(R.id.doctorinfoimge);
         im.setImageResource(R.drawable.patient1);
-        String name="Dr.abc";
+        Intent i=getIntent();
+
+        String name=i.getStringExtra("name");
         String qual="MBBS";
         String dep="ENT";
         String ab="two line string ";

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PatientRecentListAdapter extends ArrayAdapter<String> {
 
@@ -32,6 +33,14 @@ public class PatientRecentListAdapter extends ArrayAdapter<String> {
         titleText.setText(maintitle[position]);
         subtitleText.setText(subtitle[position]);
         imageView.setImageResource(imgid[position]);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getContext(),PatientDinfoActivity.class);
+                in.putExtra("name",maintitle[position]);
+                context.startActivity(in);
+            }
+        });
         return rowView;
 
     };
