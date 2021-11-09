@@ -38,6 +38,7 @@ public class PatientRecentListAdapter extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Intent in=new Intent(getContext(),PatientDinfoActivity.class);
                 in.putExtra("name",maintitle[position]);
+                in.putExtra("dp",imgid[position]);
                 context.startActivity(in);
             }
         });

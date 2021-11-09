@@ -13,14 +13,20 @@ public class PatientDinfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_dinfo);
-        ImageView im=(ImageView)findViewById(R.id.doctorinfoimge);
-        im.setImageResource(R.drawable.patient1);
+        String name;
         Intent i=getIntent();
-
-        String name=i.getStringExtra("name");
+        int image=i.getIntExtra("dp",R.drawable.patient2);
+        name=i.getStringExtra("name");
         String qual="MBBS";
         String dep="ENT";
         String ab="two line string ";
+        try {
+            if (name.isEmpty()) {
+                name = "Dr.Temp";
+            }
+        }catch (NullPointerException e){e.printStackTrace();}
+        ImageView im=(ImageView)findViewById(R.id.doctorinfoimge);
+        im.setImageResource(image);
         TextView nam=(TextView)findViewById(R.id.dinfonametv);
         TextView qua=(TextView)findViewById(R.id.dinfoqualtv);
         TextView de=(TextView)findViewById(R.id.dinfodeptv);
