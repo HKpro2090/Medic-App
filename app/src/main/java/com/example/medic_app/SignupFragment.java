@@ -21,10 +21,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -94,15 +98,54 @@ public class SignupFragment extends Fragment {
 
                     form_validated = form_validation();
                     if(form_validated){
-                        isExistingUser();
-                        if(!user_exists_check){
+                        //isExistingUser();
+                        DocumentReference user_doc = user_col.document("user_"+email);
+                        user_doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    if (document.exists()) {
+                                        user_exists_check=true;
+                                        edit_email.setError("User with same email id already exits! Try logging into existing account or use different email id.");
+                                        Toast.makeText(getActivity(), "User Already Exits!", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        user_exists_check=false;
+                                        Map<String,Object> user_sign_up_details = new Hashtable<>();
+                                        user_sign_up_details.put("user_name_key",name);
+                                        user_sign_up_details.put("email_id_key",email);
+                                        user_sign_up_details.put("phone_no_key",phone_no);
+                                        user_sign_up_details.put("password_key",password);
+                                        user_sign_up_details.put("user_type_key",user_type);
+                                        user_col.document("user_"+email).set(user_sign_up_details);
+                                        Toast.makeText(getActivity(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
+
+                                        if(user_type.matches("Patient")){
+                                            Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
+                                            patient_home.putExtra("email", email);
+                                            startActivity(patient_home);
+                                        } else if(user_type.matches("Doctor")) {
+                                            Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);  //Change Doctor Page Here
+                                            doctor_home.putExtra("email", email);
+                                            startActivity(doctor_home);
+                                        }
+
+                                    }
+                                } else {
+                                    Toast.makeText(getContext(), task.getException().toString()+" FireBase Connection ERROR!", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+
+                        /* if(!user_exists_check){
                             Toast.makeText(getActivity(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
                             Intent patient_home=new Intent(getContext(), PatientHomePageActivity.class);
                             startActivity(patient_home);}
                         else{
                             edit_email.setError("User with same email id already exits! Try logging into existing account or use different email id.");
-                            //Toast.makeText(getActivity(), "User Already Exits!", Toast.LENGTH_SHORT).show();
-                        }
+                            Toast.makeText(getActivity(), "User Already Exits!", Toast.LENGTH_SHORT).show();
+                        }*/
+
                     }else
                     {
                         Toast.makeText(getContext(), "Enter Valid Details!", Toast.LENGTH_SHORT).show();
@@ -118,6 +161,7 @@ public class SignupFragment extends Fragment {
     }
 
 
+/*
     public void isExistingUser(){
         Query user_id_exist = user_col.whereEqualTo("email_id_key", email);
         user_id_exist.get()
@@ -134,6 +178,7 @@ public class SignupFragment extends Fragment {
                     }
                 });
     }
+*/
 
     public boolean form_validation(){
         Pattern name_regex = Pattern.compile("[a-zA-Z]{3,}");
