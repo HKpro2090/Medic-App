@@ -190,7 +190,7 @@ public class SignupFragment extends Fragment {
 
     public boolean form_validation(){
         Pattern name_regex = Pattern.compile("[a-zA-Z]{3,}");
-        Pattern phone_no_regex = Pattern.compile("[1-9][0-9]{9}");
+        Pattern phone_no_regex = Pattern.compile("([1-9][0-9]{9})|^$");
         Pattern email_regex = Patterns.EMAIL_ADDRESS;
         Pattern password_regex = Pattern.compile("^(?=.*[0-9]+)(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[!@#$%^&*+=-]+).{8,32}$");
 

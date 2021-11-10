@@ -52,4 +52,6 @@
         app:srcCompat="@drawable/loginpage"
         tools:ignore="ImageContrastCheck"
         app:layout_constraintHeight_percent="0.32"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
