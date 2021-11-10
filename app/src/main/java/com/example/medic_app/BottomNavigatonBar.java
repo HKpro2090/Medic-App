@@ -68,7 +68,7 @@ public class BottomNavigatonBar extends Fragment {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(getActivity(),PatientDinfoActivity.class);
+                Intent in=new Intent(getActivity(),PatientDsearchActivity.class);
                 startActivity(in);
             }
         });
