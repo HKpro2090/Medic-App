@@ -24,10 +24,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.security.NoSuchAlgorithmException;
-import java.util.Hashtable;
-import java.util.Map;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -77,7 +73,7 @@ public class LoginFragment extends Fragment {
                 ((MainActivity)getActivity()).makefragmentbig(0.77f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
-                ft.replace(R.id.RegistrationFrame,new ChangePassword());
+                ft.replace(R.id.RegistrationFrame,new ResetPasswordFragment());
                 ft.commit();
             }
         });

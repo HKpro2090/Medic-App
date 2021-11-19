@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class ChangePassword extends Fragment {
+public class ChangePasswordFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -31,6 +31,21 @@ public class ChangePassword extends Fragment {
                 ft.commit();
             }
         });
+
+        Button change =(Button)view.findViewById(R.id.ChangePasswordButton);
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).imageresize(0.32f);
+                ((MainActivity)getActivity()).reloadimg();
+                ((MainActivity)getActivity()).makefragmentbig(0.54f);
+                FragmentManager m=getFragmentManager();
+                FragmentTransaction ft=m.beginTransaction();
+                ft.replace(R.id.RegistrationFrame,new LoginFragment());
+                ft.commit();
+            }
+        });
+
         return view;
     }
 }
