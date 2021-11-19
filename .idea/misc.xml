@@ -32,10 +32,15 @@
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientupcominglist.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/signup_fragment_layout.xml" value="0.2" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_main.xml" value="0.10085470085470086" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.2" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_reset_password.xml" value="0.25213675213675213" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/login_fragment_layout.xml" value="0.2" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/signup_fragment_layout.xml" value="0.2" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
