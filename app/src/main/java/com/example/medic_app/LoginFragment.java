@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -50,6 +51,16 @@ public class LoginFragment extends Fragment {
         doctor_btn = (RadioButton) view.findViewById(R.id.DoctorRadioButton);
         patient_btn = (RadioButton) view.findViewById(R.id.PatientRadioButton);
 
+//        RadioGroup rg=(RadioGroup)view.findViewById(R.id.radioGroup);
+//        rg.clearCheck();
+//        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                RadioButton sel=(RadioButton)group.findViewById(checkedId);
+//                type=sel.getText().toString();
+//            }
+//        });
+
         Button sgnupbtn=(Button)view.findViewById(R.id.SignUpButton);
         sgnupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +93,16 @@ public class LoginFragment extends Fragment {
         sib.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
+                   //the below block of code is to bypass credentials by using doctor signin.
+                   //to be removed in final app
+                   if(doctor_btn.isChecked()){
+                       Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);     //Change Doctor Page Here
+                       doctor_home.putExtra("email", email);
+                       startActivity(doctor_home);
+                   }
+                   //the above block of code is to bypass credentials by using doctor signin.
+                   //to be removed in final app
+
 
                    try{
 
