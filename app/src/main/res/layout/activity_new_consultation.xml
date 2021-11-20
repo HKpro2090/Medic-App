@@ -8,21 +8,36 @@
     android:background="?attr/background_color">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="1.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115"
+        app:srcCompat="@drawable/consultation"
+        tools:ignore="ImageContrastCheck" />
+
     <TextView
         android:id="@+id/newconsultiontitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
         android:text="New Consultation"
         android:textAllCaps="false"
         android:textColor="?attr/text_color"
         android:textSize="34sp"
-        android:fontFamily="@font/nunito_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.261"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.060000002" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -31,11 +46,11 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.069"
+        app:layout_constraintHeight_percent="0.08"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newconsultiontitle"
-        app:layout_constraintVertical_bias="0.050000012"
+        app:layout_constraintVertical_bias="0.299"
         app:layout_constraintWidth_percent="0.85" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -66,12 +81,12 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.069"
-        app:layout_constraintHorizontal_bias="0.782"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.049"
-        app:layout_constraintWidth_percent="0.65" />
+        app:layout_constraintVertical_bias="0.046"
+        app:layout_constraintWidth_percent="0.68" />
 
     <EditText
         android:id="@+id/newcdate"
@@ -85,12 +100,12 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.069"
-        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PatientProfilePic"
-        app:layout_constraintVertical_bias="0.047"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/ncdoctorname"
+        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintWidth_percent="0.47" />
 
     <EditText
         android:id="@+id/newctime"
@@ -104,12 +119,12 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.069"
-        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.882"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ncdoctorname"
-        app:layout_constraintVertical_bias="0.044"
-        app:layout_constraintWidth_percent="0.28" />
+        app:layout_constraintVertical_bias="0.042"
+        app:layout_constraintWidth_percent="0.35" />
 
     <Button
         android:id="@+id/nccheckButton"
@@ -124,10 +139,10 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintHorizontal_bias="0.898"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newcdate"
-        app:layout_constraintVertical_bias="0.034" />
+        app:layout_constraintVertical_bias="0.041" />
 
     <EditText
         android:id="@+id/ncsymptoms"
@@ -142,12 +157,12 @@
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newcdate"
-        app:layout_constraintVertical_bias="0.279"
-        app:layout_constraintWidth_percent="0.8" />
+        app:layout_constraintVertical_bias="0.378"
+        app:layout_constraintWidth_percent="0.85" />
 
     <Button
         android:id="@+id/ncbookbutton"
@@ -165,7 +180,7 @@
         app:layout_constraintHorizontal_bias="0.242"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ncsymptoms"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.344" />
 
     <Button
         android:id="@+id/nccancelbutton"
@@ -180,9 +195,9 @@
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toEndOf="@+id/ncbookbutton"
         app:layout_constraintTop_toBottomOf="@+id/ncsymptoms"
-        app:layout_constraintVertical_bias="0.174" />
+        app:layout_constraintVertical_bias="0.344" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

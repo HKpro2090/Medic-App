@@ -64,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = f;
     }
 
-    public void reloadimg()
+    public void reloadimg(int img)
     {
         ImageView imv = (ImageView) findViewById(R.id.imageView);
-        imv.setImageResource(R.drawable.loginpage);
+        imv.setImageResource(img);
     }
 
     public String encrypt_passwd(String passwd) {

@@ -24,8 +24,8 @@ public class ResetPasswordFragment extends Fragment {
         fpassbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).imageresize(0.1f);
-                ((MainActivity)getActivity()).makeimgempty();
+                ((MainActivity)getActivity()).imageresize(0.32f);
+                ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
                 ((MainActivity)getActivity()).makefragmentbig(0.77f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();

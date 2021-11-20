@@ -79,9 +79,9 @@ public class LoginFragment extends Fragment {
         fpassbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).imageresize(0.1f);
-                ((MainActivity)getActivity()).makeimgempty();
-                ((MainActivity)getActivity()).makefragmentbig(0.77f);
+                ((MainActivity)getActivity()).imageresize(0.32f);
+                ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
+                ((MainActivity)getActivity()).makefragmentbig(0.7f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.replace(R.id.RegistrationFrame,new ResetPasswordFragment());

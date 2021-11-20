@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 public class PatientHomePageActivity extends AppCompatActivity {
@@ -20,6 +22,12 @@ public class PatientHomePageActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.UpcomingConsultationContainer, new PatientUpcomingConsultationsFragment());
         fragmentTransaction.replace(R.id.RecentConsultationContainer,new PatientRecentConsultationsFragment());
         fragmentTransaction.commit();
+        im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PatientHomePageActivity.this,ProfilePageActivity.class));
+            }
+        });
 
     }
 }
