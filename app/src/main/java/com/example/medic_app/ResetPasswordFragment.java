@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 
 public class ResetPasswordFragment extends Fragment {
 
-    String email="";
+    String email,new_password="";
     String e_key="email";
     EditText edit_reset_pass_email;
     boolean form_validated = false;
@@ -45,6 +45,10 @@ public class ResetPasswordFragment extends Fragment {
                 if(form_validated){
                     Bundle enext = new Bundle();
                     enext.putString("email",email);
+
+                    new_password=((MainActivity)getActivity()).generateRandomPassword();
+                    Toast.makeText(getContext(), new_password,Toast.LENGTH_LONG).show();
+
                     ((MainActivity)getActivity()).imageresize(0.32f);
                     ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
                     ((MainActivity)getActivity()).makefragmentbig(0.77f);
@@ -54,6 +58,7 @@ public class ResetPasswordFragment extends Fragment {
                     chg_pswd.setArguments(enext);
                     ft.replace(R.id.RegistrationFrame,chg_pswd);
                     ft.commit();
+
                 }else{
                     Toast.makeText(getContext(), "Enter Valid Email!", Toast.LENGTH_SHORT).show();
                 }

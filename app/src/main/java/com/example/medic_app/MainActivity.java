@@ -80,4 +80,33 @@ public class MainActivity extends AppCompatActivity {
 
         return encrypted_passwd;
     }
+
+    public String generateRandomPassword(){
+
+        String random_password="";
+        String alphabetsLow = "abcdefghijklmnopqrstuvwxyz";
+        String alphabetsHigh = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String numbers = "0123456789";
+        String special = "!@#$%^&*+=-";
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*+=-";
+
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(alphabetsHigh.charAt(random.nextInt(alphabetsHigh.length())));
+        sb.append(alphabetsLow.charAt(random.nextInt(alphabetsLow.length())));
+        sb.append(special.charAt(random.nextInt(special.length())));
+        sb.append(numbers.charAt(random.nextInt(numbers.length())));
+
+
+        for (int i = 4; i < 8; i++)
+        {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+
+        random_password=sb.toString();
+        return random_password;
+
+    }
 }
