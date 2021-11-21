@@ -43,15 +43,15 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:alpha="0.6"
+        android:alpha="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.32"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Apptitle"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/loginpage"
-        tools:ignore="ImageContrastCheck"
-        app:layout_constraintHeight_percent="0.32"/>
+        tools:ignore="ImageContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

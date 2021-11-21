@@ -22,7 +22,7 @@ public class ChangePasswordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).imageresize(0.32f);
-                ((MainActivity)getActivity()).reloadimg();
+                ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
 
                 FragmentManager m=getFragmentManager();
@@ -37,7 +37,7 @@ public class ChangePasswordFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).imageresize(0.32f);
-                ((MainActivity)getActivity()).reloadimg();
+                ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
