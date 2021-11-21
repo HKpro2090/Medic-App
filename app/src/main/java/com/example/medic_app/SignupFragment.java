@@ -85,7 +85,7 @@ public class SignupFragment extends Fragment {
 
                 try {
                     name = edit_name.getText().toString();
-                    email = edit_email.getText().toString();
+                    email = edit_email.getText().toString().toLowerCase();
                     phone_no = edit_phone_no.getText().toString();
                     password = edit_password.getText().toString();
                     conf_passwd = edit_conf_passwd.getText().toString();

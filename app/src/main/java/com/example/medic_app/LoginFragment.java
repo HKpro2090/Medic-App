@@ -31,8 +31,9 @@ import java.util.regex.Pattern;
 public class LoginFragment extends Fragment {
 
     EditText edit_email,edit_password;
-    String email,password,user_type,encrypted_password_login;
+    String email,password,user_type,encrypted_password_login="";
     String db_password,db_usertype;
+    String e_key = "email";
     RadioButton doctor_btn,patient_btn;
     boolean form_validated = false;
     boolean user_exists_check = false;
@@ -46,10 +47,23 @@ public class LoginFragment extends Fragment {
         View view=inflater.inflate(R.layout.login_fragment_layout, container, false);
         // Inflate the layout for this fragment
 
+
+
+
         edit_email = (EditText) view.findViewById(R.id.EmailField);
         edit_password = (EditText) view.findViewById(R.id.PasswordField);
         doctor_btn = (RadioButton) view.findViewById(R.id.DoctorRadioButton);
         patient_btn = (RadioButton) view.findViewById(R.id.PatientRadioButton);
+
+        try {
+            Bundle email_bundle = getArguments();
+            email = email_bundle.getString(e_key);
+            edit_email.setText(email);
+        } catch (Exception bundle_empty){
+            email="";
+            Toast.makeText(getActivity(), bundle_empty.toString(), Toast.LENGTH_LONG).show();
+
+        }
 
 //        RadioGroup rg=(RadioGroup)view.findViewById(R.id.radioGroup);
 //        rg.clearCheck();
@@ -79,12 +93,16 @@ public class LoginFragment extends Fragment {
         fpassbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle email_trans =  new Bundle();
+                email_trans.putString("email",email);
                 ((MainActivity)getActivity()).imageresize(0.32f);
                 ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
                 ((MainActivity)getActivity()).makefragmentbig(0.7f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
-                ft.replace(R.id.RegistrationFrame,new ResetPasswordFragment());
+                Fragment reset_pass_frag = new ResetPasswordFragment();
+                reset_pass_frag.setArguments(email_trans);
+                ft.replace(R.id.RegistrationFrame,reset_pass_frag);
                 ft.commit();
             }
         });
@@ -106,7 +124,7 @@ public class LoginFragment extends Fragment {
 
                    try{
 
-                       email= edit_email.getText().toString();
+                       email= edit_email.getText().toString().toLowerCase();
                        password = edit_password.getText().toString();
 
                        if (doctor_btn.isChecked()) {
