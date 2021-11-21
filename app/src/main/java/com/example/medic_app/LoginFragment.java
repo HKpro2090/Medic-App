@@ -60,7 +60,7 @@ public class LoginFragment extends Fragment {
             email = email_bundle.getString(e_key);
             edit_email.setText(email);
         } catch (Exception bundle_empty){
-            email=" ";
+            email="";
             //Toast.makeText(getActivity(), bundle_empty.toString(), Toast.LENGTH_LONG).show();
 
         }

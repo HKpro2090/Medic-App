@@ -37,7 +37,7 @@ import java.util.regex.Pattern;
 public class SignupFragment extends Fragment {
 
     EditText edit_name,edit_email,edit_phone_no,edit_password,edit_conf_passwd;
-    String name,email,phone_no,password,conf_passwd,user_type,encrypted_password=" ";
+    String name,email,phone_no,password,conf_passwd,user_type,encrypted_password="";
     RadioButton doctor_btn,patient_btn;
     Button signup_btn,signin_btn;
     boolean form_validated = false;

@@ -32,35 +32,48 @@ public class ResetPasswordFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_reset_password, container, false);
         Button fpassbtn=(Button)view.findViewById(R.id.resetPassEmailButton);
         edit_reset_pass_email = (EditText) view.findViewById(R.id.resetPassEmailField);
-        Bundle b = getArguments();
-        email = b.getString(e_key);
-        edit_reset_pass_email.setText(email);
+
+        try {
+            Bundle b = getArguments();
+            email = b.getString(e_key);
+            edit_reset_pass_email.setText(email);
+        }catch (Exception no_email){
+            email="";
+        }
 
         fpassbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                email= edit_reset_pass_email.getText().toString().toLowerCase();
-                form_validated=form_validation();
-                if(form_validated){
-                    Bundle enext = new Bundle();
-                    enext.putString("email",email);
+                try{
 
-                    new_password=((MainActivity)getActivity()).generateRandomPassword();
-                    Toast.makeText(getContext(), new_password,Toast.LENGTH_LONG).show();
+                    email = edit_reset_pass_email.getText().toString().toLowerCase();
+                    form_validated=form_validation();
 
-                    ((MainActivity)getActivity()).imageresize(0.32f);
-                    ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
-                    ((MainActivity)getActivity()).makefragmentbig(0.77f);
-                    FragmentManager m=getFragmentManager();
-                    FragmentTransaction ft=m.beginTransaction();
-                    Fragment chg_pswd =  new ChangePasswordFragment();
-                    chg_pswd.setArguments(enext);
-                    ft.replace(R.id.RegistrationFrame,chg_pswd);
-                    ft.commit();
+                    if(form_validated){
 
-                }else{
-                    Toast.makeText(getContext(), "Enter Valid Email!", Toast.LENGTH_SHORT).show();
+                        new_password=((MainActivity)getActivity()).generateRandomPassword();
+                        Toast.makeText(getContext(), new_password,Toast.LENGTH_LONG).show();
+
+                        ((MainActivity)getActivity()).imageresize(0.32f);
+                        ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
+                        ((MainActivity)getActivity()).makefragmentbig(0.77f);
+                        FragmentManager m=getFragmentManager();
+                        FragmentTransaction ft=m.beginTransaction();
+
+                        Bundle enext = new Bundle();
+                        enext.putString(e_key,email);
+
+                        Fragment chg_pswd =  new ChangePasswordFragment();
+                        chg_pswd.setArguments(enext);
+                        ft.replace(R.id.RegistrationFrame,chg_pswd);
+                        ft.commit();
+
+                    }else{
+                        Toast.makeText(getContext(), "Enter Valid Email!", Toast.LENGTH_SHORT).show();
+                    }
+                }catch(Exception err){
+                    Toast.makeText(getContext(), err.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -74,10 +87,11 @@ public class ResetPasswordFragment extends Fragment {
         Matcher email_match = email_regex.matcher(email);
 
 
+
         boolean form_valid=true;
 
         if(!email_match.matches()) {
-            edit_reset_pass_email.setError("Please enter a valid email id");
+            edit_reset_pass_email.setError("Please enter a valid email id " + email);
             form_valid=false;
         }
 
