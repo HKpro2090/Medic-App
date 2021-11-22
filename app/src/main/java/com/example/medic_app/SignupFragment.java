@@ -1,6 +1,5 @@
 package com.example.medic_app;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +22,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +32,7 @@ public class SignupFragment extends Fragment {
 
     EditText edit_name,edit_email,edit_phone_no,edit_password,edit_conf_passwd;
     String name,email,phone_no,password,conf_passwd,user_type,encrypted_password="";
+    String e_key="email";
     RadioButton doctor_btn,patient_btn;
     Button signup_btn,signin_btn;
     boolean form_validated = false;
@@ -85,7 +80,7 @@ public class SignupFragment extends Fragment {
             if(doctor_btn.isChecked()){
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
-                ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
+                ft.replace(R.id.RegistrationFrame,new PatientCompleteProfileFragment());
                 ft.commit();
             }
             //above section for test purpose. remove for final app
@@ -135,21 +130,27 @@ public class SignupFragment extends Fragment {
                                         user_col.document("user_"+email).set(user_sign_up_details);
                                         Toast.makeText(getActivity(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
 
+                                        Bundle frag_trans = new Bundle();
+                                        frag_trans.putString(e_key,email);
+
                                         if(user_type.matches("Patient")){
-//                                            Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
-//                                            patient_home.putExtra("email", email);
-//                                            startActivity(patient_home);
+
                                             FragmentManager m=getFragmentManager();
                                             FragmentTransaction ft=m.beginTransaction();
-                                            ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
+                                            Fragment patient_complete_profile_fragment = new PatientCompleteProfileFragment();
+                                            patient_complete_profile_fragment.setArguments(frag_trans);
+                                            ft.replace(R.id.RegistrationFrame,patient_complete_profile_fragment);
                                             ft.commit();
+
                                         } else if(user_type.matches("Doctor")) {
 //                                            Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);  //Change Doctor Page Here
 //                                            doctor_home.putExtra("email", email);
 //                                            startActivity(doctor_home);
                                             FragmentManager m=getFragmentManager();
                                             FragmentTransaction ft=m.beginTransaction();
-                                            ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
+                                            Fragment doctor_complete_profile_fragment = new PatientCompleteProfileFragment();
+                                            doctor_complete_profile_fragment.setArguments(frag_trans);
+                                            ft.replace(R.id.RegistrationFrame,doctor_complete_profile_fragment);
                                             ft.commit();
                                         }
 
