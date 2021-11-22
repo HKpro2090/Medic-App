@@ -13,4 +13,5 @@
     <string name="invalid_confirm_password">Password does not match</string>
     <string name="invalid_phone">Please enter a valid phone no</string>
 
+
 </resources>
