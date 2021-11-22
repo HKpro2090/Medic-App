@@ -81,7 +81,14 @@ public class SignupFragment extends Fragment {
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+            //below section for test purpose. remove for final app
+            if(doctor_btn.isChecked()){
+                FragmentManager m=getFragmentManager();
+                FragmentTransaction ft=m.beginTransaction();
+                ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
+                ft.commit();
+            }
+            //above section for test purpose. remove for final app
 
                 try {
                     name = edit_name.getText().toString();
