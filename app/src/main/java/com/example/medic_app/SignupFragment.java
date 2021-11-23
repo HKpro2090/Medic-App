@@ -1,5 +1,6 @@
 package com.example.medic_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +24,13 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,6 +74,7 @@ public class SignupFragment extends Fragment {
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
                 ft.replace(R.id.RegistrationFrame,new LoginFragment());
                 ft.commit();
             }
@@ -80,6 +87,8 @@ public class SignupFragment extends Fragment {
             if(doctor_btn.isChecked()){
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
+
                 ft.replace(R.id.RegistrationFrame,new PatientCompleteProfileFragment());
                 ft.commit();
             }
@@ -134,7 +143,9 @@ public class SignupFragment extends Fragment {
                                         frag_trans.putString(e_key,email);
 
                                         if(user_type.matches("Patient")){
-
+//                                            Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
+//                                            patient_home.putExtra("email", email);
+//                                            startActivity(patient_home);
                                             FragmentManager m=getFragmentManager();
                                             FragmentTransaction ft=m.beginTransaction();
                                             Fragment patient_complete_profile_fragment = new PatientCompleteProfileFragment();
