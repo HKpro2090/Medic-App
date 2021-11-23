@@ -1,10 +1,13 @@
 package com.example.medic_app;
 
+import android.animation.ValueAnimator;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.transition.TransitionManager;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.view.View;
 import android.widget.ImageButton;
@@ -32,6 +35,8 @@ import java.security.SecureRandom;
 public class MainActivity extends AppCompatActivity {
     String e_key="email";
     String cp;
+    float previousvalueimg = 0.32f;
+    float previousvaluefrag = 0.54f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +76,21 @@ public class MainActivity extends AppCompatActivity {
         ConstraintSet set  = new ConstraintSet();
         ImageView imv = (ImageView)findViewById(R.id.imageView);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
-        ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = f;
+
+        ValueAnimator va = ValueAnimator.ofFloat(previousvalueimg,f);
+        va.setDuration(500);
+        va.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                System.out.println((float) valueAnimator.getAnimatedValue());
+                ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = (float) valueAnimator.getAnimatedValue();
+                imv.setLayoutParams(lp);
+            }
+        });
+        va.start();
+        previousvalueimg = f;
     }
 
     public void makeimgempty()
@@ -84,7 +103,22 @@ public class MainActivity extends AppCompatActivity {
         ConstraintSet set  = new ConstraintSet();
         FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.RegistrationFrame);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
-        ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = f;
+
+        ValueAnimator va = ValueAnimator.ofFloat(previousvaluefrag,f);
+        va.setDuration(500);
+        va.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                System.out.println((float) valueAnimator.getAnimatedValue());
+                ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = (float) valueAnimator.getAnimatedValue();
+                imv.setLayoutParams(lp);
+            }
+        });
+        va.start();
+        previousvaluefrag = f;
+        //((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = f;
     }
 
     public void reloadimg(int img)

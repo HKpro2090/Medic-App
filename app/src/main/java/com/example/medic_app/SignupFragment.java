@@ -73,6 +73,7 @@ public class SignupFragment extends Fragment {
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
                 ft.replace(R.id.RegistrationFrame,new LoginFragment());
                 ft.commit();
             }
@@ -85,6 +86,7 @@ public class SignupFragment extends Fragment {
             if(doctor_btn.isChecked()){
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
                 ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
                 ft.commit();
             }

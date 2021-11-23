@@ -107,6 +107,7 @@ public class ResetPasswordFragment extends Fragment {
                                                             ((MainActivity)getActivity()).makefragmentbig(0.77f);
                                                             FragmentManager m=getFragmentManager();
                                                             FragmentTransaction ft=m.beginTransaction();
+                                                        ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
 
                                                             Bundle enext = new Bundle();
                                                             enext.putString(e_key,email);

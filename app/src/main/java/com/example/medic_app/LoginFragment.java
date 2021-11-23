@@ -79,11 +79,12 @@ public class LoginFragment extends Fragment {
         sgnupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).imageresize(0.1f);
-                ((MainActivity)getActivity()).makeimgempty();
+                ((MainActivity)getActivity()).imageresize(0f);
+                //((MainActivity)getActivity()).makeimgempty();
                 ((MainActivity)getActivity()).makefragmentbig(0.77f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
                 ft.replace(R.id.RegistrationFrame,new SignupFragment());
                 ft.commit();
 
@@ -95,11 +96,12 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 Bundle email_trans =  new Bundle();
                 email_trans.putString("email",email);
-                ((MainActivity)getActivity()).imageresize(0.32f);
+                //((MainActivity)getActivity()).imageresize(0.32f);
                 ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
                 ((MainActivity)getActivity()).makefragmentbig(0.7f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
                 Fragment reset_pass_frag = new ResetPasswordFragment();
                 reset_pass_frag.setArguments(email_trans);
                 ft.replace(R.id.RegistrationFrame,reset_pass_frag);
