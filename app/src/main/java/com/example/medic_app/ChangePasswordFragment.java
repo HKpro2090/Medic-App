@@ -167,6 +167,9 @@ public class ChangePasswordFragment extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!(((MainActivity)getActivity()).getCp()).isEmpty()){
+                    ((MainActivity)getActivity()).finish();
+                }
                 ((MainActivity)getActivity()).imageresize(0.32f);
                 ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
