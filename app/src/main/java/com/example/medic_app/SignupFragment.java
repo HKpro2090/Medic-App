@@ -136,13 +136,21 @@ public class SignupFragment extends Fragment {
                                         Toast.makeText(getActivity(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
 
                                         if(user_type.matches("Patient")){
-                                            Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
-                                            patient_home.putExtra("email", email);
-                                            startActivity(patient_home);
+//                                            Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
+//                                            patient_home.putExtra("email", email);
+//                                            startActivity(patient_home);
+                                            FragmentManager m=getFragmentManager();
+                                            FragmentTransaction ft=m.beginTransaction();
+                                            ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
+                                            ft.commit();
                                         } else if(user_type.matches("Doctor")) {
-                                            Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);  //Change Doctor Page Here
-                                            doctor_home.putExtra("email", email);
-                                            startActivity(doctor_home);
+//                                            Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);  //Change Doctor Page Here
+//                                            doctor_home.putExtra("email", email);
+//                                            startActivity(doctor_home);
+                                            FragmentManager m=getFragmentManager();
+                                            FragmentTransaction ft=m.beginTransaction();
+                                            ft.replace(R.id.RegistrationFrame,new CompleteProfileFragment());
+                                            ft.commit();
                                         }
 
                                     }
