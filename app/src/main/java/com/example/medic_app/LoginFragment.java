@@ -117,6 +117,7 @@ public class LoginFragment extends Fragment {
                        Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);     //Change Doctor Page Here
                        doctor_home.putExtra("email", email);
                        startActivity(doctor_home);
+                       getActivity().finish();
                    }
                    //the above block of code is to bypass credentials by using doctor signin.
                    //to be removed in final app
