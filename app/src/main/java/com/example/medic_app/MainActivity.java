@@ -30,35 +30,36 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public class MainActivity extends AppCompatActivity {
-    String e_key="email";
-    String cp;
+//    String e_key="email";
+//    String cp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         loadFragment(new LoginFragment());
-        try{
-        Intent in=getIntent();
-        cp=in.getStringExtra("changepass").toString();
-        if(!(cp.isEmpty())) {
-            imageresize(0.32f);
-            reloadimg(R.drawable.forgot_password);
-            makefragmentbig(0.77f);
-            FragmentManager m = getSupportFragmentManager();
-            FragmentTransaction ft = m.beginTransaction();
-            Bundle enext = new Bundle();
-            enext.putString(e_key, "");
-            Fragment chg_pswd = new ChangePasswordFragment();
-            chg_pswd.setArguments(enext);
-            ft.replace(R.id.RegistrationFrame, chg_pswd);
-            ft.commit();
-        }
-        }catch (Exception e){e.printStackTrace();}
+//        try{
+//        Intent in=getIntent();
+//        cp=in.getStringExtra("changepass").toString();
+//        if(!(cp.isEmpty())) {
+//            imageresize(0.32f);
+//            reloadimg(R.drawable.forgot_password);
+//            makefragmentbig(0.77f);
+//            FragmentManager m = getSupportFragmentManager();
+//            FragmentTransaction ft = m.beginTransaction();
+//            Bundle enext = new Bundle();
+//            enext.putString(e_key, "");
+//            Fragment chg_pswd = new ChangePasswordFragment();
+//            chg_pswd.setArguments(enext);
+//            ft.replace(R.id.RegistrationFrame, chg_pswd);
+//            ft.commit();
+//        }
+//        }catch (Exception e){e.printStackTrace();}
     }
-    public String getCp(){
-        return cp;
-    }
+
+//    public String getCp(){
+//        return cp;
+//    }
     public void loadFragment(Fragment fragment)
     {
         FragmentManager fm = getSupportFragmentManager();

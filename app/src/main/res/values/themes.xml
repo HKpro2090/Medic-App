@@ -19,4 +19,10 @@
         <item name="shape_fill_color">#FFFFFF</item>
         <item name="textfield_hint_color">#A8A8A8</item>
     </style>
+    <style name="Theme.MedicApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.MedicApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MedicApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -20,11 +20,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.hash.Hashing;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -34,6 +36,7 @@ public class ChangePasswordFragment extends Fragment {
 
     String email="";
     String e_key="email";
+    String settings_key = "from_settings";
     EditText edit_email,edit_password,edit_conf_passwd,edit_cur_password;
     String cur_password,password,conf_passwd,encrypted_password,encrypted_cur_password,db_password="";
     boolean form_validated = false;
@@ -85,7 +88,7 @@ public class ChangePasswordFragment extends Fragment {
                                     if (document.exists()) {
                                         user_exists_check=true;
                                         try {
-                                            encrypted_cur_password = ((MainActivity)getActivity()).encrypt_passwd(cur_password);
+                                            encrypted_cur_password = encrypt_passwd(cur_password);
                                         } catch (Error e) {
                                             Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                                         }
@@ -95,7 +98,7 @@ public class ChangePasswordFragment extends Fragment {
                                         if(db_password.matches(encrypted_cur_password)){
 
                                             try {
-                                                encrypted_password = ((MainActivity)getActivity()).encrypt_passwd(password);
+                                                encrypted_password = encrypt_passwd(password);
                                             } catch (Error e) {
                                                 Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                                             }
@@ -105,6 +108,12 @@ public class ChangePasswordFragment extends Fragment {
                                                         @Override
                                                         public void onSuccess(Void unused) {
 
+                                                            if (b.getString(settings_key)!=null){
+
+                                                                Intent in=new Intent(getContext(),MainActivity.class);
+                                                                startActivity(in);
+                                                                getActivity().finishAffinity();
+                                                            }else{
                                                             Bundle email_carrier = new Bundle();
                                                             email_carrier.putString(e_key,email);
 
@@ -120,6 +129,7 @@ public class ChangePasswordFragment extends Fragment {
 
                                                             ft.replace(R.id.RegistrationFrame, login_fgmt);
                                                             ft.commit();
+                                                            }
                                                         }
 
                                                     })
@@ -167,9 +177,15 @@ public class ChangePasswordFragment extends Fragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(((MainActivity)getActivity()).getCp()).isEmpty()){
-                    ((MainActivity)getActivity()).finish();
+
+
+
+                if (b.getString(settings_key)!=null){
+                    Intent patient_profile_page = new Intent(getContext(),ProfilePageActivity.class);
+                    patient_profile_page.putExtra(e_key,email);
+                    startActivity(patient_profile_page);
                 }
+
                 ((MainActivity)getActivity()).imageresize(0.32f);
                 ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
@@ -182,6 +198,17 @@ public class ChangePasswordFragment extends Fragment {
         });
 
         return view;
+    }
+
+    public String encrypt_passwd(String passwd) {
+
+        String encrypted_passwd="";
+
+        encrypted_passwd = Hashing.sha256()
+                .hashString(passwd, StandardCharsets.UTF_8)
+                .toString();
+
+        return encrypted_passwd;
     }
 
     public boolean form_validation(){
