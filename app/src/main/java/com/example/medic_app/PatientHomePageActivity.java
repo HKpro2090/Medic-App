@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -76,7 +75,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
         im.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent patient_profile_page = new Intent(getApplicationContext(),ProfilePageActivity.class);
+                Intent patient_profile_page = new Intent(getApplicationContext(), SettingsPageActivity.class);
                 patient_profile_page.putExtra(e_key,email);
                 startActivity(patient_profile_page);
             }
@@ -110,6 +109,8 @@ public class PatientHomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Search Doctor!",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(getApplicationContext(),PatientDsearchActivity.class);
+                startActivity(i);
             }
         });
         newConsultationBtn = (FloatingActionButton)findViewById(R.id.newconsultationbtn);

@@ -27,8 +27,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Hashtable;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -181,20 +179,22 @@ public class ChangePasswordFragment extends Fragment {
 
 
                 if (b.getString(settings_key)!=null){
-                    Intent patient_profile_page = new Intent(getContext(),ProfilePageActivity.class);
-                    patient_profile_page.putExtra(e_key,email);
-                    startActivity(patient_profile_page);
+//                    Intent patient_profile_page = new Intent(getContext(), SettingsPageActivity.class);
+//                    patient_profile_page.putExtra(e_key,email);
+//                    startActivity(patient_profile_page);
+                    getActivity().finish();
                 }
+                else {
+                    ((MainActivity) getActivity()).imageresize(0.32f);
+                    ((MainActivity) getActivity()).reloadimg(R.drawable.loginpage);
+                    ((MainActivity) getActivity()).makefragmentbig(0.54f);
 
-                ((MainActivity)getActivity()).imageresize(0.32f);
-                ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
-                ((MainActivity)getActivity()).makefragmentbig(0.54f);
-
-                FragmentManager m=getFragmentManager();
-                FragmentTransaction ft=m.beginTransaction();
-                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
-                ft.replace(R.id.RegistrationFrame,new LoginFragment());
-                ft.commit();
+                    FragmentManager m = getFragmentManager();
+                    FragmentTransaction ft = m.beginTransaction();
+                    ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+                    ft.replace(R.id.RegistrationFrame, new LoginFragment());
+                    ft.commit();
+                }
             }
         });
 

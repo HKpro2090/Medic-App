@@ -17,7 +17,7 @@
             android:label="@string/title_activity_profile_change_password"
             android:theme="@style/Theme.MedicApp.NoActionBar" />
         <activity
-            android:name=".ProfilePageActivity"
+            android:name=".SettingsPageActivity"
             android:exported="false" />
         <activity
             android:name=".upcoming_consultation_activity"
