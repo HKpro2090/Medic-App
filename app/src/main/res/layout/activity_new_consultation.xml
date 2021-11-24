@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.060000002" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/new_consul_doc_spinner"
         style="@style/SpinnerTheme"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_spinner"
         app:layout_constraintVertical_bias="0.047"
         app:shapeAppearanceOverlay="@style/Circular"
         app:strokeColor="#707070"
@@ -69,12 +69,12 @@
         app:layout_constraintHeight_percent="0.069"
         app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_spinner"
         app:layout_constraintVertical_bias="0.049"
         app:layout_constraintWidth_percent="0.65" />
 
     <EditText
-        android:id="@+id/newcdate"
+        android:id="@+id/doc_avail_dates"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/textview_border"
@@ -92,8 +92,8 @@
         app:layout_constraintVertical_bias="0.047"
         app:layout_constraintWidth_percent="0.5" />
 
-    <EditText
-        android:id="@+id/newctime"
+    <Spinner
+        android:id="@+id/time_slot_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/textview_border"
@@ -105,10 +105,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.069"
-        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ncdoctorname"
-        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintVertical_bias="0.059"
         app:layout_constraintWidth_percent="0.28" />
 
     <Button
@@ -126,7 +126,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.87"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newcdate"
+        app:layout_constraintTop_toBottomOf="@+id/doc_avail_dates"
         app:layout_constraintVertical_bias="0.034" />
 
     <EditText
@@ -145,7 +145,7 @@
         app:layout_constraintHeight_percent="0.2"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newcdate"
+        app:layout_constraintTop_toBottomOf="@+id/doc_avail_dates"
         app:layout_constraintVertical_bias="0.279"
         app:layout_constraintWidth_percent="0.8" />
 
