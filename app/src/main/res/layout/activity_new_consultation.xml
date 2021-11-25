@@ -94,13 +94,11 @@
 
     <Spinner
         android:id="@+id/time_slot_spinner"
+        style="@style/SpinnerTheme"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/textview_border"
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
-        android:hint="Time"
-        android:inputType="time"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
