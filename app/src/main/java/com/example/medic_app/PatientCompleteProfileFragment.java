@@ -51,8 +51,7 @@ public class PatientCompleteProfileFragment extends Fragment {
         Bundle email_bundle = getArguments();
         try {
             email = email_bundle.getString(e_key);
-        }
-        catch (Exception e){
+        }catch(Exception err){
             email="";
         }
 

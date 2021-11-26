@@ -84,16 +84,14 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View view) {
             //below section for test purpose. remove for final app
-//            try {
-//                if (doctor_btn.isChecked()) {
-//                    FragmentManager m = getFragmentManager();
-//                    FragmentTransaction ft = m.beginTransaction();
-//                    ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+//            if(doctor_btn.isChecked()){
+//                FragmentManager m=getFragmentManager();
+//                FragmentTransaction ft=m.beginTransaction();
+//                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
 //
-//                    ft.replace(R.id.RegistrationFrame, new DoctorCompleteProfileFragment());
-//                    ft.commit();
-//                }
-//            }catch (Exception e){e.printStackTrace();}
+//                ft.replace(R.id.RegistrationFrame,new PatientCompleteProfileFragment());
+//                ft.commit();
+//            }
             //above section for test purpose. remove for final app
 
                 try {
@@ -218,7 +216,7 @@ public class SignupFragment extends Fragment {
 */
 
     public boolean form_validation(){
-        Pattern name_regex = Pattern.compile("[a-zA-Z]{3,}");
+        Pattern name_regex = Pattern.compile("[a-zA-Z.]{3,}");
         Pattern phone_no_regex = Pattern.compile("([1-9][0-9]{9})|^$");
         Pattern email_regex = Patterns.EMAIL_ADDRESS;
         Pattern password_regex = Pattern.compile("^(?=.*[0-9]+)(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[!@#$%^&*+=-]+).{8,32}$");
