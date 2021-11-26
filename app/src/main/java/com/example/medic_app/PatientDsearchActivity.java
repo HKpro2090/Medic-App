@@ -31,23 +31,16 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
         }
         adp=new PatientDsearchListAdapter(this,doctorArrayList);
         lv.setAdapter(adp);
-        lv.set
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if(Arrays.asList(doctors).contains(query)){
-                    adp.getFilter().filter(query);
-                }else{
-                    Toast.makeText(PatientDsearchActivity.this, "No Match found",Toast.LENGTH_LONG).show();
-                }
-                return false;
-            }
+        lv.setTextFilterEnabled(true);
+        setupSearchView();
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
+    }
+    private void setupSearchView()
+    {
+        search.setIconifiedByDefault(false);
+        search.setOnQueryTextListener(this);
+        search.setSubmitButtonEnabled(true);
+        search.setQueryHint("Search Here");
     }
 
     @Override
@@ -55,9 +48,9 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
     {
 
         if (TextUtils.isEmpty(newText)) {
-            mListView.clearTextFilter();
+            lv.clearTextFilter();
         } else {
-            mListView.setFilterText(newText);
+            lv.setFilterText(newText);
         }
         return true;
     }
