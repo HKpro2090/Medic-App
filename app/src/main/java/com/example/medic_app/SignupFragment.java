@@ -110,7 +110,6 @@ public class SignupFragment extends Fragment {
                     //Toast.makeText(getContext(), "Button Triggered", Toast.LENGTH_SHORT).show();
 
                     form_validated = form_validation();
-
                     if(form_validated){
                         //isExistingUser();
                         DocumentReference user_doc = user_col.document("user_"+email);
@@ -160,7 +159,7 @@ public class SignupFragment extends Fragment {
 //                                            startActivity(doctor_home);
                                             FragmentManager m=getFragmentManager();
                                             FragmentTransaction ft=m.beginTransaction();
-                                            Fragment doctor_complete_profile_fragment = new PatientCompleteProfileFragment();
+                                            Fragment doctor_complete_profile_fragment = new DoctorCompleteProfileFragment();
                                             doctor_complete_profile_fragment.setArguments(frag_trans);
                                             ft.replace(R.id.RegistrationFrame,doctor_complete_profile_fragment);
                                             ft.commit();
