@@ -93,6 +93,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in=new Intent(getApplicationContext(),NewConsultationActivity.class);
+                in.putExtra(e_key,email);
                 startActivity(in);
             }
         });
