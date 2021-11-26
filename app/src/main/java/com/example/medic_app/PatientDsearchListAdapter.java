@@ -9,10 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 public class PatientDsearchListAdapter extends ArrayAdapter<String> {
 
-    private final Activity context;
-    private final String[] maintitle;
-    private final String[] subtitle;
-    private final Integer[] imgid;
+    private Activity context;
+    private String[] maintitle;
+    private String[] subtitle;
+    private Integer[] imgid;
     public PatientDsearchListAdapter(Activity context, String[] maintitle, String[] subtitle, Integer[] imgid) {
         super(context, R.layout.patientrecentconsultationslist, maintitle);
         this.context=context;
