@@ -49,7 +49,12 @@ public class PatientCompleteProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         Bundle email_bundle = getArguments();
-        email = email_bundle.getString(e_key);
+        try {
+            email = email_bundle.getString(e_key);
+        }
+        catch (Exception e){
+            email="";
+        }
 
         View view = inflater.inflate(R.layout.fragment_complete_profile, container, false);
         Spinner genderspinner = (Spinner) view.findViewById(R.id.GenderSpinner);
