@@ -1,64 +1,118 @@
 package com.example.medic_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DoctorCompleteProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.Arrays;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
+
 public class DoctorCompleteProfileFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public DoctorCompleteProfileFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment DoctorCompleteProfile.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static DoctorCompleteProfileFragment newInstance(String param1, String param2) {
-        DoctorCompleteProfileFragment fragment = new DoctorCompleteProfileFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    public String Dage, Dqual, Dabout,Dgender,Ddept;
+    String [] gender={"Male","Female","Prefer not to Say"};
+    String [] dept={"Orthopaedic","ENT","Cardio","Pediatrician","General Physician"};
+    String email="";
+    String e_key="email";
+    List<String> genderlist = Arrays.asList(gender);
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference user_col = db.collection("users");
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_doctor_complete_profile, container, false);
+        View view=inflater.inflate(R.layout.fragment_doctor_complete_profile, container, false);
+
+        Bundle email_bundle = getArguments();
+        try {
+            email = email_bundle.getString(e_key);
+        }
+        catch (Exception e){
+            email="";
+        }
+        Spinner DgenSpinner=(Spinner)view.findViewById(R.id.DoctorGenderSpinner);
+        Spinner DdepSpinner=(Spinner)view.findViewById(R.id.DoctorDeptSpinner);
+
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,gender);
+        DgenSpinner.setAdapter(adp);
+        DgenSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Dgender=gender[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,dept);
+        DdepSpinner.setAdapter(ad);
+        DdepSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Ddept=dept[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Button Dcpbtn=(Button) view.findViewById(R.id.DoctorCompleteProfileButton);
+        EditText Da=(EditText)view.findViewById(R.id.DoctorAgeCompleteProfile);
+        EditText Dq=(EditText)view.findViewById(R.id.DoctorQualification);
+        EditText Dab=(EditText)view.findViewById(R.id.DoctorAbout);
+        Dcpbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dage=Da.getText().toString();
+                Dqual=Dq.getText().toString();
+                Dabout=Dab.getText().toString();
+
+                Map<String,Object> user_sign_up_additional_details = new Hashtable<>();
+                user_sign_up_additional_details.put("age_key",Dage);
+                user_sign_up_additional_details.put("Qualification_key",Dqual);
+                user_sign_up_additional_details.put("gender_key",Dgender);
+                user_sign_up_additional_details.put("about_key",Dabout);
+                user_sign_up_additional_details.put("department_key",Ddept);
+
+                user_col.document("user_"+email).set(user_sign_up_additional_details, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(getActivity(), "User Details Updated Successfully!\n"+Dage+Dqual+Dgender+Dabout+Ddept, Toast.LENGTH_LONG).show();
+                        Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);
+                        doctor_home.putExtra("email", email);
+                        startActivity(doctor_home);
+                        getActivity().finish();
+                    }
+                });
+
+            }
+        });
+
+        return view;
     }
 }

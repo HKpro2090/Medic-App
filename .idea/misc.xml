@@ -3,11 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_new_consultation.xml" value="0.2015625" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_dinfo.xml" value="0.2015625" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_profile_change_password.xml" value="0.2558876811594203" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_profile_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_complete_profile.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_reset_password.xml" value="0.18802083333333333" />
@@ -42,6 +39,12 @@
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientupcominglist.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/signup_fragment_layout.xml" value="0.2" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_dsearch.xml" value="0.1" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_edit_profile.xml" value="0.176" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_profile_page.xml" value="0.16" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.2" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/signup_fragment_layout.xml" value="0.4" />
       </map>
     </option>
   </component>

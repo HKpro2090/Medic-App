@@ -84,14 +84,16 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View view) {
             //below section for test purpose. remove for final app
-            if(doctor_btn.isChecked()){
-                FragmentManager m=getFragmentManager();
-                FragmentTransaction ft=m.beginTransaction();
-                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
-
-                ft.replace(R.id.RegistrationFrame,new PatientCompleteProfileFragment());
-                ft.commit();
-            }
+//            try {
+//                if (doctor_btn.isChecked()) {
+//                    FragmentManager m = getFragmentManager();
+//                    FragmentTransaction ft = m.beginTransaction();
+//                    ft.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
+//
+//                    ft.replace(R.id.RegistrationFrame, new DoctorCompleteProfileFragment());
+//                    ft.commit();
+//                }
+//            }catch (Exception e){e.printStackTrace();}
             //above section for test purpose. remove for final app
 
                 try {
@@ -159,7 +161,7 @@ public class SignupFragment extends Fragment {
 //                                            startActivity(doctor_home);
                                             FragmentManager m=getFragmentManager();
                                             FragmentTransaction ft=m.beginTransaction();
-                                            Fragment doctor_complete_profile_fragment = new PatientCompleteProfileFragment();
+                                            Fragment doctor_complete_profile_fragment = new DoctorCompleteProfileFragment();
                                             doctor_complete_profile_fragment.setArguments(frag_trans);
                                             ft.replace(R.id.RegistrationFrame,doctor_complete_profile_fragment);
                                             ft.commit();

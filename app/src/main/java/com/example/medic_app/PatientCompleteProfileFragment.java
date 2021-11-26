@@ -104,6 +104,7 @@ public class PatientCompleteProfileFragment extends Fragment {
                        Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
                        patient_home.putExtra("email", email);
                        startActivity(patient_home);
+                       getActivity().finish();
                     }
                 });
 
