@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoctorCompleteProfile">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:id="@+id/DoctortextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Complete your Profile"
+            android:textColor="?attr/textfield_hint_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.019" />
+
+        <EditText
+            android:id="@+id/DoctorAgeCompleteProfile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctortextView3"
+            app:layout_constraintVertical_bias="0.034"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:hint="Age"
+            android:inputType="number"
+            android:padding="10dp" />
+
+        <Spinner
+            android:id="@+id/DoctorGenderSpinner"
+            style="@style/SpinnerTheme"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:tooltipText="Gender"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintHorizontal_bias="0.275"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorAgeCompleteProfile"
+            app:layout_constraintVertical_bias="0.032"
+            app:layout_constraintWidth_percent="1"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Spinner
+            android:id="@+id/DoctorBloodGroupSpinner"
+            style="@style/SpinnerTheme"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:tooltipText="Gender"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.08"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorGenderSpinner"
+            app:layout_constraintVertical_bias="0.028"
+            app:layout_constraintWidth_percent="1"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <EditText
+            android:id="@+id/DoctorQualification"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:hint="Qualification"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintVertical_bias="0.028"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorBloodGroupSpinner" />
+
+        <EditText
+            android:id="@+id/DoctorAbout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
+            android:hint="About"
+            android:inputType="textMultiLine"
+            android:padding="10dp"
+            android:gravity="start"
+            app:layout_constraintVertical_bias="0.028"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorQualification" />
+
+        <Button
+            android:id="@+id/CompleteProfileButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFF700"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="Continue"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorAbout"
+            app:layout_constraintVertical_bias="0.083" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

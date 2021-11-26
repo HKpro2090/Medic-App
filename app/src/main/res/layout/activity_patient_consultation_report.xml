@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientDinfoActivity"
+    tools:context=".PatientConsultationReportActivity"
     android:background="?attr/background_color">
 
+
     <TextView
-        android:id="@+id/dinfotitle"
+        android:id="@+id/PatientConsReportTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
-        android:text="Upcoming Consultation"
+        android:text="Consultation Report"
         android:textAllCaps="false"
         android:textColor="?attr/text_color"
         android:textSize="30sp"
@@ -23,6 +24,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.06" />
 
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/doctorinfoimge"
         android:layout_width="58dp"
@@ -30,10 +32,10 @@
         android:padding="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.197"
+        app:layout_constraintTop_toBottomOf="@+id/PatientConsReportTitle"
+        app:layout_constraintVertical_bias="0.072"
         app:shapeAppearanceOverlay="@style/Circular"
         app:strokeColor="#707070"
         app:strokeWidth="0.5dp"
@@ -51,11 +53,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toEndOf="@+id/doctorinfoimge"
-        app:layout_constraintTop_toBottomOf="@+id/dinfotitle"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientConsReportTitle"
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
-        android:id="@+id/upcdnametv"
+        android:id="@+id/crdnametv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
@@ -66,11 +68,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/dinfotitle"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintTop_toBottomOf="@+id/PatientConsReportTitle"
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
-        android:id="@+id/upcdatetv"
+        android:id="@+id/crdatetv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
@@ -79,10 +81,25 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.016"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintVertical_bias="0.02" />
+
+    <TextView
+        android:id="@+id/crstatustv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="TextView"
+        android:textColor="?attr/text_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/crdatetv"
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/textView7"
@@ -94,73 +111,14 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toEndOf="@+id/doctorinfoimge"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.017" />
-
-    <TextView
-        android:id="@+id/upctimetv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="TextView"
-        android:textColor="?attr/text_color"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upcdatetv"
         app:layout_constraintVertical_bias="0.02" />
 
-    <TextView
-        android:id="@+id/upcstatustv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="TextView"
-        android:textColor="?attr/text_color"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upctimetv"
-        app:layout_constraintVertical_bias="0.016" />
 
     <TextView
-        android:id="@+id/upcsymtoms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_bold"
-        android:text="Symptoms"
-        android:textColor="?attr/textfield_hint_color"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.1" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito_semibold"
-        android:text="Time:"
-        android:textColor="?attr/textfield_hint_color"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.294"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.02" />
-
-    <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_semibold"
@@ -169,25 +127,55 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.304"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <TextView
+        android:id="@+id/upcsymtoms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Notes / Diagnosis"
+        android:textColor="?attr/textfield_hint_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.083" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
-        android:text="Symptoms"
+        android:text="Notes / Diagnosis"
         android:textColor="?attr/text_color"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctorinfoimge"
-        app:layout_constraintVertical_bias="0.107" />
+        app:layout_constraintVertical_bias="0.079" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Medicines"
+        android:textColor="?attr/text_color"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.079" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -197,10 +185,81 @@
         android:elevation="-2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHeight_percent="0.15"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.043"
+        app:layout_constraintVertical_bias="0.04000002"
         app:layout_constraintWidth_percent="0.85" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/listview_design"
+        android:elevation="-2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.063"
+        app:layout_constraintWidth_percent="0.85" />
+
+
+    <TableLayout
+        android:id="@+id/CRMedicineTable"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:stretchColumns="*"
+        android:shrinkColumns="*"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintWidth_percent="0.85">
+
+        <TableRow android:paddingVertical="5dp">
+            <TextView
+                android:id="@+id/MedicineNameTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Name"
+                android:textColor="?attr/textfield_hint_color"
+                android:textSize="16sp"
+                android:paddingHorizontal="45dp"
+                android:gravity="center"
+
+                />
+
+            <TextView
+                android:id="@+id/MedicineRoutineTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Routine"
+                android:gravity="center"
+                android:textColor="?attr/textfield_hint_color"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/MedicineDaysTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Days"
+                android:gravity="center"
+                android:textColor="?attr/textfield_hint_color"
+                android:textSize="16sp"
+                />
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

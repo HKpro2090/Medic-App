@@ -19,6 +19,12 @@
             android:name=".PatientEditProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".NewPatientCreationViaDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PatientConsultationReportActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProfileChangePasswordActivity"
             android:exported="false"
             android:label="@string/title_activity_profile_change_password"

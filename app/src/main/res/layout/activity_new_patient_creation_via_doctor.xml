@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPatientCreationViaDoctorActivity"
+    android:background="?attr/background_color"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/patientTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="New Patient"
+        android:textAllCaps="false"
+        android:textColor="?attr/text_color"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientTitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.5"
+        app:srcCompat="@drawable/newpatient" />
+
+    <EditText
+        android:id="@+id/NewPatientName"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientTitle"
+        app:layout_constraintVertical_bias="0.356" />
+
+    <EditText
+        android:id="@+id/NewPatientEmail"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewPatientName"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <Spinner
+        android:id="@+id/NewPatientGenderSpinner"
+        style="@style/SpinnerTheme"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:tooltipText="Gender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewPatientEmail"
+        app:layout_constraintVertical_bias="0.027"
+        app:layout_constraintWidth_percent="0.47" />
+
+    <Spinner
+        android:id="@+id/NewPatientBloodGroupSpinner"
+        style="@style/SpinnerTheme"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:tooltipText="Gender"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/NewPatientGenderSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/NewPatientEmail"
+        app:layout_constraintVertical_bias="0.027"
+        app:layout_constraintWidth_percent="0.47" />
+
+    <EditText
+        android:id="@+id/NewPatientAge"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@drawable/textview_border"
+        android:ems="10"
+        android:fontFamily="@font/nunito_semibold"
+        android:hint="Age"
+        android:inputType="number"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewPatientGenderSpinner"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <Button
+        android:id="@+id/NewPatientAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#FFF700"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewPatientAge"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <Button
+        android:id="@+id/NewPatientCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="@font/nunito_semibold"
+        android:gravity="center"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/NewPatientAddButton"
+        app:layout_constraintTop_toBottomOf="@+id/NewPatientAge"
+        app:layout_constraintVertical_bias="0.055" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
