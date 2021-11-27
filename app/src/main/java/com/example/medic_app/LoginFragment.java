@@ -116,7 +116,7 @@ public class LoginFragment extends Fragment {
                    //the below block of code is to bypass credentials by using doctor signin.
                    //to be removed in final app
                    if(doctor_btn.isChecked()){
-                       Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);     //Change Doctor Page Here
+                       Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
                        doctor_home.putExtra("email", email);
                        startActivity(doctor_home);
                        getActivity().finish();
@@ -169,7 +169,7 @@ public class LoginFragment extends Fragment {
                                                     patient_home.putExtra("email", email);
                                                     startActivity(patient_home);
                                                 } else if(user_type.matches("Doctor")) {
-                                                   Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);     //Change Doctor Page Here
+                                                   Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
                                                    doctor_home.putExtra("email", email);
                                                    startActivity(doctor_home);
                                                }

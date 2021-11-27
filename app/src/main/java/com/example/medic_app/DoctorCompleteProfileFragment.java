@@ -103,7 +103,7 @@ public class DoctorCompleteProfileFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(getActivity(), "User Details Updated Successfully!\n"+Dage+Dqual+Dgender+Dabout+Ddept, Toast.LENGTH_LONG).show();
-                        Intent doctor_home = new Intent(getContext(), PatientHomePageActivity.class);
+                        Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);
                         doctor_home.putExtra("email", email);
                         startActivity(doctor_home);
                         getActivity().finish();
