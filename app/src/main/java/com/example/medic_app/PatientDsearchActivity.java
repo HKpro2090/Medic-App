@@ -33,6 +33,7 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
     String doc_name,doc_email,doc_department="";
     String patient_email="";
 
+
 //    String[] ids={"Doctor ID:11525","Doctor ID:21222","Doctor ID:18626"};
 //    String[] doctors={"Dr.abc","Dr.pqr","Dr.xyz"};
     Integer[] imgid={R.drawable.patient1,R.drawable.patient2,R.drawable.patient1};

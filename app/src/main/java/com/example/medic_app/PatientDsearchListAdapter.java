@@ -115,7 +115,7 @@ public class PatientDsearchListAdapter extends BaseAdapter implements Filterable
                 String doc_name = temp_doc.getName();
                 String doc_department = temp_doc.getDepartment();
 
-                Intent in=new Intent(context.getApplicationContext(),NewConsultationActivity.class);
+                Intent in=new Intent(context.getApplicationContext(),PatientDinfoActivity.class);
 
                 in.putExtra("doc_email",doc_email);
                 in.putExtra("doc_department",doc_department);
@@ -135,7 +135,7 @@ public class PatientDsearchListAdapter extends BaseAdapter implements Filterable
                 String doc_name = temp_doc.getName();
                 String doc_department = temp_doc.getDepartment();
 
-                Intent in=new Intent(context.getApplicationContext(),NewConsultationActivity.class);
+                Intent in=new Intent(context.getApplicationContext(),PatientDinfoActivity.class);
 
                 in.putExtra("doc_email",doc_email);
                 in.putExtra("doc_department",doc_department);
