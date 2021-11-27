@@ -58,6 +58,10 @@ public class PatientDinfoActivity extends AppCompatActivity {
                     if(document.exists()){
                         doc_qualification=document.getString("Qualification_key");
                         doc_about=document.getString("about_key");
+                        text_doc_name.setText(doc_name);
+                        text_doc_about.setText(doc_about);
+                        text_doc_department.setText(doc_department);
+                        text_doc_qualification.setText(doc_qualification);
                     }else{
                         Toast.makeText(getApplicationContext(),"Doctor Not Found!",Toast.LENGTH_SHORT).show();
                     }
@@ -67,10 +71,7 @@ public class PatientDinfoActivity extends AppCompatActivity {
             }
         });
 
-        text_doc_name.setText(doc_name);
-        text_doc_about.setText(doc_about);
-        text_doc_department.setText(doc_department);
-        text_doc_qualification.setText(doc_qualification);
+
 
         book_appointment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +81,7 @@ public class PatientDinfoActivity extends AppCompatActivity {
                 next.putExtra("doc_department",doc_department);
                 next.putExtra("doc_name",doc_name);
                 next.putExtra("email",patient_email);
+                startActivity(next);
             }
         });
     }

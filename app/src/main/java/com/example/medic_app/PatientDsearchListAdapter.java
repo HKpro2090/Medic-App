@@ -142,6 +142,7 @@ public class PatientDsearchListAdapter extends BaseAdapter implements Filterable
                 in.putExtra("doc_name",doc_name);
                 in.putExtra("email",patient_email);
 
+                Toast.makeText(context.getApplicationContext(),doc_email,Toast.LENGTH_LONG).show();
                 context.startActivity(in);
                 //Toast.makeText(context.getApplicationContext(),doctorArrayList.get(position).getName(),Toast.LENGTH_LONG).show();
             }

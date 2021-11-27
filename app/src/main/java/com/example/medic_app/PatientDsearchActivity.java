@@ -59,7 +59,7 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
                         doc_name=document.getData().get("user_name_key").toString();
                         doc_email=document.getData().get("email_id_key").toString();
                         doc_department = document.getData().get("department_key").toString();
-                        doctorArrayList.add(new Doctor(doc_name,doc_name,doc_department, imgid[0]));
+                        doctorArrayList.add(new Doctor(doc_name,doc_email,doc_department, imgid[0]));
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "No Doctors Exist!", Toast.LENGTH_SHORT).show();
