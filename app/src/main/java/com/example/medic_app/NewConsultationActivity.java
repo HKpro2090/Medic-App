@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -47,10 +48,11 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
+    Button book_consultation,cancel;
     String user_type_key="user_type_key";
     String user_name_key="user_name_key";
     String e_key="email_id_key";
-    String patient_email,doc_email,doc_name,patient_name="";
+    String patient_email,doc_email,doc_name,doc_department,patient_name="";
     String date_today,selected_date,selected_slot="";
     int no_of_slots = 16;
     String[] slots = {"Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8",
@@ -78,7 +80,17 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_consultation);
 
-        patient_email = getIntent().getStringExtra(e_key);
+        patient_email = getIntent().getStringExtra("email");
+
+        if(getIntent().getStringExtra("doc_name")!=null){
+            doc_name=getIntent().getStringExtra("doc_name");
+        }
+        if(getIntent().getStringExtra("doc_department")!=null){
+            doc_department=getIntent().getStringExtra("doc_department");
+        }
+        if(getIntent().getStringExtra("doc_email")!=null){
+            doc_email=getIntent().getStringExtra("doc_email");
+        }
 
         spinner_doc_list = (Spinner)findViewById(R.id.new_consul_doc_spinner);
         spinner_slot_list = (Spinner)findViewById(R.id.time_slot_spinner);
@@ -89,6 +101,9 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
         edit_doc_name = (EditText)findViewById(R.id.ncdoctorname);
         edit_doc_name = (EditText)findViewById(R.id.ncsymptoms);
         text_doc_avail_dates = (TextView)findViewById(R.id.doc_avail_dates);
+
+        book_consultation = (Button)findViewById(R.id.ncbookbutton);
+        cancel = (Button)findViewById(R.id.nccancelbutton);
 
         user_col.whereEqualTo(user_type_key,"Doctor").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -101,7 +116,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                          doc_id_list.add(doc_email);
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "User Doesn't Exits!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No Doctors Exist!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -220,6 +235,8 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
 
             }
         });
+
+
     }
 
     @Override

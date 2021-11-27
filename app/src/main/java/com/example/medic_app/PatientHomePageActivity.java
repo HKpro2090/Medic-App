@@ -111,6 +111,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Search Doctor!",Toast.LENGTH_LONG).show();
                 Intent i=new Intent(getApplicationContext(),PatientDsearchActivity.class);
+                i.putExtra(e_key,email);
                 startActivity(i);
             }
         });
@@ -119,6 +120,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in=new Intent(getApplicationContext(),NewConsultationActivity.class);
+                in.putExtra(e_key,email);
                 startActivity(in);
             }
         });
