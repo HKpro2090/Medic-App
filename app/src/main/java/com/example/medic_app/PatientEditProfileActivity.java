@@ -1,9 +1,20 @@
 package com.example.medic_app;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.InputType;
+import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +22,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 public class PatientEditProfileActivity extends AppCompatActivity {
     String name,gender,bldgrp,phno,email;
     int age;
-
-
+    ImageView dp;
+    int SELECT_PICTURE = 200;
     int patientdp=R.drawable.patient2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +48,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
         phno="9192345536";
         email="tst@1234.com";
 
-        ImageView dp=(ImageView) findViewById(R.id.PatientEditDP);
+        dp=(ImageView) findViewById(R.id.PatientEditDP);
         dp.setImageResource(patientdp);
         EditText pname=(EditText) findViewById(R.id.patientProfileName);
         EditText page=(EditText) findViewById(R.id.patientProfileAge);
@@ -95,7 +114,15 @@ public class PatientEditProfileActivity extends AppCompatActivity {
             }
         });
 
-
+        FloatingActionButton changedp=(FloatingActionButton)findViewById(R.id.floatingActionButton);
+        changedp.bringToFront();
+        changedp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage();
+                Toast.makeText(getApplicationContext(),"button works",Toast.LENGTH_LONG).show();
+            }
+        });
 
 
         Button updt=(Button) findViewById(R.id.editProfileUpdateButton);
@@ -112,6 +139,38 @@ public class PatientEditProfileActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),disp,Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void selectImage() {
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        // pass the constant to compare it
+        // with the returned requestCode
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            // compare the resultCode with the
+            // SELECT_PICTURE constant
+            if (requestCode == SELECT_PICTURE) {
+                // Get the url of the image from data
+                Uri selectedImageUri = data.getData();
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    dp.setImageURI(selectedImageUri);
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
 }
