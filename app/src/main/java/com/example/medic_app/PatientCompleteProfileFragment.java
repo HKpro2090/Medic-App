@@ -5,13 +5,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -25,7 +22,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
@@ -33,7 +29,7 @@ import java.util.Map;
 
 public class PatientCompleteProfileFragment extends Fragment {
 
-    public String patientGender,patientBloodgrp,patientAge;
+    public String patientGender,patientBloodgrp,patientAge,patientHeight,patientWeight;
     String email="";
     String e_key="email";
     String[] bloodgroups = { "A+", "A-",
@@ -86,13 +82,19 @@ public class PatientCompleteProfileFragment extends Fragment {
         });
         Button cp=(Button) view.findViewById(R.id.CompleteProfileButton);
         EditText et=(EditText)view.findViewById(R.id.AgeCompleteProfile);
+        EditText ht = (EditText)view.findViewById(R.id.heightCompleteProfile);
+        EditText wt = (EditText)view.findViewById(R.id.WeightCompleteProfile);
         cp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 patientAge=et.getText().toString();
+                patientHeight=ht.getText().toString();
+                patientWeight=wt.getText().toString();
 
                 Map<String,Object> user_sign_up_additional_details = new Hashtable<>();
                 user_sign_up_additional_details.put("age_key",patientAge);
+                user_sign_up_additional_details.put("height_key",patientHeight);
+                user_sign_up_additional_details.put("weight_key",patientWeight);
                 user_sign_up_additional_details.put("blood_group_key",patientBloodgrp);
                 user_sign_up_additional_details.put("gender_key",patientGender);
 

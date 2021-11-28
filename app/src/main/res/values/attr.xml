@@ -7,5 +7,6 @@
         <attr name="shape_fill_color" format="color"/>
         <attr name="textfield_hint_color" format="color"/>
         <attr name= "floatingbtngradinetcolor" format="color"/>
+        <attr name="imagebtncolor" format="color"/>
     </declare-styleable>
 </resources>
