@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,6 +70,7 @@ public class SettingsPageActivity extends AppCompatActivity {
                 Intent in=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(in);
                 finishAffinity();
+                Toast.makeText(getApplicationContext(),"Logout Successfull!",Toast.LENGTH_LONG).show();
             }
         });
 

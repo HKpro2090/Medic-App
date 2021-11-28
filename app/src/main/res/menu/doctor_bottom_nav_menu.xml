@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/miHome"
+          android:title="Home"
+          android:icon="@drawable/ic_homeicon"
+    />
+
+    <item android:id="@+id/miSessions"
+        android:title="Sessions"
+        android:icon="@drawable/ic_baseline_calendar_today_24"/>
+</menu>
