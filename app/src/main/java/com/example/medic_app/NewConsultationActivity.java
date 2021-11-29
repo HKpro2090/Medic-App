@@ -2,10 +2,12 @@ package com.example.medic_app;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -236,6 +238,20 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
 
 
                                     datePickerDialog = DatePickerDialog.newInstance(NewConsultationActivity.this, Year, Month, Day);
+                                    int nightModeFlag = getApplicationContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                                    switch (nightModeFlag)
+                                    {
+                                        case Configuration.UI_MODE_NIGHT_YES:
+                                            datePickerDialog.setThemeDark(true);
+                                            break;
+                                        case Configuration.UI_MODE_NIGHT_NO:
+                                            datePickerDialog.setThemeDark(false);
+                                            break;
+                                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                                            datePickerDialog.setThemeDark(false);
+                                            break;
+
+                                    }
                                     Calendar[] doc_avail_dates_cal_array = new Calendar[doc_avail_dates_calendar.size()];
                                     doc_avail_dates_calendar.toArray(doc_avail_dates_cal_array);
                                     datePickerDialog.setTitle("Select Appointment Date");

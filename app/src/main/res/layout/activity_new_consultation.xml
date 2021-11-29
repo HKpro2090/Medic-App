@@ -8,6 +8,22 @@
     android:background="?attr/background_color">
 
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-20dp"
+        android:alpha="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.32"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newconsultiontitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/consultation"
+        tools:ignore="ImageContrastCheck" />
+
     <TextView
         android:id="@+id/newconsultiontitle"
         android:layout_width="wrap_content"
@@ -29,13 +45,14 @@
         style="@style/SpinnerTheme"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="-20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.069"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newconsultiontitle"
-        app:layout_constraintVertical_bias="0.050000012"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_percent="0.85" />
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -106,24 +123,6 @@
         app:layout_constraintVertical_bias="0.059"
         app:layout_constraintWidth_percent="0.28" />
 
-    <Button
-        android:id="@+id/nccheckButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:backgroundTint="#FFF700"
-        android:fontFamily="@font/nunito_semibold"
-        android:gravity="center"
-        android:text="Check"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.87"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doc_avail_dates"
-        app:layout_constraintVertical_bias="0.034" />
-
     <EditText
         android:id="@+id/ncsymptoms"
         android:layout_width="0dp"
@@ -141,7 +140,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doc_avail_dates"
-        app:layout_constraintVertical_bias="0.279"
+        app:layout_constraintVertical_bias="0.105"
         app:layout_constraintWidth_percent="0.8" />
 
     <Button

@@ -38,7 +38,7 @@
             android:name=".SettingsPageActivity"
             android:exported="false" />
         <activity
-            android:name=".upcoming_consultation_activity"
+            android:name=".Patient_upcoming_consultation_activity"
             android:exported="false" />
         <activity
             android:name=".PatientDsearchActivity"

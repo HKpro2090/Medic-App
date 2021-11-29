@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background_color"
+    tools:context=".DoctorHomeFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/DoctorHTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Home"
+            android:textAllCaps="false"
+            android:textColor="?attr/text_color"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.07"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/DoctorHProfilePic"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.93"
+            app:layout_constraintStart_toEndOf="@+id/DoctorHTitle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.05"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:strokeColor="#707070"
+            app:strokeWidth="0.5dp"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/DoctorUpcomingConsultationContainer"
+            android:name="com.example.medic_app.PatientUpcomingConsultationsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.23000002" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/DoctorRecentConsultationContainer"
+            android:name="com.example.medic_app.PatientRecentConsultationsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="-30dp"
+            android:paddingHorizontal="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.42"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorUpcomingConsultationContainer"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

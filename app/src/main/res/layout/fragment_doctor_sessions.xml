@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background_color"
+    tools:context=".DoctorSessionsFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="20dp">
+
+        <Button
+            android:id="@+id/BookSessionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFF700"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center"
+            android:text="Book Session"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SessionsSelectFragmentContainer"
+            app:layout_constraintVertical_bias="0.02" />
+
+        <TextView
+            android:id="@+id/DoctorSTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-8dp"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Sessions"
+            android:textAllCaps="false"
+            android:textColor="?attr/text_color"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.053" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/DoctorSProfilePic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toEndOf="@+id/DoctorSTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeColor="#707070"
+        app:strokeWidth="0.5dp"
+        tools:src="@tools:sample/avatars" />
+
+        <Spinner
+            android:id="@+id/DateSpinner"
+            style="@style/SpinnerTheme"
+            android:layout_width="0dp"
+            android:layout_height="65dp"
+            android:tooltipText="Gender"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.275"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctorSTitle"
+            app:layout_constraintVertical_bias="0.032"
+            app:layout_constraintWidth_percent="1" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/SessionsSelectFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DateSpinner"
+            app:layout_constraintVertical_bias="0.016" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/bookedSessionsFragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SelectedSessionDate"
+            app:layout_constraintVertical_bias="0.1" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Booked Sessions"
+            android:textColor="?attr/text_color"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.078"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BookSessionButton"
+            app:layout_constraintVertical_bias="0.061" />
+
+        <TextView
+            android:id="@+id/SelectedSessionDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="Selected Session Date"
+            android:textColor="?attr/text_color"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17"
+            app:layout_constraintVertical_bias="0.045" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>
