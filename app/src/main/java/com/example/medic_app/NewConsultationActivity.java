@@ -21,11 +21,13 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.model.Document;
 import com.google.type.DateTime;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
@@ -38,7 +40,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 public class NewConsultationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
@@ -53,11 +58,13 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
     String user_type_key="user_type_key";
     String user_name_key="user_name_key";
     String e_key="email_id_key";
-    String patient_email,doc_email,doc_name,doc_department,patient_name="";
-    String date_today,selected_date,selected_slot="";
+    String patient_email,doc_email,doc_name,doc_department,patient_name,selected_slot_details="";
+    String date_today,selected_date,selected_slot,selected_date_textview,symptoms="";
 
+    boolean slot_clash=true;
     int no_of_slots = 16;
     int Year, Month, Day;
+
     String[] slots = {"Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8",
             "Slot9","Slot10","Slot11","Slot12","Slot13","Slot14","Slot15","Slot16"};
     String[] slot_timings = {"09:00 to 09:30", "09:30 to 10:00","10:00 to 10:30","10:30 to 11:00","11:00 to 11:30",
@@ -66,7 +73,6 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
     String [] doc_dept={"Orthopaedic","ENT","Cardio","Pediatrician","General Physician"};
 
     DatePickerDialog datePickerDialog ;
-
 
     ArrayList<String> doc_id_list = new ArrayList<String>();
     ArrayList<String> available_dates = new ArrayList<String>();
@@ -126,6 +132,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 doc_list_adap.clear();
+                doc_id_list.clear();
                 doc_department = doc_dept[position];
                 user_col.whereEqualTo(user_type_key,"Doctor").whereEqualTo("department_key",doc_department).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -137,19 +144,22 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                                 doc_list_adap.add(doc_name);
                                 doc_id_list.add(doc_email_temp);
                             }
-                            spinner_doc_list.setAdapter(doc_list_adap);
-
 
                             if(doc_list_adap.isEmpty())
                             {
                                 doc_email="";
                                 doc_name="";
-//                                doc_list_adap.add("No Doctors Available");
+                                doc_list_adap.clear();
+                                doc_list_adap.add("No Doctors Available");
+                                doc_id_list.add(null);
+                                doc_list_adap.notifyDataSetChanged();
                                 Toast.makeText(getApplicationContext(), "No Doctors Exist in selected Department!", Toast.LENGTH_SHORT).show();
                             }
-                            doc_list_adap.notifyDataSetChanged();
+
                         } else {
                             doc_list_adap.clear();
+                            doc_list_adap.add("No Doctors Available");
+                            doc_id_list.add(null);
                             doc_list_adap.notifyDataSetChanged();
                             Toast.makeText(getApplicationContext(), "No Doctors Exist!", Toast.LENGTH_SHORT).show();
                         }
@@ -173,6 +183,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+
                 ArrayList<Calendar> doc_avail_dates_calendar = new ArrayList<Calendar>();
 
                 doc_name = doc_list_adap.getItem(position);
@@ -180,8 +191,8 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                 available_dates.clear();
                 slot_list_adap.clear();
 
-                selected_slot="";
-                selected_date="";
+                selected_slot = "";
+                selected_date = "";
 
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
                 LocalDateTime now = LocalDateTime.now();
@@ -192,8 +203,8 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                     @Override
                     public void onClick(View v) {
                         doc_avail_dates_calendar.clear();
-                        Toast.makeText(getApplicationContext(),doc_name+"\n"+doc_email+"\n"+date_today,Toast.LENGTH_SHORT).show();
-                        user_col.document("user_"+doc_email).collection("Sessions").whereGreaterThanOrEqualTo(FieldPath.documentId(),date_today).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        //Toast.makeText(getApplicationContext(), doc_name + "\n" + doc_email + "\n" + date_today, Toast.LENGTH_SHORT).show();
+                        user_col.document("user_" + doc_email).collection("Sessions").whereGreaterThanOrEqualTo(FieldPath.documentId(), date_today).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
@@ -202,12 +213,12 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
 
                                     Date date = new Date();
                                     try {
-                                        date=sdf.parse(document.getId());
+                                        date = sdf.parse(document.getId());
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }
-                                    if(date != null){
-                                        Calendar calendar ;
+                                    if (date != null) {
+                                        Calendar calendar;
                                         calendar = Calendar.getInstance();
                                         calendar.setTime(date);
                                         doc_avail_dates_calendar.add(calendar);
@@ -215,10 +226,12 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                                 }
 
 
-                                if(doc_avail_dates_calendar.isEmpty())
-                                {
+                                if (doc_avail_dates_calendar.isEmpty()) {
+                                    slot_list_adap.clear();
+                                    slot_list_adap.add("No Slots Available");
+                                    slot_list_adap.notifyDataSetChanged();
                                     Toast.makeText(getApplicationContext(), "No Appointments Available", Toast.LENGTH_SHORT).show();
-                                    selected_date="";
+                                    selected_date = "";
                                 } else {
 
 
@@ -243,30 +256,28 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                     }
                 });
             }
-
             //nc_doc_spinner_stub
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> parent){
 
             }
+
         });
 
 
         spinner_slot_list.setAdapter(slot_list_adap);
-        if(slot_list_adap.isEmpty()){
-            slot_list_adap.add("No Slots Available");
-            slot_list_adap.notifyDataSetChanged();
-        }else {
+
 
             spinner_slot_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    String ss_temp = slot_list_adap.getItem(position);
-                    String[] selected_slot_temp = ss_temp.split(" ");
+                    selected_slot_details = slot_list_adap.getItem(position);
+                    String[] selected_slot_temp = selected_slot_details.split(" ");
                     selected_slot = selected_slot_temp[0] + selected_slot_temp[1];
                     Toast.makeText(getApplicationContext(), doc_email + "\n" + doc_name + "\n" + patient_email + "\n" + selected_date +
-                            "\n" + ss_temp + " selected.", Toast.LENGTH_SHORT).show();
+                            "\n" + selected_slot_details + " selected.", Toast.LENGTH_SHORT).show();
+
                 }
 
                 @Override
@@ -274,20 +285,81 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
 
                 }
             });
-        }
+
+        book_consultation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                symptoms = edit_symptoms.getText().toString();
+                if(doc_email.isEmpty()||doc_department.isEmpty()||patient_email.isEmpty()||selected_date.isEmpty()||selected_slot.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Select a valid slot before booking consultation!",Toast.LENGTH_SHORT).show();
+                }else{
+                    user_col.document("user_"+patient_email).collection("Consultations").document(selected_date+"_"+selected_slot)
+                            .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                            DocumentSnapshot document = task.getResult();
+                            if(document.exists()){
+                                slot_clash=true;
+                                Toast.makeText(getApplicationContext(),"Slot Clashing with existing booked appointment! Choose another slot!",Toast.LENGTH_LONG).show();
+                            }else{
+                                slot_clash=false;
+                                DocumentReference patient_email_doc = user_col.document("user_"+patient_email);
+                                patient_email_doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                        DocumentSnapshot doc = task.getResult();
+                                        patient_name = doc.get("user_name_key").toString();
+
+                                        DocumentReference patient_consultation = user_col.document("user_"+patient_email).collection("Consultations").document(selected_date+"_"+selected_slot);
+                                        DocumentReference doctor_consultation = user_col.document("user_"+doc_email).collection("Consultations").document(selected_date+"_"+selected_slot);
+
+                                        Map<String,Object> consultation_data_map = new HashMap<String,Object>();
+                                        consultation_data_map.put("doc_email_key",doc_email);
+                                        consultation_data_map.put("doc_name_key",doc_name);
+                                        consultation_data_map.put("patient_email_key",patient_email);
+                                        consultation_data_map.put("patient_name_key",patient_name);
+                                        consultation_data_map.put("status_key","Booked");
+                                        consultation_data_map.put("Slot_details_key",selected_slot_details);
+                                        consultation_data_map.put("Appointment_date",selected_date_textview);
+                                        consultation_data_map.put("symptoms_key",symptoms);
+                                        consultation_data_map.put("doctor_notes_key","");
+                                        consultation_data_map.put("doctor_prescription_key","");
+
+                                        patient_consultation.set(consultation_data_map);
+                                        doctor_consultation.set(consultation_data_map);
+
+                                        user_col.document("user_" + doc_email).collection("Sessions")
+                                                .document(selected_date).update(selected_slot,"Booked");
+
+                                        Toast.makeText(getApplicationContext(),"Consultation Booked Successfully",Toast.LENGTH_LONG).show();
+
+                                    }
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
     }
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onDateSet(DatePickerDialog view, int Year, int Month, int Day) {
 
-        String sel_date = "Date: "+Day+"/"+(Month+1)+"/"+Year;
+        selected_date_textview = Day+"/"+(Month+1)+"/"+Year;
 
         LocalDate now = LocalDate.of(Year,Month+1,Day);
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
 
         selected_date = dtf.format(now);
-        text_doc_avail_dates.setText(sel_date);
+        text_doc_avail_dates.setText(selected_date_textview);
 
         Toast.makeText(getApplicationContext(), "Selected Date:"+selected_date, Toast.LENGTH_SHORT).show();
         populate_empty_slots(selected_date);
@@ -316,6 +388,9 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                         }
                         if(slot_list_adap.isEmpty()){
                             Toast.makeText(getApplicationContext(),"No Empty Slots Available on Selected Date",Toast.LENGTH_SHORT).show();
+                            slot_list_adap.clear();
+                            slot_list_adap.add("No Slots Available");
+                            slot_list_adap.notifyDataSetChanged();
                         }else {
 
                             slot_list_adap.notifyDataSetChanged();
