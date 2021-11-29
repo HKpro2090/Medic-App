@@ -25,7 +25,7 @@
         app:layout_constraintVertical_bias="0.060000002" />
 
     <Spinner
-        android:id="@+id/new_consul_doc_spinner"
+        android:id="@+id/new_consul_doc_department_spinner"
         style="@style/SpinnerTheme"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -47,29 +47,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_department_spinner"
         app:layout_constraintVertical_bias="0.047"
         app:shapeAppearanceOverlay="@style/Circular"
         app:strokeColor="#707070"
         app:strokeWidth="0.5dp"
         tools:src="@tools:sample/avatars" />
 
-    <EditText
-        android:id="@+id/ncdoctorname"
+    <Spinner
+        android:id="@+id/new_consul_doc_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/textview_border"
+        style="@style/SpinnerTheme"
         android:ems="10"
         android:fontFamily="@font/nunito_semibold"
         android:hint="Doctor Name"
-        android:inputType="textPersonName"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.069"
         app:layout_constraintHorizontal_bias="0.782"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_department_spinner"
         app:layout_constraintVertical_bias="0.049"
         app:layout_constraintWidth_percent="0.65" />
 
@@ -103,7 +102,7 @@
         app:layout_constraintHeight_percent="0.069"
         app:layout_constraintHorizontal_bias="0.895"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ncdoctorname"
+        app:layout_constraintTop_toBottomOf="@+id/new_consul_doc_spinner"
         app:layout_constraintVertical_bias="0.059"
         app:layout_constraintWidth_percent="0.28" />
 

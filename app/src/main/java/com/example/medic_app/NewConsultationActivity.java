@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,8 +42,8 @@ import java.util.List;
 
 public class NewConsultationActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
 
-    Spinner spinner_doc_list,spinner_slot_list;
-    EditText edit_doc_name,edit_symptoms;
+    Spinner spinner_doc_list,spinner_slot_list,spinner_doc_dept_list;
+    EditText edit_symptoms;
     TextView text_doc_avail_dates;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -54,25 +55,23 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
     String e_key="email_id_key";
     String patient_email,doc_email,doc_name,doc_department,patient_name="";
     String date_today,selected_date,selected_slot="";
+
     int no_of_slots = 16;
+    int Year, Month, Day;
     String[] slots = {"Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8",
             "Slot9","Slot10","Slot11","Slot12","Slot13","Slot14","Slot15","Slot16"};
     String[] slot_timings = {"09:00 to 09:30", "09:30 to 10:00","10:00 to 10:30","10:30 to 11:00","11:00 to 11:30",
             "11:30 to 12:00","12:00 to 12:30","12:30 to 13:00","14:00 to 14:30","14:30 to 15:00","15:00 to 15:30",
             "15:30 to 16:00", "16:00 to 16:30","16:30 to 17:00","17:00 to 17:30","17:30 to 18:00"};
+    String [] doc_dept={"Orthopaedic","ENT","Cardio","Pediatrician","General Physician"};
 
     DatePickerDialog datePickerDialog ;
-    int Year, Month, Day, Hour, Minute;
-    Calendar calendar ;
 
 
     ArrayList<String> doc_id_list = new ArrayList<String>();
     ArrayList<String> available_dates = new ArrayList<String>();
-    ArrayList<Date> doc_avail_dates = new ArrayList<Date>();
-    ArrayList<Calendar> doc_avail_dates_calendar = new ArrayList<Calendar>();
 
-
-    ArrayAdapter<String> doc_list_adap,slot_list_adap;
+    ArrayAdapter<String> doc_list_adap,slot_list_adap,doc_dept_list_adap;
 
 
     @Override
@@ -92,48 +91,95 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
             doc_email=getIntent().getStringExtra("doc_email");
         }
 
+
+        spinner_doc_dept_list = (Spinner)findViewById(R.id.new_consul_doc_department_spinner);
         spinner_doc_list = (Spinner)findViewById(R.id.new_consul_doc_spinner);
         spinner_slot_list = (Spinner)findViewById(R.id.time_slot_spinner);
 
         doc_list_adap = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item);
         slot_list_adap = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item);
+        doc_dept_list_adap = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,doc_dept);
 
-        edit_doc_name = (EditText)findViewById(R.id.ncdoctorname);
-        edit_doc_name = (EditText)findViewById(R.id.ncsymptoms);
+
+        edit_symptoms = (EditText)findViewById(R.id.ncsymptoms);
         text_doc_avail_dates = (TextView)findViewById(R.id.doc_avail_dates);
 
         book_consultation = (Button)findViewById(R.id.ncbookbutton);
         cancel = (Button)findViewById(R.id.nccancelbutton);
 
-        user_col.whereEqualTo(user_type_key,"Doctor").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                         doc_name=document.getData().get(user_name_key).toString();
-                         doc_email=document.getData().get(e_key).toString();
-                         doc_list_adap.add(doc_name);
-                         doc_id_list.add(doc_email);
+            public void onClick(View v) {
+                Intent back_to_home = new Intent( getApplicationContext(),PatientHomePageActivity.class);
+                back_to_home.putExtra("email",patient_email);
+                startActivity(back_to_home);
+                finish();
+            }
+        });
+
+
+        spinner_doc_dept_list.setAdapter(doc_dept_list_adap);
+        if(doc_dept!=null){
+            spinner_doc_dept_list.setSelection(doc_dept_list_adap.getPosition(doc_department));
+        }
+        spinner_doc_dept_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                doc_list_adap.clear();
+                doc_department = doc_dept[position];
+                user_col.whereEqualTo(user_type_key,"Doctor").whereEqualTo("department_key",doc_department).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                doc_name=document.getData().get(user_name_key).toString();
+                                String doc_email_temp=document.getData().get(e_key).toString();
+                                doc_list_adap.add(doc_name);
+                                doc_id_list.add(doc_email_temp);
+                            }
+                            spinner_doc_list.setAdapter(doc_list_adap);
+
+
+                            if(doc_list_adap.isEmpty())
+                            {
+                                doc_email="";
+                                doc_name="";
+//                                doc_list_adap.add("No Doctors Available");
+                                Toast.makeText(getApplicationContext(), "No Doctors Exist in selected Department!", Toast.LENGTH_SHORT).show();
+                            }
+                            doc_list_adap.notifyDataSetChanged();
+                        } else {
+                            doc_list_adap.clear();
+                            doc_list_adap.notifyDataSetChanged();
+                            Toast.makeText(getApplicationContext(), "No Doctors Exist!", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                } else {
-                    Toast.makeText(getApplicationContext(), "No Doctors Exist!", Toast.LENGTH_SHORT).show();
-                }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
         spinner_doc_list.setAdapter(doc_list_adap);
 
+        if(doc_email!=null){
+            spinner_doc_list.setSelection(doc_list_adap.getPosition(doc_email));
+        }
         spinner_doc_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                ArrayList<Calendar> doc_avail_dates_calendar = new ArrayList<Calendar>();
+
                 doc_name = doc_list_adap.getItem(position);
                 doc_email = doc_id_list.get(position);
-                edit_doc_name.setText(doc_name);
                 available_dates.clear();
                 slot_list_adap.clear();
-                doc_avail_dates.clear();
-                doc_avail_dates_calendar.clear();
+
                 selected_slot="";
                 selected_date="";
 
@@ -141,112 +187,112 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                 LocalDateTime now = LocalDateTime.now();
                 date_today = dtf.format(now);
 
-                user_col.document("user_"+doc_email).collection("Sessions").whereGreaterThanOrEqualTo(FieldPath.documentId(),date_today).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                //Toast.makeText(getApplicationContext(),doc_name+"\n"+doc_email,Toast.LENGTH_SHORT).show();
+                text_doc_avail_dates.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        calendar = Calendar.getInstance();
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                        for (QueryDocumentSnapshot document : task.getResult()) {
+                    public void onClick(View v) {
+                        doc_avail_dates_calendar.clear();
+                        Toast.makeText(getApplicationContext(),doc_name+"\n"+doc_email+"\n"+date_today,Toast.LENGTH_SHORT).show();
+                        user_col.document("user_"+doc_email).collection("Sessions").whereGreaterThanOrEqualTo(FieldPath.documentId(),date_today).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                            Date date = new Date();
-                            try {
-                                date=sdf.parse(document.getId());
-                            } catch (ParseException e) {
-                                e.printStackTrace();
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                    Date date = new Date();
+                                    try {
+                                        date=sdf.parse(document.getId());
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    if(date != null){
+                                        Calendar calendar ;
+                                        calendar = Calendar.getInstance();
+                                        calendar.setTime(date);
+                                        doc_avail_dates_calendar.add(calendar);
+                                    }
+                                }
+
+
+                                if(doc_avail_dates_calendar.isEmpty())
+                                {
+                                    Toast.makeText(getApplicationContext(), "No Appointments Available", Toast.LENGTH_SHORT).show();
+                                    selected_date="";
+                                } else {
+
+
+                                    datePickerDialog = DatePickerDialog.newInstance(NewConsultationActivity.this, Year, Month, Day);
+                                    Calendar[] doc_avail_dates_cal_array = new Calendar[doc_avail_dates_calendar.size()];
+                                    doc_avail_dates_calendar.toArray(doc_avail_dates_cal_array);
+                                    datePickerDialog.setTitle("Select Appointment Date");
+                                    datePickerDialog.setSelectableDays(doc_avail_dates_cal_array);
+
+                                    datePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+
+                                        @Override
+                                        public void onCancel(DialogInterface dialogInterface) {
+
+                                            Toast.makeText(getApplicationContext(), "Date Picker Canceled", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    datePickerDialog.show(getSupportFragmentManager(), "DatePickerDialog");
+                                }
                             }
-                            if(date != null){
-                            calendar.setTime(date);
-                            }
-                            doc_avail_dates_calendar.add(calendar);
-                            doc_avail_dates.add(date);
-                            //slot_list_adap.add(document.getId());
-                        }
-                    //spinner_slot_list.setAdapter(slot_list_adap);
+                        });
                     }
                 });
             }
 
             //nc_doc_spinner_stub
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-
         });
 
-        text_doc_avail_dates.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(doc_avail_dates_calendar.isEmpty())
-                {
-                    Toast.makeText(getApplicationContext(), "No Appointments Available", Toast.LENGTH_SHORT).show();
-                    selected_date="";
-                } else {
-                    datePickerDialog = DatePickerDialog.newInstance(NewConsultationActivity.this, Year, Month, Day);
-                    datePickerDialog.setTitle("Select Appointment Date");
-    //                Calendar min_date_c = Calendar.getInstance();
-    //                datePickerDialog.setMinDate(min_date_c);
-
-                    Calendar[] doc_avail_dates_cal_array = new Calendar[doc_avail_dates_calendar.size()];
-                    doc_avail_dates_calendar.toArray(doc_avail_dates_cal_array);
-                    datePickerDialog.setSelectableDays(doc_avail_dates_cal_array);
-
-                    datePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-
-                        @Override
-                        public void onCancel(DialogInterface dialogInterface) {
-
-                            Toast.makeText(getApplicationContext(), "Date picker Canceled", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    datePickerDialog.show(getSupportFragmentManager(), "DatePickerDialog");
-
-                }
-            }
-
-        });
-
-//        spinner_slot_list.setAdapter(slot_list_adap);
-//
-//        spinner_slot_list.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                spinner_slot_list.setAdapter(slot_list_adap);
-//            }
-//        });
 
         spinner_slot_list.setAdapter(slot_list_adap);
-        spinner_slot_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(slot_list_adap.isEmpty()){
+            slot_list_adap.add("No Slots Available");
+            slot_list_adap.notifyDataSetChanged();
+        }else {
 
+            spinner_slot_list.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String ss_temp = slot_list_adap.getItem(position);
-                String[] selected_slot_temp = ss_temp.split(" ");
-                selected_slot = selected_slot_temp[0] + selected_slot_temp[1];
-                Toast.makeText(getApplicationContext(), ss_temp + " selected.", Toast.LENGTH_SHORT).show();
-            }
+                    String ss_temp = slot_list_adap.getItem(position);
+                    String[] selected_slot_temp = ss_temp.split(" ");
+                    selected_slot = selected_slot_temp[0] + selected_slot_temp[1];
+                    Toast.makeText(getApplicationContext(), doc_email + "\n" + doc_name + "\n" + patient_email + "\n" + selected_date +
+                            "\n" + ss_temp + " selected.", Toast.LENGTH_SHORT).show();
+                }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-
-
+                }
+            });
+        }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onDateSet(DatePickerDialog view, int Year, int Month, int Day) {
 
         String sel_date = "Date: "+Day+"/"+(Month+1)+"/"+Year;
-        selected_date = "" + Year + (Month+1) +Day;
+
+        LocalDate now = LocalDate.of(Year,Month+1,Day);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+        selected_date = dtf.format(now);
         text_doc_avail_dates.setText(sel_date);
+
         Toast.makeText(getApplicationContext(), "Selected Date:"+selected_date, Toast.LENGTH_SHORT).show();
         populate_empty_slots(selected_date);
+
+
     }
 
     public void populate_empty_slots(String selected_date){
@@ -282,7 +328,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                 }
             }
         });
+    }
 
-    };
 }
 
