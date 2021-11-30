@@ -68,6 +68,8 @@ public class PatientHomePageActivity extends AppCompatActivity {
 //                .commit();
 
         loadPatUpConsulFragment(new PatientUpcomingConsultationsFragment());
+        loadPatRecentConsulFragment (new PatientRecentConsultationsFragment());
+
 //        FragmentManager fm = getSupportFragmentManager();
 //        FragmentTransaction fragmentTransaction = fm.beginTransaction();
 //
@@ -177,6 +179,17 @@ public class PatientHomePageActivity extends AppCompatActivity {
         email_out.putString(e_key,email);
         fragment.setArguments(email_out);
         fragmentTransaction.replace(R.id.UpcomingConsultationContainer, fragment);
+        fragmentTransaction.setReorderingAllowed(true).commit();
+    }
+
+    public void loadPatRecentConsulFragment(Fragment fragment)
+    {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        Bundle email_out = new Bundle();
+        email_out.putString(e_key,email);
+        fragment.setArguments(email_out);
+        fragmentTransaction.replace(R.id.RecentConsultationContainer, fragment);
         fragmentTransaction.setReorderingAllowed(true).commit();
     }
 

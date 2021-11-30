@@ -9,13 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class PatientRecentListAdapter extends ArrayAdapter<String> {
 
-    private final Activity context;
-    private final String[] maintitle;
-    private final String[] subtitle;
-    private final Integer[] imgid;
-    public PatientRecentListAdapter(PatientRecentConsultationsFragment context, String[] maintitle, String[] subtitle, Integer[] imgid) {
+    public Activity context;
+    public ArrayList<String> maintitle;
+    public ArrayList<String> subtitle;
+    public ArrayList<Integer> imgid;
+
+    public PatientRecentListAdapter(PatientRecentConsultationsFragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid) {
         super(context.getActivity(), R.layout.patientrecentconsultationslist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;
@@ -30,18 +33,18 @@ public class PatientRecentListAdapter extends ArrayAdapter<String> {
         TextView titleText = (TextView) rowView.findViewById(R.id.RecentDoctorName);
         TextView subtitleText = (TextView) rowView.findViewById(R.id.RecentConsultationTime);
         ImageView imageView = (ImageView) rowView.findViewById(R.id.DoctorPhoto);
-        titleText.setText(maintitle[position]);
-        subtitleText.setText(subtitle[position]);
-        imageView.setImageResource(imgid[position]);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in=new Intent(getContext(),PatientDinfoActivity.class);
-                in.putExtra("name",maintitle[position]);
-                in.putExtra("dp",imgid[position]);
-                context.startActivity(in);
-            }
-        });
+        titleText.setText(maintitle.get(position));
+        subtitleText.setText(subtitle.get(position));
+        imageView.setImageResource(imgid.get(position));
+//        imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent in=new Intent(getContext(),PatientDinfoActivity.class);
+//                in.putExtra("name",maintitle[position]);
+//                in.putExtra("dp",imgid[position]);
+//                context.startActivity(in);
+//            }
+//        });
         return rowView;
 
     };

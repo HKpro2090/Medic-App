@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/listview_design"
     android:padding="10dp"
-
     >
-
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -27,6 +25,7 @@
         app:strokeColor="#707070"
         android:padding="1dp"
        />
+
     <TextView
         android:id="@+id/RecentDoctorName"
         android:layout_width="wrap_content"
@@ -57,4 +56,6 @@
         app:layout_constraintStart_toEndOf="@+id/DoctorPhoto"
         app:layout_constraintTop_toBottomOf="@+id/RecentDoctorName"
         app:layout_constraintVertical_bias="0.002" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

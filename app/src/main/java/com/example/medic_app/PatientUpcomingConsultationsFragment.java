@@ -27,8 +27,6 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
     CollectionReference user_col = db.collection("users");
 
     String e_key="email";
-    String[] upcomingdates={};
-    String[] doctors={};
     ArrayList<String> doctors_name = new ArrayList<>();
     ArrayList<String> doctor_email = new ArrayList<>();
     ArrayList<String> appointment_date_slot = new ArrayList<>();
@@ -45,7 +43,7 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
 
         patient_email = getArguments().getString(e_key);
         lv=(ListView) view.findViewById(R.id.upcomingConsultationsList);
-        Toast.makeText(getContext(), patient_email, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), patient_email, Toast.LENGTH_SHORT).show();
 
 
         user_col.document("user_"+patient_email).collection("Consultations").whereEqualTo("status_key","Booked").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -61,9 +59,6 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
                         appointment_id.add(document.getId());
                     }
 
-                    doctors_name.toArray(doctors);
-                    appointment_date_slot.toArray(upcomingdates);
-                    Toast.makeText(getContext(), doctors.toString(), Toast.LENGTH_LONG).show();
                     lv_adapter = new PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment.this,doctors_name,appointment_date_slot);
                     lv_adapter.notifyDataSetChanged();
                     lv.setAdapter(lv_adapter);
