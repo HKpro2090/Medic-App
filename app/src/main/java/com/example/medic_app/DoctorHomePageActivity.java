@@ -4,8 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.fragment.app.FragmentContainerView;
-
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,17 +44,20 @@ public class DoctorHomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home_page);
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        final Fragment fragment1 = new DoctorHomeFragment();
+        final Fragment fragment2 = new DoctorSessionsFragment();
         NPTV = (TextView)findViewById(R.id.nptv);
         SPTV = (TextView)findViewById(R.id.sptv);
         dbnv = (BottomNavigationView) findViewById(R.id.doctorbottombar);
         dbnv.setSelectedItemId(R.id.miHome);
-        pagetitle = (TextView)findViewById(R.id.DoctorTitle);
         rotateOpen = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_open);
         rotateClose = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_close);
         toBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom);
         fromBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom);
         toBottomLeft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom_left);
         fromBottomleft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom_left);
+
         searchNewBtn = (FloatingActionButton)findViewById(R.id.addbutton);
         searchNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,17 +84,22 @@ public class DoctorHomePageActivity extends AppCompatActivity {
         dbnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
+                //Fragment fragment;
                 switch (item.getItemId())
                 {
                     case (R.id.miHome):
-                        sessions_to_home();
+                        fragmentManager.beginTransaction().replace(R.id.DoctorHPContainer,fragment1).commit();
+                        //fragment = fragment1;
                         break;
 
 
                     case (R.id.miSessions):
-                        home_to_sessions();
+                        fragmentManager.beginTransaction().replace(R.id.DoctorHPContainer,fragment2).commit();
+                        //fragment = fragment2;
+                        //home_to_sessions();
                         break;
                 }
+                //fragmentManager.beginTransaction().replace(R.id.DoctorHPContainer,fragment).commit();
                 return true;
             }
         });
@@ -114,24 +123,6 @@ public class DoctorHomePageActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce=false;
             }
         }, 2000);
-    }
-
-    public void home_to_sessions()
-    {
-        ConstraintSet set  = new ConstraintSet();
-        FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.DoctorUpcomingConsultationContainer);
-        ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
-        ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0f;
-        pagetitle.setText("Sessions");
-    }
-
-    public void sessions_to_home()
-    {
-        ConstraintSet set  = new ConstraintSet();
-        FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.DoctorUpcomingConsultationContainer);
-        ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
-        ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0.42f;
-        pagetitle.setText("Home");
     }
 
     private void onAddButtonClicked(){

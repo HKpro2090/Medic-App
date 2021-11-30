@@ -2,15 +2,18 @@
     <!-- Base application theme. -->
     <style name="Theme.MedicApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#000000</item>
-        <item name="colorPrimaryVariant">#000000</item>
-        <item name="colorOnPrimary">@color/white</item>w
+        <item name="colorPrimary">#FFF700</item>
+        <item name="colorPrimaryVariant">#FFF700</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">@color/black</item>
+        <item name="colorControlActivated">@color/teal_200</item>
+        <item name="colorControlHighlight">#FFF700</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
 
         <item name="background_color">#000000</item>

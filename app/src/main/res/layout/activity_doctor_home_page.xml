@@ -6,66 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".DoctorHomePageActivity">
 
-    <TextView
-    android:id="@+id/DoctorTitle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fontFamily="@font/nunito_bold"
-    android:text="Home"
-    android:textAllCaps="false"
-    android:textColor="?attr/text_color"
-    android:textSize="34sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.07"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.05" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/DoctorProfilePic"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="1dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.93"
-        app:layout_constraintStart_toEndOf="@+id/DoctorTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05"
-        app:shapeAppearanceOverlay="@style/Circular"
-        app:strokeColor="#707070"
-        app:strokeWidth="0.5dp"
-        tools:src="@tools:sample/avatars" />
-
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/DoctorUpcomingConsultationContainer"
-        android:name="com.example.medic_app.PatientUpcomingConsultationsFragment"
+        android:id="@+id/DoctorHPContainer"
+        android:name="com.example.medic_app.DoctorHomeFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.42"
+        app:layout_constraintHeight_percent="0.91"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.23000002" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/DoctorRecentConsultationContainer"
-        android:name="com.example.medic_app.PatientRecentConsultationsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="-30dp"
-        android:paddingHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.42"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DoctorUpcomingConsultationContainer"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,12 +33,12 @@
             android:id="@+id/doctorbottombar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:background="@drawable/navibar_design"
             android:paddingVertical="10dp"
             app:itemIconTint="@color/nav_item_color_state"
             app:itemTextColor="@color/nav_item_color_state"
-            app:menu="@menu/doctor_bottom_nav_menu"
-            android:layout_gravity="bottom"/>
+            app:menu="@menu/doctor_bottom_nav_menu" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -91,8 +46,7 @@
             android:layout_height="match_parent"
             android:translationZ="50dp"
             app:layout_anchor="@+id/doctorbottombar"
-            app:layout_anchorGravity="top|center"
-            >
+            app:layout_anchorGravity="top|center">
 
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
