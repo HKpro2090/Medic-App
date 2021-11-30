@@ -45,8 +45,13 @@ public class PatientRecentConsultationsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_patient_recent_consultations, container, false);
-
-        patient_email = getArguments().getString(e_key);
+        try {
+            patient_email = getArguments().getString(e_key);
+        }
+        catch (Exception e)
+        {
+            patient_email = "";
+        }
         lv=(ListView) view.findViewById(R.id.RecentConsultationList);
         //Toast.makeText(getContext(), patient_email, Toast.LENGTH_SHORT).show();
 

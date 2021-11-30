@@ -3,47 +3,56 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_home_page.xml" value="0.11367753623188406" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_new_consultation.xml" value="0.2015625" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_consultation_report.xml" value="0.2" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_dinfo.xml" value="0.2015625" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_edit_profile.xml" value="0.19791666666666666" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_profile_change_password.xml" value="0.2558876811594203" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_profile_page.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_upcoming_consultation.xml" value="0.2" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_complete_profile.xml" value="0.20677083333333332" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_patient_recent_consultations.xml" value="0.2015625" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_patient_upcoming_consultations.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_reset_password.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/login_fragment_layout.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/patientrecentconsultationslist.xml" value="0.2015625" />
-        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/patientupcomingconsultationslist.xml" value="0.17239583333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/signup_fragment_layout.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable-v24/textview_border.xml" value="0.2153846153846154" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/customctyle.xml" value="0.11794871794871795" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/floatingbtngradient.xml" value="0.21561181434599155" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.21837606837606838" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.21837606837606838" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/listview_design.xml" value="0.21837606837606838" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/navibar_design.xml" value="0.21837606837606838" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/profilephotoshape.xml" value="0.21837606837606838" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/textview_border.xml" value="0.21837606837606838" />
-        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_home_page.xml" value="0.2" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_Patient_upcoming_consultation.xml" value="0.17889492753623187" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_doctor_home_page.xml" value="0.2" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_home_page.xml" value="0.176" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_navigation_bar.xml" value="0.1047008547008547" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_new_consultation.xml" value="0.2141025641025641" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_new_patient_creation_via_doctor.xml" value="0.264" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_consultation_report.xml" value="0.4" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_edit_profile.xml" value="0.1389290882778582" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_upcoming_consultation.xml" value="0.264" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_upcoming_consultation.xml" value="0.2" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.10025062656641603" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/complete_profile_fragment_layout.xml" value="0.2" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_bottom_navigaton_bar.xml" value="0.264" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_complete_profile.xml" value="0.176" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_doctor_complete_profile.xml" value="0.2" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_doctor_home.xml" value="0.2" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_doctor_sessions.xml" value="0.2" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_home.xml" value="0.1047008547008547" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_patient_recent_consultations.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/fragment_patient_upcoming_consultations.xml" value="0.19444444444444445" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/login_fragment_layout.xml" value="0.1" />
-        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientrecentconsultationslist.xml" value="0.1" />
-        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientupcomingconsultationslist.xml" value="0.4" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientrecentconsultationslist.xml" value="0.536" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientupcomingconsultationslist.xml" value="0.536" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/patientupcominglist.xml" value="0.20512820512820512" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/signup_fragment_layout.xml" value="0.2" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/menu/doctor_bottom_nav_menu.xml" value="0.20512820512820512" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_dsearch.xml" value="0.1" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_edit_profile.xml" value="0.176" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_profile_page.xml" value="0.16" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.2" />
+        <entry key="..\:/Users/jsaji/AndroidStudioProjects/Medic-App/app/src/main/res/layout/signup_fragment_layout.xml" value="0.4" />
       </map>
     </option>
   </component>
