@@ -57,21 +57,40 @@ public class PatientHomePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         ImageView im=(ImageView)findViewById(R.id.PatientProfilePic);
         im.setImageResource(R.drawable.patient1);
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
 
-        Bundle email_out = new Bundle();
-        email_out.putString(e_key,email);
 
-        Fragment patient_up_consultation = new PatientUpcomingConsultationsFragment();
-        patient_up_consultation.setArguments(email_out);
 
-        Fragment patient_recent_consultation = new PatientRecentConsultationsFragment();
-        patient_recent_consultation.setArguments(email_out);
 
-        fragmentTransaction.replace(R.id.UpcomingConsultationContainer, patient_up_consultation);
-        fragmentTransaction.replace(R.id.RecentConsultationContainer,patient_recent_consultation);
-        fragmentTransaction.commit();
+
+
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.UpcomingConsultationContainer, PatientUpcomingConsultationsFragment.class, email_out)
+//                .commit();
+
+        loadPatUpConsulFragment(new PatientUpcomingConsultationsFragment());
+//        FragmentManager fm = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+//
+//        Bundle email_out = new Bundle();
+//        email_out.putString(e_key,email);
+//
+//        Fragment patient_up_consultation = new PatientUpcomingConsultationsFragment();
+//        patient_up_consultation.setArguments(email_out);
+//
+//
+//        fragmentTransaction.replace(R.id.UpcomingConsultationContainer, patient_up_consultation);
+//        fragmentTransaction.commit();
+
+
+
+//        Fragment patient_recent_consultation = new PatientRecentConsultationsFragment();
+//        patient_recent_consultation.setArguments(email_out);
+//
+//        FragmentManager ft = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransact = ft.beginTransaction();
+//        fragmentTransact.replace(R.id.RecentConsultationContainer,patient_recent_consultation);
+//        fragmentTransact.commit();
+
         im.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,6 +168,18 @@ public class PatientHomePageActivity extends AppCompatActivity {
         });
 
     }
+
+    public void loadPatUpConsulFragment(Fragment fragment)
+    {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        Bundle email_out = new Bundle();
+        email_out.putString(e_key,email);
+        fragment.setArguments(email_out);
+        fragmentTransaction.replace(R.id.UpcomingConsultationContainer, fragment);
+        fragmentTransaction.setReorderingAllowed(true).commit();
+    }
+
     //Code to press back twice to exit.
     @Override
     public void onBackPressed() {

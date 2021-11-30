@@ -7,13 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class PatientUpcomingListAdapter extends ArrayAdapter<String> {
 
-    private final Activity context;
-    private final String[] maintitle;
-    private final String[] subtitle;
+    public Activity context;
+    public ArrayList<String> maintitle;
+    public ArrayList<String> subtitle;
 
-    public PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment context, String[] maintitle, String[] subtitle) {
+    public PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment context, ArrayList maintitle, ArrayList subtitle) {
         super(context.getActivity(), R.layout.patientupcomingconsultationslist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;
@@ -27,8 +29,8 @@ public class PatientUpcomingListAdapter extends ArrayAdapter<String> {
         View rowView=inflater.inflate(R.layout.patientupcomingconsultationslist, null,true);
         TextView titleText = (TextView) rowView.findViewById(R.id.UpcomingTime);
         TextView subtitleText = (TextView) rowView.findViewById(R.id.UpcomingDoctorName);
-        titleText.setText(maintitle[position]);
-        subtitleText.setText(subtitle[position]);
+        titleText.setText(maintitle.get(position));
+        subtitleText.setText(subtitle.get(position));
         return rowView;
 
     };

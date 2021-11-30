@@ -41,7 +41,6 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/UpcomingConsultationContainer"
-        android:name="com.example.medic_app.PatientUpcomingConsultationsFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="20dp"
@@ -52,9 +51,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.23000002" />
 
+<!--    android:name="com.example.medic_app.PatientUpcomingConsultationsFragment"-->
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/RecentConsultationContainer"
-        android:name="com.example.medic_app.PatientRecentConsultationsFragment"
+
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="-30dp"
@@ -65,6 +66,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UpcomingConsultationContainer"
         app:layout_constraintVertical_bias="0.0" />
+
+<!--    android:name="com.example.medic_app.PatientRecentConsultationsFragment"-->
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
