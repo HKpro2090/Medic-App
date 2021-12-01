@@ -96,9 +96,9 @@ public class PatientHomePageActivity extends AppCompatActivity {
         im.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent patient_profile_page = new Intent(getApplicationContext(), SettingsPageActivity.class);
-                patient_profile_page.putExtra(e_key,email);
-                startActivity(patient_profile_page);
+                Intent patient_settings_page = new Intent(getApplicationContext(), SettingsPageActivity.class);
+                patient_settings_page.putExtra(e_key,email);
+                startActivity(patient_settings_page);
             }
         });
         //Code related to bottom navigation bar

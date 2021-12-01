@@ -8,14 +8,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +30,7 @@ public class DoctorHomePageActivity extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
     BottomNavigationView dbnv;
     TextView pagetitle;
+    ImageView DocDP;
     FloatingActionButton searchNewBtn;
     FloatingActionButton searchPatientBtn;
     FloatingActionButton newPatientBtn;
@@ -39,11 +43,19 @@ public class DoctorHomePageActivity extends AppCompatActivity {
     Animation fromBottom;
     Animation toBottomLeft;
     Animation fromBottomleft;
+    String email="";
+    String e_key="email";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_home_page);
+
+        try {
+            Intent email_data = getIntent();
+            email = email_data.getStringExtra(e_key);
+        }catch (Exception e){e.printStackTrace();}
+
         final FragmentManager fragmentManager = getSupportFragmentManager();
         final Fragment fragment1 = new DoctorHomeFragment();
         final Fragment fragment2 = new DoctorSessionsFragment();
@@ -51,6 +63,16 @@ public class DoctorHomePageActivity extends AppCompatActivity {
         SPTV = (TextView)findViewById(R.id.sptv);
         dbnv = (BottomNavigationView) findViewById(R.id.doctorbottombar);
         dbnv.setSelectedItemId(R.id.miHome);
+        DocDP=(ImageView)findViewById(R.id.DoctorHProfilePic);
+        DocDP.setImageResource(R.drawable.patient1);
+        DocDP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent doctor_settings_page = new Intent(getApplicationContext(), SettingsPageActivity.class);
+                doctor_settings_page.putExtra(e_key,email);
+                startActivity(doctor_settings_page);
+            }
+        });
         rotateOpen = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_open);
         rotateClose = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_close);
         toBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom);
@@ -173,5 +195,11 @@ public class DoctorHomePageActivity extends AppCompatActivity {
             NPTV.setAnimation(toBottomLeft);
             searchNewBtn.startAnimation(rotateClose);
         }
+    }
+    public String retEkey(){
+        return e_key;
+    }
+    public String retEmail(){
+        return email;
     }
 }

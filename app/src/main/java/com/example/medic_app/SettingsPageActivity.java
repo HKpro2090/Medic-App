@@ -1,9 +1,11 @@
 package com.example.medic_app;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -67,10 +69,7 @@ public class SettingsPageActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(in);
-                finishAffinity();
-                Toast.makeText(getApplicationContext(),"Logout Successfull!",Toast.LENGTH_LONG).show();
+                logoutAlert();
             }
         });
 
@@ -90,5 +89,29 @@ public class SettingsPageActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void logoutAlert(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Confirm");
+        builder.setMessage("Are you sure you want to logout?");
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.ic_baseline_exit_to_app_48);
+        builder.setPositiveButton("logout", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent in=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(in);
+                finishAffinity();
+                Toast.makeText(getApplicationContext(),"Logout Successfull!",Toast.LENGTH_LONG).show();
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert=builder.create();
+        alert.show();
     }
 }
