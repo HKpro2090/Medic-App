@@ -16,15 +16,20 @@ public class PatientRecentListAdapter extends ArrayAdapter<String> {
     public Activity context;
     public ArrayList<String> maintitle;
     public ArrayList<String> subtitle;
+    public ArrayList<String> doc_email;
     public ArrayList<Integer> imgid;
 
-    public PatientRecentListAdapter(PatientRecentConsultationsFragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid) {
+    public String patient_email;
+
+
+    public PatientRecentListAdapter(PatientRecentConsultationsFragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid,String patient_email,ArrayList doc_email) {
         super(context.getActivity(), R.layout.patientrecentconsultationslist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;
         this.subtitle=subtitle;
         this.imgid=imgid;
-
+        this.patient_email=patient_email;
+        this.doc_email=doc_email;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -36,15 +41,16 @@ public class PatientRecentListAdapter extends ArrayAdapter<String> {
         titleText.setText(maintitle.get(position));
         subtitleText.setText(subtitle.get(position));
         imageView.setImageResource(imgid.get(position));
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent in=new Intent(getContext(),PatientDinfoActivity.class);
-//                in.putExtra("name",maintitle[position]);
-//                in.putExtra("dp",imgid[position]);
-//                context.startActivity(in);
-//            }
-//        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getContext(),PatientDinfoActivity.class);
+                in.putExtra("email",patient_email);
+                in.putExtra("doc_name",maintitle.get(position));
+                in.putExtra("doc_email",doc_email.get(position));
+                context.startActivity(in);
+            }
+        });
         return rowView;
 
     };

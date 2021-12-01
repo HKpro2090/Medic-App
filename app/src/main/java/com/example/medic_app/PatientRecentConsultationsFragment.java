@@ -1,5 +1,6 @@
 package com.example.medic_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -68,11 +70,25 @@ public class PatientRecentConsultationsFragment extends Fragment {
                         appointment_date_slot.add(document.getString("Appointment_date")+" "+document.getString("Slot_details_key"));
                         imgid.add(R.drawable.patient1);
                         appointment_id.add(document.getId());
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                Intent con_rep = new Intent(getContext(),PatientConsultationReportActivity.class);
+                                con_rep.putExtra("patient_email",patient_email);
+                                con_rep.putExtra("appointment_id",appointment_id.get(position));
+                                con_rep.putExtra("doc_name",doctors_name.get(position));
+                                con_rep.putExtra("date_time_slot",appointment_date_slot.get(position));
+                                startActivity(con_rep);
+                                //Toast.makeText(getContext(), "Clicked Item "+position, Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
 
-                    lv_adapter = new PatientRecentListAdapter(PatientRecentConsultationsFragment.this,doctors_name,appointment_date_slot,imgid);
+                    lv_adapter = new PatientRecentListAdapter(PatientRecentConsultationsFragment.this,doctors_name,appointment_date_slot,imgid,patient_email,doctor_email);
                     lv_adapter.notifyDataSetChanged();
                     lv.setAdapter(lv_adapter);
+
+
                 }else{
                     Toast.makeText(getContext(),"Firebase Connection Error!",Toast.LENGTH_LONG).show();
                 }
@@ -82,6 +98,7 @@ public class PatientRecentConsultationsFragment extends Fragment {
         View empty_view = view.findViewById(R.id.empty);
         lv.setEmptyView(empty_view);
         lv.setAdapter(lv_adapter);
+
 
         return view;
     }

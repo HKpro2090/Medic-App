@@ -35,7 +35,6 @@ public class PatientDinfoActivity extends AppCompatActivity {
         Intent i=getIntent();
         patient_email=i.getStringExtra("email");
         doc_email=i.getStringExtra("doc_email");
-        doc_department=i.getStringExtra("doc_department");
         doc_name = i.getStringExtra("doc_name");
 
 //        int image=i.getIntExtra("dp",R.drawable.patient2);
@@ -58,6 +57,7 @@ public class PatientDinfoActivity extends AppCompatActivity {
                     if(document.exists()){
                         doc_qualification=document.getString("Qualification_key");
                         doc_about=document.getString("about_key");
+                        doc_department=document.getString("department_key");
                         text_doc_name.setText(doc_name);
                         text_doc_about.setText(doc_about);
                         text_doc_department.setText(doc_department);

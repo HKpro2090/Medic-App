@@ -15,6 +15,7 @@ public class PatientUpcomingListAdapter extends ArrayAdapter<String> {
     public ArrayList<String> maintitle;
     public ArrayList<String> subtitle;
 
+
     public PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment context, ArrayList maintitle, ArrayList subtitle) {
         super(context.getActivity(), R.layout.patientupcomingconsultationslist, maintitle);
         this.context=context.getActivity();
