@@ -68,7 +68,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
         ImageButton editgender=(ImageButton) findViewById(R.id.editPgender);
         ImageButton editbgrp=(ImageButton) findViewById(R.id.editPbldgrp);
         ImageButton editphno=(ImageButton) findViewById(R.id.editPPhno);
-        ImageButton editemail=(ImageButton) findViewById(R.id.editPemail);
+//        ImageButton editemail=(ImageButton) findViewById(R.id.editPemail);
 
         editname.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,13 +106,13 @@ public class PatientEditProfileActivity extends AppCompatActivity {
                 pphno.setInputType(InputType.TYPE_CLASS_TEXT);
             }
         });
-        editemail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pemail.setEnabled(true);
-                pemail.setInputType(InputType.TYPE_CLASS_TEXT);
-            }
-        });
+//        editemail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                pemail.setEnabled(true);
+//                pemail.setInputType(InputType.TYPE_CLASS_TEXT);
+//            }
+//        });
 
         FloatingActionButton changedp=(FloatingActionButton)findViewById(R.id.floatingActionButton);
         changedp.bringToFront();
@@ -125,7 +125,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
         });
 
 
-        Button updt=(Button) findViewById(R.id.editProfileUpdateButton);
+        FloatingActionButton updt=(FloatingActionButton) findViewById(R.id.editProfileUpdateButton2);
         updt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
