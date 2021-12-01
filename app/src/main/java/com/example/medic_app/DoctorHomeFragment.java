@@ -46,8 +46,8 @@ public class DoctorHomeFragment extends Fragment {
             }
             });
 
-        loadDocUpConsulFragment(new PatientUpcomingConsultationsFragment());
-        loadDocRecentConsulFragment (new PatientRecentConsultationsFragment());
+        loadDocUpConsulFragment(new DoctorUpcomingConsultationsFragment());
+        loadDocRecentConsulFragment (new DoctorRecentConsultationsFragment());
         return view;
     }
     public void loadDocUpConsulFragment(Fragment fragment)

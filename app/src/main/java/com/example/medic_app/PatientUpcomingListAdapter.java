@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 
 public class PatientUpcomingListAdapter extends ArrayAdapter<String> {
@@ -16,7 +18,7 @@ public class PatientUpcomingListAdapter extends ArrayAdapter<String> {
     public ArrayList<String> subtitle;
 
 
-    public PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment context, ArrayList maintitle, ArrayList subtitle) {
+    public PatientUpcomingListAdapter(Fragment context, ArrayList maintitle, ArrayList subtitle) {
         super(context.getActivity(), R.layout.patientupcomingconsultationslist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;

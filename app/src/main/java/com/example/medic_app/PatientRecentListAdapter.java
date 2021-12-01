@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 
 public class PatientRecentListAdapter extends ArrayAdapter<String> {
@@ -22,7 +24,7 @@ public class PatientRecentListAdapter extends ArrayAdapter<String> {
     public String patient_email;
 
 
-    public PatientRecentListAdapter(PatientRecentConsultationsFragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid,String patient_email,ArrayList doc_email) {
+    public PatientRecentListAdapter(Fragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid, String patient_email, ArrayList doc_email) {
         super(context.getActivity(), R.layout.patientrecentconsultationslist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;
