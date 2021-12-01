@@ -1,5 +1,6 @@
 package com.example.medic_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -57,19 +59,33 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
-                if(task.isSuccessful()){
-                    for(QueryDocumentSnapshot document : task.getResult()) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
                         doctors_name.add(document.getString("doc_name_key"));
                         doctor_email.add(document.getString("doc_email_key"));
-                        appointment_date_slot.add(document.getString("Appointment_date")+" "+document.getString("Slot_details_key"));
+                        appointment_date_slot.add(document.getString("Appointment_date") + " " + document.getString("Slot_details_key"));
                         appointment_id.add(document.getId());
                     }
 
-                    lv_adapter = new PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment.this,doctors_name,appointment_date_slot);
+                    lv_adapter = new PatientUpcomingListAdapter(PatientUpcomingConsultationsFragment.this, doctors_name, appointment_date_slot);
                     lv_adapter.notifyDataSetChanged();
                     lv.setAdapter(lv_adapter);
-                }else{
-                    Toast.makeText(getContext(),"Firebase Connection Error!",Toast.LENGTH_LONG).show();
+
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent upc_consul = new Intent(getContext(), Patient_upcoming_consultation_activity.class);
+                            upc_consul.putExtra("patient_email", patient_email);
+                            upc_consul.putExtra("appointment_id", appointment_id.get(position));
+                            upc_consul.putExtra("doc_name", doctors_name.get(position));
+                            upc_consul.putExtra("doc_email", doctor_email.get(position));
+                            startActivity(upc_consul);
+                            //Toast.makeText(getContext(), "Clicked Item "+position, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                } else {
+                    Toast.makeText(getContext(), "Firebase Connection Error!", Toast.LENGTH_LONG).show();
                 }
             }
         });

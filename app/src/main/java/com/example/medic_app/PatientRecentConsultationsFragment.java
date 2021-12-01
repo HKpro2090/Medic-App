@@ -70,6 +70,10 @@ public class PatientRecentConsultationsFragment extends Fragment {
                         appointment_date_slot.add(document.getString("Appointment_date")+" "+document.getString("Slot_details_key"));
                         imgid.add(R.drawable.patient1);
                         appointment_id.add(document.getId());
+                        lv_adapter = new PatientRecentListAdapter(PatientRecentConsultationsFragment.this,doctors_name,appointment_date_slot,imgid,patient_email,doctor_email);
+                        lv_adapter.notifyDataSetChanged();
+                        lv.setAdapter(lv_adapter);
+
                         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -84,9 +88,7 @@ public class PatientRecentConsultationsFragment extends Fragment {
                         });
                     }
 
-                    lv_adapter = new PatientRecentListAdapter(PatientRecentConsultationsFragment.this,doctors_name,appointment_date_slot,imgid,patient_email,doctor_email);
-                    lv_adapter.notifyDataSetChanged();
-                    lv.setAdapter(lv_adapter);
+
 
 
                 }else{

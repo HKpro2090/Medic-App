@@ -35,7 +35,7 @@ public class PatientConsultationReportActivity extends AppCompatActivity {
         text_prescription_meds = (TextView) findViewById(R.id.tvprescmeds);
 
         //Make the textview scrollable
-        text_slot_status.setMovementMethod(new ScrollingMovementMethod());
+        text_consultation_notes.setMovementMethod(new ScrollingMovementMethod());
 
         Intent data_in = getIntent();
         patient_email = data_in.getStringExtra("patient_email");

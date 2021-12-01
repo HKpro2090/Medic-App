@@ -126,8 +126,8 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/upcdatetv"
         app:layout_constraintVertical_bias="0.02" />
 
@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_semibold"
-        android:text="Slot"
+        android:text="Slot:"
         android:textColor="?attr/textfield_hint_color"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -219,5 +219,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.043"
         app:layout_constraintWidth_percent="0.85" />
+
+    <TextView
+        android:id="@+id/tvpatientsymptoms"
+        android:layout_width="336dp"
+        android:layout_height="107dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/upcsymtoms" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
