@@ -1,5 +1,6 @@
 package com.example.medic_app;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,17 +22,30 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 
 
 public class DoctorHomeFragment extends Fragment {
     public DoctorHomePageActivity dha;
     public String e_key;
     public String email;
+    ShapeableImageView DocDP;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_doctor_home, container, false);
+        DocDP = (ShapeableImageView)view.findViewById(R.id.DoctorHProfilePic);
+        DocDP.setImageResource(R.drawable.patient1);
+        DocDP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent doctor_settings_page = new Intent(getActivity(), SettingsPageActivity.class);
+                doctor_settings_page.putExtra(e_key, email);
+                startActivity(doctor_settings_page);
+            }
+            });
+
         loadDocUpConsulFragment(new PatientUpcomingConsultationsFragment());
         loadDocRecentConsulFragment (new PatientRecentConsultationsFragment());
         return view;

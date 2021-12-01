@@ -24,13 +24,14 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.imageview.ShapeableImageView;
 
 public class DoctorHomePageActivity extends AppCompatActivity {
 
     boolean doubleBackToExitPressedOnce = false;
     BottomNavigationView dbnv;
     TextView pagetitle;
-    ImageView DocDP;
+
     FloatingActionButton searchNewBtn;
     FloatingActionButton searchPatientBtn;
     FloatingActionButton newPatientBtn;
@@ -63,16 +64,6 @@ public class DoctorHomePageActivity extends AppCompatActivity {
         SPTV = (TextView)findViewById(R.id.sptv);
         dbnv = (BottomNavigationView) findViewById(R.id.doctorbottombar);
         dbnv.setSelectedItemId(R.id.miHome);
-        DocDP=(ImageView)findViewById(R.id.DoctorHProfilePic);
-        DocDP.setImageResource(R.drawable.patient1);
-        DocDP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent doctor_settings_page = new Intent(getApplicationContext(), SettingsPageActivity.class);
-                doctor_settings_page.putExtra(e_key,email);
-                startActivity(doctor_settings_page);
-            }
-        });
         rotateOpen = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_open);
         rotateClose = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_close);
         toBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom);
