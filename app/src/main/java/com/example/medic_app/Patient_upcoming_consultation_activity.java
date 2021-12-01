@@ -1,8 +1,10 @@
 package com.example.medic_app;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -83,6 +85,20 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
         cancel_appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cancelAlert();
+            }
+        });
+
+    }
+    private void cancelAlert(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Confirm");
+        builder.setMessage("Are you sure you want to cancel the appointment?");
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.ic_baseline_exit_to_app_48);
+        builder.setPositiveButton("Cancel consultation", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
                 user_col.document("user_"+patient_email).collection("Consultations").document(appointment_id).delete();
                 user_col.document("user_"+doctor_email).collection("Consultations").document(appointment_id).delete();
                 user_col.document("user_"+doctor_email).collection("Sessions").document(sessions_date).update(slot_key,"Free").addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -101,7 +117,14 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
                 });
             }
         });
-
+        builder.setNegativeButton("go back", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert=builder.create();
+        alert.show();
     }
 
 }
