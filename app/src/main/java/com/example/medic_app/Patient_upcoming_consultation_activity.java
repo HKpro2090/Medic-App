@@ -89,7 +89,11 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(getApplicationContext(),"Consultation cancelled Successfully!",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Consultation cancelled Successfully!",Toast.LENGTH_LONG).show();
+                            Intent back_to_home = new Intent( getApplicationContext(),PatientHomePageActivity.class);
+                            back_to_home.putExtra("email",patient_email);
+                            startActivity(back_to_home);
+                            finish();
                         }else{
                             Toast.makeText(getApplicationContext(),"FireBase Error. Unable to Cancel Consultation!",Toast.LENGTH_SHORT).show();
                         }

@@ -351,6 +351,10 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                                                 .document(selected_date).update(selected_slot,"Booked");
 
                                         Toast.makeText(getApplicationContext(),"Consultation Booked Successfully",Toast.LENGTH_LONG).show();
+                                        Intent back_to_home = new Intent( getApplicationContext(),PatientHomePageActivity.class);
+                                        back_to_home.putExtra("email",patient_email);
+                                        startActivity(back_to_home);
+                                        finish();
 
                                     }
                                 });
