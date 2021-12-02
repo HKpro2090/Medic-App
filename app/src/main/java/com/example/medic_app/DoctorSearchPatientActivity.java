@@ -16,7 +16,7 @@ public class DoctorSearchPatientActivity extends AppCompatActivity implements Se
     private SearchView search;
     private ListView lv;
     private ArrayList<Doctor> doctorArrayList;
-    private PatientDsearchListAdapter adp;
+    private DoctorPsearchListAdapter adp;
 
     String user_type_key="user_type_key";
     String doc_name,doc_email,doc_department="";
@@ -39,7 +39,7 @@ public class DoctorSearchPatientActivity extends AppCompatActivity implements Se
         doctorArrayList.add(new Doctor("patient 2","p2@1765.com","", imgid[1]));
         doctorArrayList.add(new Doctor("patient 3","p0@314.com","", imgid[2]));
 
-        adp=new PatientDsearchListAdapter(this,doctorArrayList,patient_email);
+        adp=new DoctorPsearchListAdapter(this,doctorArrayList,patient_email);
         lv.setAdapter(adp);
         lv.setTextFilterEnabled(true);
         setupSearchView();
