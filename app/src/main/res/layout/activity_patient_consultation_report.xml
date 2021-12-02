@@ -79,7 +79,7 @@
         android:gravity="center_vertical"
         android:text="TextView"
         android:textColor="?attr/text_color"
-        android:textSize="10.5sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
@@ -134,7 +134,7 @@
         app:layout_constraintVertical_bias="0.027" />
 
     <TextView
-        android:id="@+id/upcsymtoms"
+        android:id="@+id/doctornotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
@@ -147,6 +147,21 @@
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.083" />
+
+    <TextView
+        android:id="@+id/doctormedicines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Medicines"
+        android:textColor="?attr/textfield_hint_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.125" />
 
     <TextView
         android:id="@+id/textView2"
@@ -193,8 +208,8 @@
         app:layout_constraintVertical_bias="0.038"
         app:layout_constraintWidth_percent="0.85" />
 
-    <TextView
-        android:id="@+id/tvprescmeds"
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/listview_design"
@@ -202,13 +217,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.25"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.063"
+        app:layout_constraintVertical_bias="0.055"
         app:layout_constraintWidth_percent="0.85" />
 
-<!--    <ImageView-->
+    <!--    <ImageView-->
 <!--        android:id="@+id/imageView4"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="0dp"-->
@@ -277,18 +292,6 @@
 
 
 <!--    </TableLayout>-->
-
-    <TextView
-        android:id="@+id/tvdocnotes"
-        android:layout_width="345dp"
-        android:layout_height="68dp"
-        android:text="TextView"
-        android:scrollbars = "vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/upcsymtoms" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

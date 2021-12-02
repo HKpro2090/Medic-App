@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.widget.TextView;
@@ -31,8 +32,8 @@ public class PatientConsultationReportActivity extends AppCompatActivity {
         text_doc_name = (TextView) findViewById(R.id.crdnametv);
         text_date_time_slot = (TextView) findViewById(R.id.crdatetv);
         text_slot_status = (TextView) findViewById(R.id.crstatustv);
-        text_consultation_notes = (TextView) findViewById(R.id.tvdocnotes);
-        text_prescription_meds = (TextView) findViewById(R.id.tvprescmeds);
+        text_consultation_notes = (TextView) findViewById(R.id.doctornotes);
+        text_prescription_meds = (TextView) findViewById(R.id.doctormedicines);
 
         //Make the textview scrollable
         text_consultation_notes.setMovementMethod(new ScrollingMovementMethod());
@@ -53,6 +54,19 @@ public class PatientConsultationReportActivity extends AppCompatActivity {
                         consultation_notes = document.getString("doctor_notes_key");
                         consultation_status = document.getString("status_key");
                         prescription_meds = document.getString("doctor_prescription_key");
+
+                        if(consultation_notes.equals("")){
+                            consultation_notes = "Notes / Diagnosis";
+                        }
+                        else{
+                            text_consultation_notes.setTextColor(Color.parseColor("#FFFFFF"));
+                        }
+                        if (prescription_meds.equals("")){
+                            prescription_meds = "Medicines";
+                        }
+                        else{
+                            text_prescription_meds.setTextColor(Color.parseColor("#FFFFFF"));
+                        }
 
                         text_doc_name.setText(doctor_name);
                         text_date_time_slot.setText(date_time_slot);

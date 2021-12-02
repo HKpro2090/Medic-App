@@ -80,12 +80,13 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/newpatientbtn"
+                android:id="@+id/newsessionbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:focusable="true"
-                android:src="@drawable/ic_baseline_person_add_24"
+                android:src="@drawable/ic_baseline_add_box_24"
                 android:visibility="invisible"
                 app:backgroundTint="#FFF700"
                 app:layout_constraintBottom_toTopOf="@+id/addbutton"
@@ -99,13 +100,13 @@
                 android:id="@+id/nptv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="-15dp"
+                android:layout_marginEnd="-15dp"
                 android:background="@drawable/listview_design"
                 android:padding="5dp"
-                android:text="Add New Patient"
+                android:text="New Session"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/newpatientbtn"
+                app:layout_constraintEnd_toStartOf="@+id/newsessionbtn"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -126,6 +127,7 @@
                 app:layout_constraintStart_toEndOf="@+id/searchpatientbtn"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.51" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

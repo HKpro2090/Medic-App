@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -41,7 +42,7 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
         text_date = (TextView) findViewById(R.id.upcdatetv);
         text_slot = (TextView) findViewById(R.id.upctimetv);
         text_slot_status = (TextView) findViewById(R.id.upcstatustv);
-        text_consultation_symptoms = (TextView) findViewById(R.id.tvpatientsymptoms);
+        text_consultation_symptoms = (TextView) findViewById(R.id.upcsymtoms);
 
         cancel_appointment = (Button) findViewById(R.id.CancelConsultationButton);
 
@@ -67,7 +68,14 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
                         text_date.setText(consultation_date);
                         text_slot.setText(slot_details);
                         text_slot_status.setText(consultation_status);
-                        text_consultation_symptoms.setText(consultation_symptoms);
+                        if(consultation_symptoms.equals("")) {
+                            text_consultation_symptoms.setText("Symptoms");
+                            text_consultation_symptoms.setText(consultation_symptoms);
+                        }
+                        else{
+                            text_consultation_symptoms.setTextColor(Color.parseColor("#FFFFFF"));
+                            text_consultation_symptoms.setText(consultation_symptoms);
+                        }
 
                     }else{
                         Toast.makeText(getApplicationContext(),"No such User or Consultation exists",Toast.LENGTH_SHORT).show();

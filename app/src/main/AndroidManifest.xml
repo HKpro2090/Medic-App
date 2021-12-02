@@ -18,6 +18,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicApp">
         <activity
+            android:name=".DoctorNewSessionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorSearchPatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PatientInfoPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorPrescribeMedicineActivity"
+            android:exported="false" />
+        <activity
             android:name=".DoctorHomePageActivity"
             android:exported="false" />
         <activity

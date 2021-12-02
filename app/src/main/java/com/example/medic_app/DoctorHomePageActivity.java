@@ -3,28 +3,22 @@ package com.example.medic_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.imageview.ShapeableImageView;
 
 public class DoctorHomePageActivity extends AppCompatActivity {
 
@@ -83,14 +77,19 @@ public class DoctorHomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Search Patient!",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(getApplicationContext(),DoctorSearchPatientActivity.class);
+                i.putExtra(e_key,email);
+                startActivity(i);
             }
         });
-        newPatientBtn = (FloatingActionButton)findViewById(R.id.newpatientbtn);
+        newPatientBtn = (FloatingActionButton)findViewById(R.id.newsessionbtn);
         newPatientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"New Patient!",Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(),"New Session!",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(getApplicationContext(),DoctorNewSessionActivity.class);
+                i.putExtra(e_key,email);
+                startActivity(i);
             }
         });
 

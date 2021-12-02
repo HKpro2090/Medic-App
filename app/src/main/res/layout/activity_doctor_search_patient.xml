@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/background_color"
     android:padding="20dp"
-    tools:context=".PatientDsearchActivity">
+    tools:context=".DoctorSearchPatientActivity">
 
     <TextView
-        android:id="@+id/doctorstv"
+        android:id="@+id/patientstv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nunito_bold"
-        android:text="Doctors"
+        android:text="Patients"
         android:textAllCaps="false"
         android:textColor="?attr/text_color"
         android:textSize="34sp"
@@ -26,18 +25,18 @@
         app:layout_constraintVertical_bias="0.037" />
 
     <SearchView
-        android:id="@+id/doctorSearchView"
+        android:id="@+id/patientSearchView"
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorstv"
+        app:layout_constraintTop_toBottomOf="@+id/patientstv"
         app:layout_constraintVertical_bias="0.053"
         android:background="@drawable/textview_border"/>
 
     <ListView
-        android:id="@+id/doclistview"
+        android:id="@+id/patientlistview"
         android:paddingTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -51,7 +50,8 @@
         app:layout_constraintHeight_percent="0.75"
         app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorSearchView"
+        app:layout_constraintTop_toBottomOf="@+id/patientSearchView"
         app:layout_constraintVertical_bias="1.0"
         android:transcriptMode="normal"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
