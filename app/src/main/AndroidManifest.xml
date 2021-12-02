@@ -24,7 +24,7 @@
             android:name=".DoctorSearchPatientActivity"
             android:exported="false" />
         <activity
-            android:name=".PatientInfoPageActivity"
+            android:name=".Doctor_PatientInfoPageActivity"
             android:exported="false" />
         <activity
             android:name=".DoctorPrescribeMedicineActivity"
