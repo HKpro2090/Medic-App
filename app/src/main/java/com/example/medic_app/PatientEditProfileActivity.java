@@ -56,6 +56,26 @@ public class PatientEditProfileActivity extends AppCompatActivity {
 
         Intent in = getIntent();
         email=in.getStringExtra("email");
+
+        dp=(ImageView) findViewById(R.id.PatientEditDP);
+        dp.setImageResource(patientdp);
+        pname=(EditText) findViewById(R.id.patientProfileName);
+        page=(EditText) findViewById(R.id.patientProfileAge);
+        pgen=(EditText) findViewById(R.id.patientProfileGender);
+        pbgrp=(EditText) findViewById(R.id.patientProfileBldGrp);
+        pphno=(EditText) findViewById(R.id.patientProfilePhno);
+        pemail=(EditText) findViewById(R.id.patientProfileEmail);
+        pheight=(EditText) findViewById(R.id.patientProfileheight);
+        pweight=(EditText) findViewById(R.id.patientProfileweight);
+
+        ImageButton editname=(ImageButton) findViewById(R.id.editPname);
+        ImageButton editage=(ImageButton) findViewById(R.id.editPAge);
+        ImageButton editgender=(ImageButton) findViewById(R.id.editPgender);
+        ImageButton editbgrp=(ImageButton) findViewById(R.id.editPbldgrp);
+        ImageButton editphno=(ImageButton) findViewById(R.id.editPPhno);
+        ImageButton editHeight=(ImageButton)findViewById(R.id.editPheight);
+        ImageButton editWeight=(ImageButton)findViewById(R.id.editPWeight);
+
         user_col.document("user_"+email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -72,6 +92,18 @@ public class PatientEditProfileActivity extends AppCompatActivity {
                         pht=document.getString("height_key");
                         pweit=document.getString("weight_key");
 
+
+                        pname.setText(name);
+                        page.setText(age);
+                        pgen.setText(gender);
+                        pbgrp.setText(bldgrp);
+                        pphno.setText(phno);
+                        pemail.setText(email);
+                        pheight.setText(pht);
+                        pweight.setText(pweit);
+                        nonEditable();
+
+
                     }else{
                         Toast.makeText(getApplicationContext(), "User Not Found!", Toast.LENGTH_SHORT).show();
                     }
@@ -84,32 +116,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
         //Placeholder values
 
 
-        dp=(ImageView) findViewById(R.id.PatientEditDP);
-        dp.setImageResource(patientdp);
-        pname=(EditText) findViewById(R.id.patientProfileName);
-        page=(EditText) findViewById(R.id.patientProfileAge);
-        pgen=(EditText) findViewById(R.id.patientProfileGender);
-        pbgrp=(EditText) findViewById(R.id.patientProfileBldGrp);
-        pphno=(EditText) findViewById(R.id.patientProfilePhno);
-        pemail=(EditText) findViewById(R.id.patientProfileEmail);
-        pheight=(EditText) findViewById(R.id.patientProfileheight);
-        pweight=(EditText) findViewById(R.id.patientProfileweight);
-        pname.setText(name);
-        page.setText(age);
-        pgen.setText(gender);
-        pbgrp.setText(bldgrp);
-        pphno.setText(phno);
-        pemail.setText(email);
-        pheight.setText(pht);
-        pweight.setText(pweit);
-        nonEditable();
-        ImageButton editname=(ImageButton) findViewById(R.id.editPname);
-        ImageButton editage=(ImageButton) findViewById(R.id.editPAge);
-        ImageButton editgender=(ImageButton) findViewById(R.id.editPgender);
-        ImageButton editbgrp=(ImageButton) findViewById(R.id.editPbldgrp);
-        ImageButton editphno=(ImageButton) findViewById(R.id.editPPhno);
-        ImageButton editHeight=(ImageButton)findViewById(R.id.editPheight);
-        ImageButton editWeight=(ImageButton)findViewById(R.id.editPWeight);
+
 //        ImageButton editemail=(ImageButton) findViewById(R.id.editPemail);
 
         editname.setOnClickListener(new View.OnClickListener() {
