@@ -14,7 +14,7 @@ public class Doctor_PatientInfoPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_patient_info_page);
         FragmentManager fm=getSupportFragmentManager();
         FragmentTransaction ft= fm.beginTransaction();
-        ft.replace(R.id.pinforecentconsultationview,new DoctorDailyAppointmentsListFragment());
+        ft.replace(R.id.pinforecentconsultationview,new Doctor_PatientHistoryListFragment());
         ft.commit();
     }
 }
