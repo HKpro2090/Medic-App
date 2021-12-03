@@ -34,11 +34,15 @@ public class SettingsPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_page);
 
+        Intent intent = getIntent();
+        email = intent.getStringExtra(e_key);
+
         ImageView editprofile=(ImageView)findViewById(R.id.imageView3);
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),PatientEditProfileActivity.class);
+                i.putExtra(e_key,email);
                 startActivity(i);
             }
         });
@@ -46,8 +50,6 @@ public class SettingsPageActivity extends AppCompatActivity {
 
 
 
-        Intent intent = getIntent();
-        email = intent.getStringExtra(e_key);
 
         TextView logout=(TextView) findViewById(R.id.textview9);
         user_text = (TextView) findViewById(R.id.profilepagename);

@@ -1,5 +1,6 @@
 package com.example.medic_app;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,35 +23,66 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Hashtable;
+import java.util.Map;
 
 public class PatientEditProfileActivity extends AppCompatActivity {
     String name,gender,bldgrp,phno,email;
-    int age,pht,pweit;
+    String age,pht,pweit;
     ImageView dp;
     int SELECT_PICTURE = 200;
     int patientdp=R.drawable.patient2;
     EditText pname,page,pgen,pbgrp,pheight,pweight,pemail,pphno;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference user_col = db.collection("users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_edit_profile);
 
+        Intent in = getIntent();
+        email=in.getStringExtra("email");
+        user_col.document("user_"+email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                if(task.isSuccessful()){
+                    DocumentSnapshot document = task.getResult();
+                    if(document.exists()){
+
+                        name=document.getString("user_name_key");
+                        age=document.getString("age_key");
+                        gender=document.getString("gender_key");
+                        bldgrp=document.getString("blood_group_key");
+                        phno=document.getString("phone_no_key");
+                        pht=document.getString("height_key");
+                        pweit=document.getString("weight_key");
+
+                    }else{
+                        Toast.makeText(getApplicationContext(), "User Not Found!", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "FireBase Error!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
         //Placeholder values
-        name="abcd";
-        age=20;
-        gender="male";
-        bldgrp="O+";
-        phno="9192345536";
-        email="tst@1234.com";
-        pht=180;
-        pweit=85;
+
 
         dp=(ImageView) findViewById(R.id.PatientEditDP);
         dp.setImageResource(patientdp);
@@ -63,13 +95,13 @@ public class PatientEditProfileActivity extends AppCompatActivity {
         pheight=(EditText) findViewById(R.id.patientProfileheight);
         pweight=(EditText) findViewById(R.id.patientProfileweight);
         pname.setText(name);
-        page.setText(Integer.toString(age));
+        page.setText(age);
         pgen.setText(gender);
         pbgrp.setText(bldgrp);
         pphno.setText(phno);
         pemail.setText(email);
-        pheight.setText(Integer.toString(pht));
-        pweight.setText(Integer.toString(pweit));
+        pheight.setText(pht);
+        pweight.setText(pweit);
         nonEditable();
         ImageButton editname=(ImageButton) findViewById(R.id.editPname);
         ImageButton editage=(ImageButton) findViewById(R.id.editPAge);
@@ -154,15 +186,30 @@ public class PatientEditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name=pname.getText().toString();
-                age=Integer.parseInt(page.getText().toString());
+                age=page.getText().toString();
                 gender=pgen.getText().toString();
                 bldgrp=pbgrp.getText().toString();
                 phno=pphno.getText().toString();
-                email=pemail.getText().toString();
-                pht=Integer.parseInt(pheight.getText().toString());
-                pweit=Integer.parseInt(pweight.getText().toString());
-                String disp="Name:"+name+"\nage:"+age+"\ngender:"+gender+"\nbldgrp:"+bldgrp+"\nheight:"+pht+"\nweight:"+pweit+"\nphno:"+phno+"\nemail:"+email;
-                Toast.makeText(getApplicationContext(),disp,Toast.LENGTH_LONG).show();
+                pht=pheight.getText().toString();
+                pweit=pweight.getText().toString();
+
+                Map<String,Object> edit_details = new Hashtable<>();
+                edit_details.put("user_name_key",name);
+                edit_details.put("age_key",age);
+                edit_details.put("height_key",pht);
+                edit_details.put("weight_key",pweit);
+                edit_details.put("blood_group_key",bldgrp);
+                edit_details.put("gender_key",gender);
+                edit_details.put("phone_no_key",phno);
+
+                user_col.document("user_"+email).set(edit_details, SetOptions.merge()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(getApplicationContext(), "User Details Updated Successfully!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                //String disp="Name:"+name+"\nage:"+age+"\ngender:"+gender+"\nbldgrp:"+bldgrp+"\nheight:"+pht+"\nweight:"+pweit+"\nphno:"+phno+"\nemail:"+email;
+                //Toast.makeText(getApplicationContext(),disp,Toast.LENGTH_LONG).show();
                 nonEditable();
             }
         });

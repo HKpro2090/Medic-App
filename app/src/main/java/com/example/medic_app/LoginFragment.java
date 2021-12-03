@@ -65,16 +65,6 @@ public class LoginFragment extends Fragment {
 
         }
 
-//        RadioGroup rg=(RadioGroup)view.findViewById(R.id.radioGroup);
-//        rg.clearCheck();
-//        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                RadioButton sel=(RadioButton)group.findViewById(checkedId);
-//                type=sel.getText().toString();
-//            }
-//        });
-
         Button sgnupbtn=(Button)view.findViewById(R.id.SignUpButton);
         sgnupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
