@@ -84,8 +84,8 @@ public class PatientEditProfileActivity extends AppCompatActivity {
         ImageButton editHeight=(ImageButton)findViewById(R.id.editPheight);
         ImageButton editWeight=(ImageButton)findViewById(R.id.editPWeight);
 
-        pg=findViewById(R.id.PatientEditProfileGenderspinner);
-        pb=findViewById(R.id.PatientEditProfileBgrpspinner);
+        pg=(Spinner) findViewById(R.id.PatientEditProfileGenderspinner);
+        pb=(Spinner) findViewById(R.id.PatientEditProfileBgrpspinner);
 
 
         user_col.document("user_"+email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
