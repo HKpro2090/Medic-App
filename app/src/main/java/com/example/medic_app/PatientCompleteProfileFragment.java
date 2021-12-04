@@ -53,7 +53,7 @@ public class PatientCompleteProfileFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_complete_profile, container, false);
         Spinner genderspinner = (Spinner) view.findViewById(R.id.GenderSpinner);
-        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,gender);
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),R.layout.my_selected_item,gender);
         genderspinner.setAdapter(adp);
         genderspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -67,7 +67,7 @@ public class PatientCompleteProfileFragment extends Fragment {
             }
         });
         Spinner bgspinner = (Spinner) view.findViewById(R.id.BloodGroupSpinner);
-        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,bloodgroups);
+        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(),R.layout.my_selected_item,bloodgroups);
         bgspinner.setAdapter(ad);
         bgspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

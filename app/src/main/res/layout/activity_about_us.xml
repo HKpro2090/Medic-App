@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background_color"
+    tools:context=".AboutUsActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/doctorinfoimge2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutustitle"
+        app:layout_constraintVertical_bias="0.107"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeColor="#707070"
+        app:strokeWidth="0.5dp"
+        android:src="@drawable/gautamdp"
+        tools:srcCompat="@drawable/gautamdp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/doctorinfoimge3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorinfoimge2"
+        app:layout_constraintVertical_bias="0.102"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeColor="#707070"
+        app:strokeWidth="0.5dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/doctorinfoimge4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutustitle"
+        app:layout_constraintVertical_bias="0.747"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:strokeColor="#707070"
+        app:strokeWidth="0.5dp"
+        android:src="@drawable/haridp"
+        tools:srcCompat="@drawable/haridp" />
+
+    <TextView
+        android:id="@+id/aboutustitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="About Us"
+        android:textAllCaps="false"
+        android:textColor="?attr/text_color"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.060000002" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Gautam P A"
+        android:textColor="?attr/text_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge2"
+        app:layout_constraintTop_toBottomOf="@+id/aboutustitle"
+        app:layout_constraintVertical_bias="0.119" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="gautampa7@gmail.com"
+        android:textColor="?attr/text_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.216"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge2"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="165dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Cloud Integration of the App"
+        android:textColor="?attr/text_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge2"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.068"
+        app:layout_wrapBehaviorInParent="vertical_only" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="right"
+        android:text="Ajitesh J S"
+        android:textColor="?attr/text_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/doctorinfoimge3"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutustitle"
+        app:layout_constraintVertical_bias="0.373" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="165dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="right"
+        android:text="Backend Development of the App"
+        android:textColor="?attr/text_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/doctorinfoimge3"
+        app:layout_constraintHorizontal_bias="0.687"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.383"
+        app:layout_wrapBehaviorInParent="vertical_only" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:gravity="right"
+        android:text="ajiteshjs2001@gmail.com"
+        android:textColor="?attr/text_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/doctorinfoimge3"
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.327" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Harikrishnan Vamsi"
+        android:textColor="?attr/text_color"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge2"
+        app:layout_constraintTop_toBottomOf="@+id/doctorinfoimge3"
+        app:layout_constraintVertical_bias="0.216" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="harikrishnan.vamsi@gmail.com"
+        android:textColor="?attr/text_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge2"
+        app:layout_constraintTop_toBottomOf="@+id/doctorinfoimge3"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="165dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Frontent Development of the App"
+        android:textColor="?attr/text_color"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintStart_toEndOf="@+id/doctorinfoimge2"
+        app:layout_constraintTop_toBottomOf="@+id/doctorinfoimge3"
+        app:layout_constraintVertical_bias="0.445"
+        app:layout_wrapBehaviorInParent="vertical_only" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,9 @@
         <item name="android:background">@drawable/bg_spinner</item>
     </style>
 
+    <style name="Widget.BottomNavigationView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/nunito_semibold</item>
+    </style>
+
 </resources>

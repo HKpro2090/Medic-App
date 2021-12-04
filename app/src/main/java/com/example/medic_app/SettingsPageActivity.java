@@ -91,6 +91,15 @@ public class SettingsPageActivity extends AppCompatActivity {
 
             }
         });
+
+        TextView aboutus = (TextView) findViewById(R.id.aboutustv);
+        aboutus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(),AboutUsActivity.class);
+                startActivity(in);
+            }
+        });
     }
     private void logoutAlert(){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);

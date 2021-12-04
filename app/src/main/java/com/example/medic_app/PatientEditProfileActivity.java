@@ -39,6 +39,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -56,6 +57,9 @@ public class PatientEditProfileActivity extends AppCompatActivity {
             "B+", "B-",
             "O+", "O-","AB-","AB+" };
     String[] genders = {"Male","Female","Prefer not to Say"};
+
+    ArrayList<String> epbg = new ArrayList<>();
+    ArrayList<String> epgender = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +90,8 @@ public class PatientEditProfileActivity extends AppCompatActivity {
 
         pg=(Spinner) findViewById(R.id.PatientEditProfileGenderspinner);
         pb=(Spinner) findViewById(R.id.PatientEditProfileBgrpspinner);
+        ArrayAdapter<String> adp=new ArrayAdapter<String>(this,R.layout.my_selected_item,genders);
+        ArrayAdapter<String> ad=new ArrayAdapter<String>(this,R.layout.my_selected_item,bloodgroups);
 
 
         user_col.document("user_"+email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -113,9 +119,9 @@ public class PatientEditProfileActivity extends AppCompatActivity {
                         pemail.setText(email);
                         pheight.setText(pht);
                         pweight.setText(pweit);
-                        ArrayAdapter<String> adp=new ArrayAdapter<String>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,genders);
+
                         pg.setAdapter(adp);
-                        ArrayAdapter<String> ad=new ArrayAdapter<String>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,bloodgroups);
+
                         pb.setAdapter(ad);
                         nonEditable();
 
@@ -155,7 +161,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                pgen.setEnabled(true);
 //                pgen.setInputType(InputType.TYPE_CLASS_TEXT);
-                pgen.setVisibility(View.GONE);
+                pgen.setVisibility(View.INVISIBLE);
                 pg.setVisibility(View.VISIBLE);
                 pg.setEnabled(true);
             }
@@ -165,7 +171,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                pbgrp.setEnabled(true);
 //                pbgrp.setInputType(InputType.TYPE_CLASS_TEXT);
-                pbgrp.setVisibility(View.GONE);
+                pbgrp.setVisibility(View.INVISIBLE);
                 pb.setVisibility(View.VISIBLE);
                 pb.setEnabled(true);
             }

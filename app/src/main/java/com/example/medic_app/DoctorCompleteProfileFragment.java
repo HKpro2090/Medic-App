@@ -53,7 +53,7 @@ public class DoctorCompleteProfileFragment extends Fragment {
         Spinner DgenSpinner=(Spinner)view.findViewById(R.id.DoctorGenderSpinner);
         Spinner DdepSpinner=(Spinner)view.findViewById(R.id.DoctorDeptSpinner);
 
-        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,gender);
+        ArrayAdapter<String> adp = new ArrayAdapter<String>(getActivity(),R.layout.my_selected_item,gender);
         DgenSpinner.setAdapter(adp);
         DgenSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -67,7 +67,7 @@ public class DoctorCompleteProfileFragment extends Fragment {
             }
         });
 
-        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(),R.layout.support_simple_spinner_dropdown_item,dept);
+        ArrayAdapter<String> ad = new ArrayAdapter<String>(getActivity(),R.layout.my_selected_item,dept);
         DdepSpinner.setAdapter(ad);
         DdepSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

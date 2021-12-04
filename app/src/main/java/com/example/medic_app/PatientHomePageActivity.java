@@ -44,6 +44,8 @@ public class PatientHomePageActivity extends AppCompatActivity {
     Animation fromBottom;
     Animation toBottomLeft;
     Animation fromBottomleft;
+    Animation fadein;
+    Animation fadeout;
 
 
 
@@ -78,7 +80,8 @@ public class PatientHomePageActivity extends AppCompatActivity {
         fromBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom);
         toBottomLeft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom_left);
         fromBottomleft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom_left);
-
+        fadein = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
+        fadeout = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
         FloatingActionButton b=(FloatingActionButton)findViewById(R.id.addbutton);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,18 +191,32 @@ public class PatientHomePageActivity extends AppCompatActivity {
     {
         ConstraintSet set  = new ConstraintSet();
         FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.UpcomingConsultationContainer);
+        FragmentContainerView imv2 = (FragmentContainerView)findViewById(R.id.RecentConsultationContainer);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0f;
         pagetitle.setText("Consultations");
+        pagetitle.startAnimation(fadeout);
+        pagetitle.startAnimation(fadein);
+        imv.startAnimation(fadeout);
+        imv.startAnimation(fadein);
+        imv2.startAnimation(fadeout);
+        imv2.startAnimation(fadein);
     }
 
     public void consultation_to_home()
     {
         ConstraintSet set  = new ConstraintSet();
         FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.UpcomingConsultationContainer);
+        FragmentContainerView imv2 = (FragmentContainerView)findViewById(R.id.RecentConsultationContainer);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0.42f;
         pagetitle.setText("Home");
+        pagetitle.startAnimation(fadeout);
+        pagetitle.startAnimation(fadein);
+        imv.startAnimation(fadeout);
+        imv.startAnimation(fadein);
+        imv2.startAnimation(fadeout);
+        imv2.startAnimation(fadein);
     }
 
     private void onAddButtonClicked(){

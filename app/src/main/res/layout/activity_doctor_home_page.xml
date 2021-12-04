@@ -38,7 +38,9 @@
             android:paddingVertical="10dp"
             app:itemIconTint="@color/nav_item_color_state"
             app:itemTextColor="@color/nav_item_color_state"
-            app:menu="@menu/doctor_bottom_nav_menu" />
+            app:menu="@menu/doctor_bottom_nav_menu"
+
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -60,7 +62,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.782" />
+                app:layout_constraintVertical_bias="0.782"
+                />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/searchpatientbtn"
