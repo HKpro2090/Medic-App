@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="?attr/shape_fill_color"
+    app:cardCornerRadius="8dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/peoplephotos"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/app_name"
+            android:padding="1dp"
+            app:shapeAppearance="@style/Circular"
+            app:strokeColor="#707070"
+            app:strokeWidth="0.5dp" />
+
+        <TextView
+            android:id="@+id/peoplename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/peoplephotos"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="?attr/text_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/peoplemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/peoplename"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@id/peoplephotos"
+            android:drawablePadding="2dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="?attr/text_color" />
+
+        <TextView
+            android:id="@+id/peoplework"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/peoplemail"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@id/peoplephotos"
+            android:drawablePadding="2dp"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="?attr/text_color" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
