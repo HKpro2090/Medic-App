@@ -47,6 +47,7 @@ public class ResetPasswordFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_reset_password, container, false);
         Button fpassbtn=(Button)view.findViewById(R.id.resetPassEmailButton);
+        Button cancelbtn=(Button)view.findViewById(R.id.rpasscancel);
         edit_reset_pass_email = (EditText) view.findViewById(R.id.resetPassEmailField);
 
         try {
@@ -152,6 +153,20 @@ public class ResetPasswordFragment extends Fragment {
                 }catch(Exception err){
                     Toast.makeText(getContext(), err.toString(), Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        cancelbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).imageresize(0.32f);
+                ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
+                ((MainActivity)getActivity()).makefragmentbig(0.54f);
+                FragmentManager m=getFragmentManager();
+                FragmentTransaction ft=m.beginTransaction();
+                ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
+                ft.replace(R.id.RegistrationFrame,new LoginFragment());
+                ft.commit();
             }
         });
 

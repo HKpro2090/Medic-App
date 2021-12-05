@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
     String patient_email,doctor_email,doctor_name,consultation_date,slot_details,consultation_status,appointment_id,consultation_symptoms="";
     TextView text_doc_name,text_date,text_slot,text_slot_status,text_consultation_symptoms;
     Button cancel_appointment;
-
+    ImageView dp;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
@@ -45,7 +46,8 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
         text_consultation_symptoms = (TextView) findViewById(R.id.upcsymtoms);
 
         cancel_appointment = (Button) findViewById(R.id.CancelConsultationButton);
-
+        dp=(ImageView)findViewById(R.id.doctorinfoimge);
+        dp.setImageResource(R.drawable.patient1);
         Intent data_in = getIntent();
         patient_email = data_in.getStringExtra("patient_email");
         doctor_email = data_in.getStringExtra("doc_email");

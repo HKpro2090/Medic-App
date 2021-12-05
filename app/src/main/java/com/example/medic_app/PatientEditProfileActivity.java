@@ -211,7 +211,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 selectImage();
-                Toast.makeText(getApplicationContext(),"button works",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"button works",Toast.LENGTH_LONG).show();
             }
         });
 

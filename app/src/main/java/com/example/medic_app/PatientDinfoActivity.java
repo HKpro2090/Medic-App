@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,7 +37,8 @@ public class PatientDinfoActivity extends AppCompatActivity {
         patient_email=i.getStringExtra("email");
         doc_email=i.getStringExtra("doc_email");
         doc_name = i.getStringExtra("doc_name");
-
+        doc_image=(ImageView)findViewById(R.id.doctorinfoimge);
+        doc_image.setImageResource(R.drawable.patient1);
 //        int image=i.getIntExtra("dp",R.drawable.patient2);
 //        doc_image=(ImageView)findViewById(R.id.doctorinfoimge);
 //        doc_image.setImageResource(image);

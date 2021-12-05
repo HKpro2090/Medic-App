@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
     Spinner spinner_doc_list,spinner_slot_list,spinner_doc_dept_list;
     EditText edit_symptoms;
     TextView text_doc_avail_dates;
-
+    ImageView docdp;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
@@ -103,7 +104,8 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
         spinner_doc_dept_list = (Spinner)findViewById(R.id.new_consul_doc_department_spinner);
         spinner_doc_list = (Spinner)findViewById(R.id.new_consul_doc_spinner);
         spinner_slot_list = (Spinner)findViewById(R.id.time_slot_spinner);
-
+        docdp=(ImageView)findViewById(R.id.PatientProfilePic);
+        docdp.setImageResource(R.drawable.patient1);
         doc_list_adap = new ArrayAdapter(this,R.layout.my_selected_item);
         slot_list_adap = new ArrayAdapter(this, R.layout.my_selected_item);
         doc_dept_list_adap = new ArrayAdapter(this,R.layout.my_selected_item,doc_dept);
@@ -291,8 +293,8 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                     selected_slot_details = slot_list_adap.getItem(position);
                     String[] selected_slot_temp = selected_slot_details.split(" ");
                     selected_slot = selected_slot_temp[0] + selected_slot_temp[1];
-                    Toast.makeText(getApplicationContext(), doc_email + "\n" + doc_name + "\n" + patient_email + "\n" + selected_date +
-                            "\n" + selected_slot_details + " selected.", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), doc_email + "\n" + doc_name + "\n" + patient_email + "\n" + selected_date +
+//                            "\n" + selected_slot_details + " selected.", Toast.LENGTH_SHORT).show();
 
                 }
 

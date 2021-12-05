@@ -192,6 +192,8 @@ public class PatientHomePageActivity extends AppCompatActivity {
         ConstraintSet set  = new ConstraintSet();
         FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.UpcomingConsultationContainer);
         FragmentContainerView imv2 = (FragmentContainerView)findViewById(R.id.RecentConsultationContainer);
+        TextView tv=(TextView)findViewById(R.id.textView);
+        tv.setVisibility(View.INVISIBLE);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0f;
         pagetitle.setText("Consultations");
@@ -211,6 +213,8 @@ public class PatientHomePageActivity extends AppCompatActivity {
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0.42f;
         pagetitle.setText("Home");
+        TextView tv=(TextView)findViewById(R.id.textView);
+        tv.setVisibility(View.VISIBLE);
         pagetitle.startAnimation(fadeout);
         pagetitle.startAnimation(fadein);
         imv.startAnimation(fadeout);
