@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -61,14 +63,17 @@ public class PatientEditProfileActivity extends AppCompatActivity {
     ArrayList<String> epbg = new ArrayList<>();
     ArrayList<String> epgender = new ArrayList<>();
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_edit_profile);
 
-        Intent in = getIntent();
-        email=in.getStringExtra("email");
-
+        //Intent in = getIntent();
+        shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        email = shp.getString("username","");
         dp=(ImageView) findViewById(R.id.PatientEditDP);
         dp.setImageResource(patientdp);
         pname=(EditText) findViewById(R.id.patientProfileName);

@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -47,14 +49,19 @@ public class PatientHomePageActivity extends AppCompatActivity {
     Animation fadein;
     Animation fadeout;
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent email_data  = getIntent();
-        email = email_data.getStringExtra(e_key);
+        //Intent email_data  = getIntent();
+        //email = email_data.getStringExtra(e_key);
+        shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        email = shp.getString("username","");
 
         setContentView(R.layout.activity_home_page);
         ImageView im=(ImageView)findViewById(R.id.PatientProfilePic);
@@ -69,7 +76,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent patient_settings_page = new Intent(getApplicationContext(), SettingsPageActivity.class);
-                patient_settings_page.putExtra(e_key,email);
+                //patient_settings_page.putExtra(e_key,email);
                 startActivity(patient_settings_page);
             }
         });
@@ -82,15 +89,15 @@ public class PatientHomePageActivity extends AppCompatActivity {
         fromBottomleft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom_left);
         fadein = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_in);
         fadeout = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
-        FloatingActionButton b=(FloatingActionButton)findViewById(R.id.addbutton);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in=new Intent(getApplicationContext(),NewConsultationActivity.class);
-                in.putExtra(e_key,email);
-                startActivity(in);
-            }
-        });
+//        FloatingActionButton b=(FloatingActionButton)findViewById(R.id.addbutton);
+//        b.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent in=new Intent(getApplicationContext(),NewConsultationActivity.class);
+//                //in.putExtra(e_key,email);
+//                startActivity(in);
+//            }
+//        });
 
         searchNewBtn = (FloatingActionButton)findViewById(R.id.addbutton);
         searchNewBtn.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +112,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(),"Search Doctor!",Toast.LENGTH_LONG).show();
                 Intent i=new Intent(getApplicationContext(),PatientDsearchActivity.class);
-                i.putExtra(e_key,email);
+                //i.putExtra(e_key,email);
                 startActivity(i);
             }
         });
@@ -114,7 +121,7 @@ public class PatientHomePageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in=new Intent(getApplicationContext(),NewConsultationActivity.class);
-                in.putExtra(e_key,email);
+                //in.putExtra(e_key,email);
                 startActivity(in);
             }
         });

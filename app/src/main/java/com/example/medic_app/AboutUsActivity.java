@@ -27,7 +27,5 @@ public class AboutUsActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         developerRV.setLayoutManager(linearLayoutManager);
         developerRV.setAdapter(developerAdapter);
-
-
     }
 }

@@ -3,7 +3,9 @@ package com.example.medic_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -28,13 +30,17 @@ public class PatientDinfoActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_dinfo);
 
         Intent i=getIntent();
-        patient_email=i.getStringExtra("email");
+        shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        patient_email = shp.getString("username","");
         doc_email=i.getStringExtra("doc_email");
         doc_name = i.getStringExtra("doc_name");
         doc_image=(ImageView)findViewById(R.id.doctorinfoimge);

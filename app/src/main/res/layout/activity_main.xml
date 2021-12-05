@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:alpha="1"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.32"
@@ -40,6 +41,22 @@
         app:srcCompat="@drawable/loginpage"
         tools:ignore="ImageContrastCheck" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/welcomeView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Apptitle"
+        app:layout_constraintVertical_bias="0.0"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/dcoa" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/RegistrationFrame"
         android:layout_width="match_parent"
@@ -48,7 +65,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeView" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/successView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Apptitle"
+        app:layout_constraintVertical_bias="0.524"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/success" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

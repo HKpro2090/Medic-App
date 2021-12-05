@@ -3,7 +3,9 @@ package com.example.medic_app;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -41,6 +43,9 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +54,9 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
         lv=(ListView)findViewById(R.id.doclistview);
         doctorArrayList=new ArrayList<Doctor>();
 
-        patient_email = getIntent().getStringExtra("email");
+        //patient_email = getIntent().getStringExtra("email");
+        shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        patient_email = shp.getString("username","");
 
         user_col.whereEqualTo(user_type_key,"Doctor").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override

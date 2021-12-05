@@ -159,8 +159,11 @@ public class ResetPasswordFragment extends Fragment {
         cancelbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).imageresize(0.32f);
-                ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
+                //((MainActivity)getActivity()).imageresize(0.32f);
+                //((MainActivity)getActivity()).animationonoff(false);
+
+                ((MainActivity)getActivity()).reloadimg(R.raw.dcoa);
+                ((MainActivity)getActivity()).animationonoff(true);
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();

@@ -5,8 +5,10 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -82,13 +84,17 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
 
     ArrayAdapter<String> doc_list_adap,slot_list_adap,doc_dept_list_adap;
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_consultation);
 
-        patient_email = getIntent().getStringExtra("email");
+        //patient_email = getIntent().getStringExtra("email");
+        shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        patient_email = shp.getString("username","");
 
         if(getIntent().getStringExtra("doc_name")!=null){
             doc_name=getIntent().getStringExtra("doc_name");

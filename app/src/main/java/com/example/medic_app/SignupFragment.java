@@ -70,7 +70,7 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).imageresize(0.32f);
-                ((MainActivity)getActivity()).reloadimg(R.drawable.loginpage);
+                ((MainActivity)getActivity()).reloadimg(R.raw.dcoa);
                 ((MainActivity)getActivity()).makefragmentbig(0.54f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();

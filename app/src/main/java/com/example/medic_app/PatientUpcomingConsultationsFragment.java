@@ -1,6 +1,8 @@
 package com.example.medic_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -36,6 +38,9 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
     PatientUpcomingListAdapter lv_adapter;
     ListView lv;
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +49,9 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_patient_upcoming_consultations, container, false);
 
         try {
-            patient_email = getArguments().getString(e_key);
+            //patient_email = getArguments().getString(e_key);
+            shp = getActivity().getSharedPreferences("sp", Context.MODE_PRIVATE);
+            patient_email = shp.getString("username","");
         }
         catch (Exception e)
         {
@@ -90,7 +97,7 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
             }
         });
 
-        View empty_view = view.findViewById(R.id.empty1);
+        View empty_view = view.findViewById(R.id.empty);
         lv.setEmptyView(empty_view);
         lv.setAdapter(lv_adapter);
 

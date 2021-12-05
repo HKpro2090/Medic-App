@@ -1,6 +1,8 @@
 package com.example.medic_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -41,14 +45,18 @@ public class LoginFragment extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+    boolean autologin;
+    private static int SPLASH_SCREEN_TIME_OUT=2250;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.login_fragment_layout, container, false);
+        shp = getContext().getSharedPreferences("sp", Context.MODE_PRIVATE);
+
         // Inflate the layout for this fragment
-
-
-
 
         edit_email = (EditText) view.findViewById(R.id.EmailField);
         edit_password = (EditText) view.findViewById(R.id.PasswordField);
@@ -62,7 +70,17 @@ public class LoginFragment extends Fragment {
         } catch (Exception bundle_empty){
             email="";
             //Toast.makeText(getActivity(), bundle_empty.toString(), Toast.LENGTH_LONG).show();
+        }
 
+        if(!shp.contains("intialized")){
+            autologin = false;
+        }
+        else{
+            autologin = true;
+            //Toast.makeText(getContext(),shp.getString("username",""),Toast.LENGTH_LONG).show();
+            edit_email.setText(shp.getString("username",""));
+            edit_password.setText(shp.getString("passwd",""));
+            signfunction(true,shp.getString("type",""));
         }
 
         Button sgnupbtn=(Button)view.findViewById(R.id.SignUpButton);
@@ -70,7 +88,7 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).imageresize(0f);
-                //((MainActivity)getActivity()).makeimgempty();
+                ((MainActivity)getActivity()).makeimgempty();
                 ((MainActivity)getActivity()).makefragmentbig(0.77f);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
@@ -87,8 +105,10 @@ public class LoginFragment extends Fragment {
                 Bundle email_trans =  new Bundle();
                 email_trans.putString("email",email);
                 //((MainActivity)getActivity()).imageresize(0.32f);
-                ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
+                ((MainActivity)getActivity()).reloadimg(R.raw.forgotpassword);
+                //((MainActivity)getActivity()).makeimgempty();
                 ((MainActivity)getActivity()).makefragmentbig(0.7f);
+                ((MainActivity)getActivity()).animationonoff(true);
                 FragmentManager m=getFragmentManager();
                 FragmentTransaction ft=m.beginTransaction();
                 ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
@@ -103,93 +123,7 @@ public class LoginFragment extends Fragment {
         sib.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View view) {
-                   //the below block of code is to bypass credentials by using doctor signin.
-                   //to be removed in final app
-                   if(doctor_btn.isChecked()){
-                       Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
-                       doctor_home.putExtra("email", email);
-                       startActivity(doctor_home);
-                       getActivity().finish();
-                   }
-                   //the above block of code is to bypass credentials by using doctor signin.
-                   //to be removed in final app
-
-
-                   try{
-
-                       email= edit_email.getText().toString().toLowerCase();
-                       password = edit_password.getText().toString();
-
-                       if (doctor_btn.isChecked()) {
-                           user_type = "Doctor";
-                       } else if (patient_btn.isChecked()) {
-                           user_type = "Patient";
-                       }
-
-                       form_validated=form_validation();
-
-                       if(form_validated){
-
-                           try {
-                               encrypted_password_login = ((MainActivity)getActivity()).encrypt_passwd(password);
-                           } catch (Error e) {
-                               Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
-                           }
-
-                           DocumentReference user_doc = user_col.document("user_"+email);
-                           user_doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                               @Override
-                               public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                   if (task.isSuccessful()) {
-                                       DocumentSnapshot document = task.getResult();
-
-                                       if (document.exists()) {
-                                           user_exists_check=true;
-
-
-                                           db_password = document.getData().get("password_key").toString();
-                                           db_usertype = document.getData().get("user_type_key").toString();
-
-
-                                           if(db_password.matches(encrypted_password_login)) {
-                                               Toast.makeText(getActivity(), "Login Successful!", Toast.LENGTH_SHORT).show();
-
-                                               if(user_type.matches("Patient")){
-                                                    Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
-                                                    patient_home.putExtra("email", email);
-                                                    startActivity(patient_home);
-                                                } else if(user_type.matches("Doctor")) {
-                                                   Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
-                                                   doctor_home.putExtra("email", email);
-                                                   startActivity(doctor_home);
-                                               }
-
-                                           }else{
-
-                                               edit_password.setError("Invalid Credentials! Try Again or reset password!.");
-                                           }
-                                       } else {
-                                           user_exists_check=false;
-                                           edit_email.setError("User doesn't exits! Sign up or retry with registered email id.");
-                                           Toast.makeText(getActivity(), "User Doesn't Exits!", Toast.LENGTH_SHORT).show();
-
-                                       }
-                                   } else {
-                                       Toast.makeText(getContext()," FireBase Connection ERROR!", Toast.LENGTH_LONG).show();
-                                   }
-                               }
-                           });
-
-                       }else
-                       {
-                           Toast.makeText(getContext(), "Enter Valid Details!", Toast.LENGTH_SHORT).show();
-                       }
-
-                   } catch (Exception err) {
-
-                       Toast.makeText(getContext(), err.toString(), Toast.LENGTH_LONG).show();
-                   }
-
+                   signfunction(false,"");
                }
             });
         return view;
@@ -218,4 +152,116 @@ public class LoginFragment extends Fragment {
     }
 
 
+    public void signfunction(boolean typeknown, String type)
+    {
+        //the below block of code is to bypass credentials by using doctor signin.
+        //to be removed in final app
+        if(doctor_btn.isChecked()){
+            Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
+            doctor_home.putExtra("email", email);
+            startActivity(doctor_home);
+            getActivity().finish();
+        }
+        //the above block of code is to bypass credentials by using doctor signin.
+        //to be removed in final app
+
+
+        try{
+
+                email = edit_email.getText().toString().toLowerCase();
+                password = edit_password.getText().toString();
+
+            if(typeknown == false) {
+                if (doctor_btn.isChecked()) {
+                    user_type = "Doctor";
+                } else if (patient_btn.isChecked()) {
+                    user_type = "Patient";
+                }
+            }
+            else{
+                user_type = type;
+            }
+
+            if(!autologin) {
+                ed = shp.edit();
+                ed.putBoolean("intialized",true);
+                ed.putString("username",email);
+                ed.putString("passwd",password);
+                ed.putString("type",user_type);
+                ed.commit();
+            }
+
+            form_validated=form_validation();
+
+            if(form_validated){
+
+                try {
+                    encrypted_password_login = ((MainActivity)getActivity()).encrypt_passwd(password);
+                } catch (Error e) {
+                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+                }
+
+                DocumentReference user_doc = user_col.document("user_"+email);
+                user_doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+
+                            if (document.exists()) {
+                                user_exists_check=true;
+
+
+                                db_password = document.getData().get("password_key").toString();
+                                db_usertype = document.getData().get("user_type_key").toString();
+
+
+                                if(db_password.matches(encrypted_password_login)) {
+                                    if(!autologin)
+                                        Toast.makeText(getActivity(), "Login Successful!", Toast.LENGTH_LONG).show();
+                                    else
+                                        Toast.makeText(getActivity(), "AutoLogin Successful!", Toast.LENGTH_LONG).show();
+                                    if(user_type.matches("Patient")){
+                                        ((MainActivity)getActivity()).successviewenabler();
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
+                                                //patient_home.putExtra("email", email);
+                                                startActivity(patient_home);
+                                            }
+                                        },SPLASH_SCREEN_TIME_OUT);
+
+                                    } else if(user_type.matches("Doctor")) {
+                                        Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
+                                        doctor_home.putExtra("email", email);
+                                        startActivity(doctor_home);
+                                    }
+
+                                }else{
+
+                                    edit_password.setError("Invalid Credentials! Try Again or reset password!.");
+                                }
+                            } else {
+                                user_exists_check=false;
+                                edit_email.setError("User doesn't exits! Sign up or retry with registered email id.");
+                                Toast.makeText(getActivity(), "User Doesn't Exits!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        } else {
+                            Toast.makeText(getContext()," FireBase Connection ERROR!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+            }else
+            {
+                Toast.makeText(getContext(), "Enter Valid Details!", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception err) {
+
+            Toast.makeText(getContext(), err.toString(), Toast.LENGTH_LONG).show();
+        }
+    }
 }

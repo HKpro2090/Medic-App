@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.common.hash.Hashing;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void imageresize(float f){
         ConstraintSet set  = new ConstraintSet();
-        ImageView imv = (ImageView)findViewById(R.id.imageView);
+        LottieAnimationView imv = (LottieAnimationView) findViewById(R.id.welcomeView);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
 
         ValueAnimator va = ValueAnimator.ofFloat(previousvalueimg,f);
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void makeimgempty()
     {
-        ImageView imv = (ImageView) findViewById(R.id.imageView);
+        LottieAnimationView imv = (LottieAnimationView) findViewById(R.id.welcomeView);
         imv.setImageResource(0);
     }
     public void makefragmentbig(float f)
@@ -105,8 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void reloadimg(int img)
     {
-        ImageView imv = (ImageView) findViewById(R.id.imageView);
-        imv.setImageResource(img);
+
+        LottieAnimationView imv = (LottieAnimationView) findViewById(R.id.welcomeView);
+        imv.pauseAnimation();
+        imv.setAnimation(img);
+        imv.playAnimation();
     }
 
     public String encrypt_passwd(String passwd) {
@@ -147,5 +151,27 @@ public class MainActivity extends AppCompatActivity {
         random_password=sb.toString();
         return random_password;
 
+    }
+
+    public void animationonoff(boolean val)
+    {
+        if (val)
+        {
+            LottieAnimationView lottieAnimationView = findViewById(R.id.welcomeView);
+            lottieAnimationView.setVisibility(View.VISIBLE);
+            lottieAnimationView.playAnimation();
+        }
+        else{
+            LottieAnimationView lottieAnimationView = findViewById(R.id.welcomeView);
+            lottieAnimationView.setVisibility(View.INVISIBLE);
+            lottieAnimationView.pauseAnimation();
+        }
+    }
+
+    public void successviewenabler()
+    {
+        LottieAnimationView successview = (LottieAnimationView) findViewById(R.id.successView);
+        successview.setVisibility(View.VISIBLE);
+        successview.playAnimation();
     }
 }

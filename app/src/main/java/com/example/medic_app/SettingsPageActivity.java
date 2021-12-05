@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -33,20 +35,25 @@ public class SettingsPageActivity extends AppCompatActivity {
     CollectionReference user_col = db.collection("users");
     TextView user_text;
     SwitchCompat dmode;
+
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_page);
 
         Intent intent = getIntent();
-        email = intent.getStringExtra(e_key);
+        //email = intent.getStringExtra(e_key);
+        shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        email = shp.getString("username","");
 
         ImageView editprofile=(ImageView)findViewById(R.id.imageView3);
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),PatientEditProfileActivity.class);
-                i.putExtra(e_key,email);
+                //i.putExtra(e_key,email);
                 startActivity(i);
             }
         });
@@ -76,6 +83,12 @@ public class SettingsPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 logoutAlert();
+                ed = shp.edit();
+                ed.remove("intialized");
+                ed.remove("username");
+                ed.remove("passwd");
+                ed.remove("type");
+                ed.apply();
             }
         });
 
