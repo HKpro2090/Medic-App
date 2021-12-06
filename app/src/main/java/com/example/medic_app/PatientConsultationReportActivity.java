@@ -56,16 +56,16 @@ public class PatientConsultationReportActivity extends AppCompatActivity {
                         prescription_meds = document.getString("doctor_prescription_key");
 
                         if(consultation_notes.equals("")){
-                            consultation_notes = "Notes / Diagnosis";
+                            consultation_notes = "-";
                         }
                         else{
-                            text_consultation_notes.setTextColor(Color.parseColor("#FFFFFF"));
+                            //text_consultation_notes.setTextColor(Color.parseColor("#FFFFFF"));
                         }
                         if (prescription_meds.equals("")){
-                            prescription_meds = "Medicines";
+                            prescription_meds = "-";
                         }
                         else{
-                            text_prescription_meds.setTextColor(Color.parseColor("#FFFFFF"));
+                            //text_prescription_meds.setTextColor(Color.parseColor("#FFFFFF"));
                         }
 
                         text_doc_name.setText(doctor_name);

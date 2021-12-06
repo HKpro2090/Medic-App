@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -62,7 +63,6 @@ public class PatientHomePageActivity extends AppCompatActivity {
         //email = email_data.getStringExtra(e_key);
         shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
         email = shp.getString("username","");
-
         setContentView(R.layout.activity_home_page);
         ImageView im=(ImageView)findViewById(R.id.PatientProfilePic);
         im.setImageResource(R.drawable.patient1);
@@ -149,6 +149,17 @@ public class PatientHomePageActivity extends AppCompatActivity {
             }
         });
 
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.refreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(getApplicationContext(),"Refreshed",Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+                loadPatUpConsulFragment(new PatientUpcomingConsultationsFragment());
+                loadPatRecentConsulFragment (new PatientRecentConsultationsFragment());
+            }
+        });
+
     }
 
     public void loadPatUpConsulFragment(Fragment fragment)
@@ -196,11 +207,13 @@ public class PatientHomePageActivity extends AppCompatActivity {
 
     public void home_to_consultation()
     {
+        PatientRecentConsultationsFragment.homeornot = false;
+        loadPatRecentConsulFragment(new PatientRecentConsultationsFragment());
         ConstraintSet set  = new ConstraintSet();
         FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.UpcomingConsultationContainer);
         FragmentContainerView imv2 = (FragmentContainerView)findViewById(R.id.RecentConsultationContainer);
-        TextView tv=(TextView)findViewById(R.id.textView);
-        tv.setVisibility(View.INVISIBLE);
+        //TextView tv=(TextView)findViewById(R.id.textView);
+        //tv.setVisibility(View.INVISIBLE);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0f;
         pagetitle.setText("Consultations");
@@ -210,24 +223,33 @@ public class PatientHomePageActivity extends AppCompatActivity {
         imv.startAnimation(fadein);
         imv2.startAnimation(fadeout);
         imv2.startAnimation(fadein);
+        //TextView tv=(TextView)findViewById(R.id.textView);
+        //tv.setVisibility(View.INVISIBLE);
+
     }
 
     public void consultation_to_home()
     {
+        PatientRecentConsultationsFragment.homeornot = true;
+        loadPatRecentConsulFragment(new PatientRecentConsultationsFragment());
         ConstraintSet set  = new ConstraintSet();
         FragmentContainerView imv = (FragmentContainerView) findViewById(R.id.UpcomingConsultationContainer);
         FragmentContainerView imv2 = (FragmentContainerView)findViewById(R.id.RecentConsultationContainer);
         ViewGroup.LayoutParams lp = (ConstraintLayout.LayoutParams)imv.getLayoutParams();
         ((ConstraintLayout.LayoutParams) lp).matchConstraintPercentHeight = 0.42f;
         pagetitle.setText("Home");
-        TextView tv=(TextView)findViewById(R.id.textView);
-        tv.setVisibility(View.VISIBLE);
+        //TextView tv=(TextView)findViewById(R.id.textView);
+        //tv.setVisibility(View.VISIBLE);
         pagetitle.startAnimation(fadeout);
         pagetitle.startAnimation(fadein);
         imv.startAnimation(fadeout);
         imv.startAnimation(fadein);
         imv2.startAnimation(fadeout);
         imv2.startAnimation(fadein);
+        PatientRecentConsultationsFragment.homeornot = true;
+        loadPatRecentConsulFragment(new PatientRecentConsultationsFragment());
+        //TextView tv=(TextView)findViewById(R.id.textView);
+        //tv.setVisibility(View.VISIBLE);
     }
 
     private void onAddButtonClicked(){

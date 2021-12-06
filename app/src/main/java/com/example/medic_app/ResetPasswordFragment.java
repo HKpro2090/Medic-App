@@ -104,7 +104,7 @@ public class ResetPasswordFragment extends Fragment {
 
 
                                                             ((MainActivity)getActivity()).imageresize(0.32f);
-                                                            ((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
+                                                            //((MainActivity)getActivity()).reloadimg(R.drawable.forgot_password);
                                                             ((MainActivity)getActivity()).makefragmentbig(0.77f);
                                                             FragmentManager m=getFragmentManager();
                                                             FragmentTransaction ft=m.beginTransaction();
