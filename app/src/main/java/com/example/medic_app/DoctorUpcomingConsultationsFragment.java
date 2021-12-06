@@ -86,7 +86,12 @@ public class DoctorUpcomingConsultationsFragment extends Fragment {
         dlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent upc_consul = new Intent(getContext(), DoctorUpcomingConsultationActivity.class);
+                upc_consul.putExtra("doc_email", doc_email);
+                upc_consul.putExtra("appointment_id", appointment_id.get(position));
+                upc_consul.putExtra("patient_name", patients_name.get(position));
+                upc_consul.putExtra("patient_email", patients_email.get(position));
+                startActivity(upc_consul);
             }
         });
 

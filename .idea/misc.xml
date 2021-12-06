@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_consultation_report.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_prescribe_medicine.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_upcoming_consultation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_new_consultation.xml" value="0.2015625" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_dinfo.xml" value="0.2015625" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.18802083333333333" />
@@ -23,7 +26,6 @@
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/drawable/textview_border.xml" value="0.21837606837606838" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/about_us_card_view.xml" value="0.264" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_about_us.xml" value="0.264" />
-        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_doctor_consultation_report.xml" value="0.176" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_doctor_home_page.xml" value="0.40359897172236503" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_doctor_new_session.xml" value="0.4" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_doctor_prescribe_medicine.xml" value="0.176" />
@@ -39,7 +41,7 @@
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_dsearch.xml" value="0.264" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_info_page.xml" value="0.2" />
-        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_upcoming_consultation.xml" value="0.152" />
+        <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_patient_upcoming_consultation.xml" value="0.4" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_profile_change_password.xml" value="0.264" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_settings_page.xml" value="0.4" />
         <entry key="..\:/Users/HariK/AndroidStudioProjects/MedicApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
