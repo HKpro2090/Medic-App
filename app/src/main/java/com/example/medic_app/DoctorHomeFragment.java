@@ -61,20 +61,20 @@ public class DoctorHomeFragment extends Fragment {
         email_out.putString(e_key,email);
         fragment.setArguments(email_out);
         fragmentTransaction.replace(R.id.DoctorUpcomingConsultationContainer, fragment);
-        fragmentTransaction.setReorderingAllowed(false).commit();
+        fragmentTransaction.setReorderingAllowed(true).commit();
     }
     public void loadDocRecentConsulFragment(Fragment fragment)
     {
         dha=(DoctorHomePageActivity) getActivity();
         e_key= dha.e_key;
         email=dha.email;
-        FragmentManager fm =getChildFragmentManager();
+        FragmentManager fm = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         Bundle email_out = new Bundle();
         email_out.putString(e_key,email);
         fragment.setArguments(email_out);
         fragmentTransaction.replace(R.id.DoctorRecentConsultationContainer, fragment);
-        fragmentTransaction.setReorderingAllowed(false).commit();
+        fragmentTransaction.setReorderingAllowed(true).commit();
     }
 
 }
