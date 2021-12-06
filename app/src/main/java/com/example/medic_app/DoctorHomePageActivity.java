@@ -109,7 +109,7 @@ public class DoctorHomePageActivity extends AppCompatActivity {
                         break;
 
 
-                    case (R.id.miConsultation):
+                    case (R.id.miSessions):
                         load_doc_sessions_frag(new DoctorSessionsFragment());
                         break;
                 }
