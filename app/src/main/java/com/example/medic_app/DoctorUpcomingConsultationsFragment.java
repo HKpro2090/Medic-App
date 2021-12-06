@@ -79,18 +79,18 @@ public class DoctorUpcomingConsultationsFragment extends Fragment {
                     dlv_adapter.notifyDataSetChanged();
                     dlv.setAdapter(dlv_adapter);
 
-                    dlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            Intent upc_consul = new Intent(getContext(), Patient_upcoming_consultation_activity.class);
-                            upc_consul.putExtra("patient_email", patient_email);
-                            upc_consul.putExtra("appointment_id", appointment_id.get(position));
-                            upc_consul.putExtra("doc_name", patients_name.get(position));
-                            upc_consul.putExtra("doc_email", patients_email.get(position));
-                            startActivity(upc_consul);
-                            //Toast.makeText(getContext(), "Clicked Item "+position, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+//                    dlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                            Intent upc_consul = new Intent(getContext(), Patient_upcoming_consultation_activity.class);
+//                            upc_consul.putExtra("patient_email", patient_email);
+//                            upc_consul.putExtra("appointment_id", appointment_id.get(position));
+//                            upc_consul.putExtra("doc_name", patients_name.get(position));
+//                            upc_consul.putExtra("doc_email", patients_email.get(position));
+//                            startActivity(upc_consul);
+//                            //Toast.makeText(getContext(), "Clicked Item "+position, Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
 
                 } else {
                     Toast.makeText(getContext(), "Firebase Connection Error!", Toast.LENGTH_LONG).show();
