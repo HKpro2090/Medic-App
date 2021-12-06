@@ -116,10 +116,8 @@ public class DoctorPsearchListAdapter extends BaseAdapter implements Filterable 
 
                 Intent in=new Intent(context.getApplicationContext(),Doctor_PatientInfoPageActivity.class);
 
-                in.putExtra("doc_email",doc_email);
-                in.putExtra("doc_department",doc_department);
-                in.putExtra("doc_name",doc_name);
-                in.putExtra("email", doctor_email);
+                in.putExtra("patient_email",doc_email);
+                in.putExtra("patient_name",doc_name);
 
                 context.startActivity(in);
                 //Toast.makeText(context.getApplicationContext(),doctorArrayList.get(position).getName(),Toast.LENGTH_LONG).show();
@@ -136,10 +134,8 @@ public class DoctorPsearchListAdapter extends BaseAdapter implements Filterable 
 
                 Intent in=new Intent(context.getApplicationContext(),Doctor_PatientInfoPageActivity.class);
 
-                in.putExtra("doc_email",doc_email);
-                in.putExtra("doc_department",doc_department);
-                in.putExtra("doc_name",doc_name);
-                in.putExtra("email", doctor_email);
+                in.putExtra("patient_email",doc_email);
+                in.putExtra("patient_name",doc_name);
 
                 //Toast.makeText(context.getApplicationContext(),doc_email,Toast.LENGTH_LONG).show();
                 context.startActivity(in);

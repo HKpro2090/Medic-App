@@ -57,7 +57,6 @@ public class DoctorRecentListAdapter extends ArrayAdapter<String> {
                 Intent in=new Intent(getContext(),Doctor_PatientInfoPageActivity.class);
                 in.putExtra("patient_email",patient_email.get(position));
                 in.putExtra("patient_name",maintitle.get(position));
-                in.putExtra("doc_email",doc_email);
                 context.startActivity(in);
             }
         });

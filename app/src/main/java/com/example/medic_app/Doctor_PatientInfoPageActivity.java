@@ -37,7 +37,6 @@ public class Doctor_PatientInfoPageActivity extends AppCompatActivity {
         Intent in = getIntent();
         patient_email=in.getStringExtra("patient_email");
         name=in.getStringExtra("patient_name");
-        doc_email=in.getStringExtra("doc_email");
 
         //placeholder values
 //        name="ajitesh";
@@ -56,6 +55,7 @@ public class Doctor_PatientInfoPageActivity extends AppCompatActivity {
         dp=(ShapeableImageView)findViewById(R.id.patientinfoimge);
 
 
+        Toast.makeText(getApplicationContext(), patient_email, Toast.LENGTH_SHORT).show();
         user_col.document("user_"+patient_email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
