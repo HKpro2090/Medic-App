@@ -18,20 +18,28 @@ public class DoctorRecentListAdapter extends ArrayAdapter<String> {
     public Activity context;
     public ArrayList<String> maintitle;
     public ArrayList<String> subtitle;
-    public ArrayList<String> doc_email;
+    public ArrayList<String> patient_email;
     public ArrayList<Integer> imgid;
 
-    public String patient_email;
+    public String doc_email;
 
 
-    public DoctorRecentListAdapter(Fragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid, String patient_email, ArrayList doc_email) {
+    public DoctorRecentListAdapter(Fragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid, ArrayList patient_email,String doctor_email ) {
         super(context.getActivity(), R.layout.doctorrecentconsultationlist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;
         this.subtitle=subtitle;
         this.imgid=imgid;
         this.patient_email=patient_email;
-        this.doc_email=doc_email;
+        this.doc_email=doctor_email;
+    }
+
+    public void setdata(ArrayList maintitle, ArrayList subtitle, ArrayList imgid, ArrayList patient_email,String doctor_email ){
+        this.maintitle=maintitle;
+        this.subtitle=subtitle;
+        this.imgid=imgid;
+        this.patient_email=patient_email;
+        this.doc_email=doctor_email;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
@@ -43,16 +51,16 @@ public class DoctorRecentListAdapter extends ArrayAdapter<String> {
         titleText.setText(maintitle.get(position));
         subtitleText.setText(subtitle.get(position));
         imageView.setImageResource(imgid.get(position));
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent in=new Intent(getContext(),PatientDinfoActivity.class);
-//                in.putExtra("email",patient_email);
-//                in.putExtra("doc_name",maintitle.get(position));
-//                in.putExtra("doc_email",doc_email.get(position));
-//                context.startActivity(in);
-//            }
-//        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(getContext(),Doctor_PatientInfoPageActivity.class);
+                in.putExtra("patient_email",patient_email.get(position));
+                in.putExtra("patient_name",maintitle.get(position));
+                in.putExtra("doc_email",doc_email);
+                context.startActivity(in);
+            }
+        });
         return rowView;
 
     };
