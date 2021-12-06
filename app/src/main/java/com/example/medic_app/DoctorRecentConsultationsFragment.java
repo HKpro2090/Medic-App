@@ -31,7 +31,7 @@ public class DoctorRecentConsultationsFragment extends Fragment {
     ArrayList<String> doctor_email = new ArrayList<>();
     ArrayList<Integer> imgid = new ArrayList<>();
 
-    PatientRecentListAdapter lv_adapter;
+    DoctorRecentListAdapter lv_adapter;
     ListView lv;
 
     @Override
@@ -56,7 +56,7 @@ public class DoctorRecentConsultationsFragment extends Fragment {
         imgid.add(R.drawable.patient1);
         imgid.add(R.drawable.patient2);
         imgid.add(R.drawable.patient1);
-        lv_adapter = new PatientRecentListAdapter(DoctorRecentConsultationsFragment.this,patients_name,appointment_date_slot,imgid,patient_email,doctor_email);
+        lv_adapter = new DoctorRecentListAdapter(this,patients_name,appointment_date_slot,imgid,patient_email,doctor_email);
         lv_adapter.notifyDataSetChanged();
         lv.setAdapter(lv_adapter);
 //        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

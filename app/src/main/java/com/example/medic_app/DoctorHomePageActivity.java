@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class DoctorHomePageActivity extends AppCompatActivity {
 
@@ -41,6 +43,8 @@ public class DoctorHomePageActivity extends AppCompatActivity {
     String email="";
     String e_key="email";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,72 +53,91 @@ public class DoctorHomePageActivity extends AppCompatActivity {
         try {
             Intent email_data = getIntent();
             email = email_data.getStringExtra(e_key);
-        }catch (Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        final FragmentManager fragmentManager = getSupportFragmentManager();
-        final Fragment fragment1 = new DoctorHomeFragment();
-        final Fragment fragment2 = new DoctorSessionsFragment();
-        NPTV = (TextView)findViewById(R.id.nptv);
-        SPTV = (TextView)findViewById(R.id.sptv);
+
+        NPTV = (TextView) findViewById(R.id.nptv);
+        SPTV = (TextView) findViewById(R.id.sptv);
         dbnv = (BottomNavigationView) findViewById(R.id.doctorbottombar);
-        dbnv.setSelectedItemId(R.id.miHome);
-        rotateOpen = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_open);
-        rotateClose = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_close);
-        toBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom);
-        fromBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom);
-        toBottomLeft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.to_bottom_left);
-        fromBottomleft = (Animation)AnimationUtils.loadAnimation(getApplicationContext(),R.anim.from_bottom_left);
+        load_doc_sessions_frag(new DoctorHomeFragment());
 
-        searchNewBtn = (FloatingActionButton)findViewById(R.id.addbutton);
+        dbnv.setSelectedItemId(R.id.miHome);
+        rotateOpen = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_open);
+        rotateClose = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_close);
+        toBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.to_bottom);
+        fromBottom = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_bottom);
+        toBottomLeft = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.to_bottom_left);
+        fromBottomleft = (Animation) AnimationUtils.loadAnimation(getApplicationContext(), R.anim.from_bottom_left);
+
+        searchNewBtn = (FloatingActionButton) findViewById(R.id.addbutton);
         searchNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onAddButtonClicked();
             }
         });
-        searchPatientBtn = (FloatingActionButton)findViewById(R.id.searchpatientbtn);
+        searchPatientBtn = (FloatingActionButton) findViewById(R.id.searchpatientbtn);
         searchPatientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Search Patient!",Toast.LENGTH_LONG).show();
-                Intent i=new Intent(getApplicationContext(),DoctorSearchPatientActivity.class);
-                i.putExtra(e_key,email);
+                Toast.makeText(getApplicationContext(), "Search Patient!", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getApplicationContext(), DoctorSearchPatientActivity.class);
+                i.putExtra(e_key, email);
                 startActivity(i);
             }
         });
-        newPatientBtn = (FloatingActionButton)findViewById(R.id.newsessionbtn);
+        newPatientBtn = (FloatingActionButton) findViewById(R.id.newsessionbtn);
         newPatientBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"New Session!",Toast.LENGTH_LONG).show();
-                Intent i=new Intent(getApplicationContext(),DoctorNewSessionActivity.class);
-                i.putExtra(e_key,email);
+                Toast.makeText(getApplicationContext(), "New Session!", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getApplicationContext(), DoctorNewSessionActivity.class);
+                i.putExtra(e_key, email);
                 startActivity(i);
             }
         });
 
-        dbnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+
+        dbnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item){
-                //Fragment fragment;
-                switch (item.getItemId())
-                {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
                     case (R.id.miHome):
-                        fragmentManager.beginTransaction().replace(R.id.DoctorHPContainer,fragment1).commit();
-                        //fragment = fragment1;
+                        load_doc_sessions_frag(new DoctorHomeFragment());
                         break;
 
 
-                    case (R.id.miSessions):
-                        fragmentManager.beginTransaction().replace(R.id.DoctorHPContainer,fragment2).commit();
-                        //fragment = fragment2;
-                        //home_to_sessions();
+                    case (R.id.miConsultation):
+                        load_doc_sessions_frag(new DoctorSessionsFragment());
                         break;
                 }
-                //fragmentManager.beginTransaction().replace(R.id.DoctorHPContainer,fragment).commit();
                 return true;
             }
         });
+
+    }
+
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item){
+//                //Fragment fragment;
+//
+//
+//                return true;
+//            }
+//        });
+//    }
+
+    public void load_doc_sessions_frag(Fragment fragment){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Bundle email_trans = new Bundle();
+        email_trans.putString(e_key,email);
+        fragment.setArguments(email_trans);
+        Toast.makeText(getApplicationContext(),"Inside load Fragment:"+email,Toast.LENGTH_LONG).show();
+        ft.replace(R.id.DoctorHPContainer,fragment);
+        ft.setReorderingAllowed(true).commit();
     }
 
     //Code to press back twice to exit.

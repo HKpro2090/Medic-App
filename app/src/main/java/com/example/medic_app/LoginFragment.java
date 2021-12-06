@@ -156,12 +156,12 @@ public class LoginFragment extends Fragment {
     {
         //the below block of code is to bypass credentials by using doctor signin.
         //to be removed in final app
-        if(doctor_btn.isChecked()){
-            Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
-            doctor_home.putExtra("email", email);
-            startActivity(doctor_home);
-            getActivity().finish();
-        }
+//        if(doctor_btn.isChecked()){
+//            Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
+//            doctor_home.putExtra("email", email);
+//            startActivity(doctor_home);
+//            getActivity().finish();
+//        }
         //the above block of code is to bypass credentials by using doctor signin.
         //to be removed in final app
 
@@ -221,7 +221,7 @@ public class LoginFragment extends Fragment {
                                         Toast.makeText(getActivity(), "Login Successful!", Toast.LENGTH_LONG).show();
                                     else
                                         Toast.makeText(getActivity(), "AutoLogin Successful!", Toast.LENGTH_LONG).show();
-                                    if(user_type.matches("Patient")){
+                                    if(db_usertype.matches("Patient")){
                                         ((MainActivity)getActivity()).successviewenabler();
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
@@ -232,10 +232,17 @@ public class LoginFragment extends Fragment {
                                             }
                                         },SPLASH_SCREEN_TIME_OUT);
 
-                                    } else if(user_type.matches("Doctor")) {
-                                        Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
-                                        doctor_home.putExtra("email", email);
-                                        startActivity(doctor_home);
+                                    } else if(db_usertype.matches("Doctor")) {
+
+                                        ((MainActivity)getActivity()).successviewenabler();
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
+                                                doctor_home.putExtra("email", email);
+                                                startActivity(doctor_home);
+                                            }
+                                        },SPLASH_SCREEN_TIME_OUT);
                                     }
 
                                 }else{
