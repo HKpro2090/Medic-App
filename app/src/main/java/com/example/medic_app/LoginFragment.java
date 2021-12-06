@@ -187,7 +187,7 @@ public class LoginFragment extends Fragment {
                 ed.putBoolean("intialized",true);
                 ed.putString("username",email);
                 ed.putString("passwd",password);
-                ed.putString("type",user_type);
+//                ed.putString("type",db_usertype);
                 ed.commit();
             }
 
@@ -214,7 +214,12 @@ public class LoginFragment extends Fragment {
 
                                 db_password = document.getData().get("password_key").toString();
                                 db_usertype = document.getData().get("user_type_key").toString();
-
+                                ed = shp.edit();
+//                                ed.putBoolean("intialized",true);
+//                                ed.putString("username",email);
+//                                ed.putString("passwd",password);
+                                ed.putString("type",db_usertype);
+                                ed.commit();
 
                                 if(db_password.matches(encrypted_password_login)) {
                                     if(!autologin)
