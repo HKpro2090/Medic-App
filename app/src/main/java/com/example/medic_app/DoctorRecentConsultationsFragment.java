@@ -36,7 +36,7 @@ public class DoctorRecentConsultationsFragment extends Fragment {
     ArrayList<String> appointment_date_slot = new ArrayList<>();
     ArrayList<String> appointment_id = new ArrayList<>();
 //    ArrayList<String> doctor_email = new ArrayList<>();
-    ArrayList<Integer> imgid = new ArrayList<>();
+    Integer imgid = 0;
 
     DoctorRecentListAdapter dlv_adapter;
     ListView dlv;
@@ -54,7 +54,7 @@ public class DoctorRecentConsultationsFragment extends Fragment {
             doc_email = "";
         }
         dlv=(ListView) view.findViewById(R.id.DocRecentConsultationList);
-        imgid.add(R.drawable.patient1);
+        imgid = (R.drawable.patient1);
         dlv_adapter = new DoctorRecentListAdapter(this,patients_name,appointment_date_slot,imgid,patients_email,doc_email);
 
 //        patients_name.add("Luke Skywalker");

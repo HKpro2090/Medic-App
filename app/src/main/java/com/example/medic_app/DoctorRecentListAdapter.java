@@ -19,12 +19,12 @@ public class DoctorRecentListAdapter extends ArrayAdapter<String> {
     public ArrayList<String> maintitle;
     public ArrayList<String> subtitle;
     public ArrayList<String> patient_email;
-    public ArrayList<Integer> imgid;
+    public Integer imgid;
 
     public String doc_email;
 
 
-    public DoctorRecentListAdapter(Fragment context, ArrayList maintitle, ArrayList subtitle, ArrayList imgid, ArrayList patient_email,String doctor_email ) {
+    public DoctorRecentListAdapter(Fragment context, ArrayList maintitle, ArrayList subtitle, Integer imgid, ArrayList patient_email,String doctor_email ) {
         super(context.getActivity(), R.layout.doctorrecentconsultationlist, maintitle);
         this.context=context.getActivity();
         this.maintitle=maintitle;
@@ -34,7 +34,7 @@ public class DoctorRecentListAdapter extends ArrayAdapter<String> {
         this.doc_email=doctor_email;
     }
 
-    public void setdata(ArrayList maintitle, ArrayList subtitle, ArrayList imgid, ArrayList patient_email,String doctor_email ){
+    public void setdata(ArrayList maintitle, ArrayList subtitle, Integer imgid, ArrayList patient_email,String doctor_email ){
         this.maintitle=maintitle;
         this.subtitle=subtitle;
         this.imgid=imgid;
@@ -50,7 +50,7 @@ public class DoctorRecentListAdapter extends ArrayAdapter<String> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.DoctorPhoto);
         titleText.setText(maintitle.get(position));
         subtitleText.setText(subtitle.get(position));
-        imageView.setImageResource(imgid.get(position));
+        imageView.setImageResource(imgid);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
