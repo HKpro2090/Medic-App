@@ -75,22 +75,23 @@ public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
                 }
                 else{
                     bookedSlots.remove(slots[position]);
-                    int nightModeFlags =
-                            getContext().getResources().getConfiguration().uiMode &
-                                    Configuration.UI_MODE_NIGHT_MASK;
-                    switch (nightModeFlags) {
-                        case Configuration.UI_MODE_NIGHT_YES:
-                            view.setBackground(getResources().getDrawable(R.drawable.textview_border));
-                            break;
-
-                        case Configuration.UI_MODE_NIGHT_NO:
-                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                            break;
-
-                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                            break;
-                    }
+                    view.setBackground(getResources().getDrawable(R.drawable.textview_border));
+//                    int nightModeFlags =
+//                            getContext().getResources().getConfiguration().uiMode &
+//                                    Configuration.UI_MODE_NIGHT_MASK;
+//                    switch (nightModeFlags) {
+//                        case Configuration.UI_MODE_NIGHT_YES:
+//                            view.setBackground(getResources().getDrawable(R.drawable.textview_border));
+//                            break;
+//
+//                        case Configuration.UI_MODE_NIGHT_NO:
+//                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//                            break;
+//
+//                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
+//                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//                            break;
+//                    }
 
                 }
             }

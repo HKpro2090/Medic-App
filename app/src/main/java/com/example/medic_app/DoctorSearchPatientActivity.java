@@ -61,6 +61,7 @@ public class DoctorSearchPatientActivity extends AppCompatActivity implements Se
         });
 
         adp=new DoctorPsearchListAdapter(this,doctorArrayList,patient_email);
+        lv.setEmptyView(findViewById(R.id.emptysearch2));
         lv.setAdapter(adp);
         lv.setTextFilterEnabled(true);
         setupSearchView();

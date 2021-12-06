@@ -11,6 +11,21 @@
         android:layout_height="match_parent">
 
         <!-- TODO: Update blank fragment layout -->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/empty4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DoctextView2"
+            app:layout_constraintVertical_bias="0.18"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/completed" />
+
         <TextView
             android:id="@+id/DoctextView2"
             android:layout_width="match_parent"
@@ -41,10 +56,11 @@
 
         <TextView
             android:id="@+id/Docempty"
-            android:text="No Upcoming Consultations"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="center"
+            android:text="No Upcoming Consultations"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.7"

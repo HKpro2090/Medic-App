@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/background_color"
     tools:context=".DoctorConsultationReportActivity">
 
     <TextView
         android:id="@+id/patientmedicines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="332dp"
+        android:layout_height="208dp"
         android:fontFamily="@font/nunito_bold"
+        android:padding="10dp"
         android:text="Medicines"
-        android:textColor="?attr/textfield_hint_color"
+        android:textColor="?attr/text_color"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="@+id/imageView11"
@@ -68,11 +70,12 @@
 
     <TextView
         android:id="@+id/patientnotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="312dp"
+        android:layout_height="126dp"
         android:fontFamily="@font/nunito_bold"
+        android:padding="10dp"
         android:text="Notes / Diagnosis"
-        android:textColor="?attr/textfield_hint_color"
+        android:textColor="?attr/text_color"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView10"
         app:layout_constraintEnd_toEndOf="@+id/imageView10"

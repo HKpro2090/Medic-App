@@ -58,6 +58,35 @@ public class DeveloperAdapter extends RecyclerView.Adapter<DeveloperAdapter.View
             developeremailTV = itemView.findViewById(R.id.peoplemail);
             developerWorkTV = itemView.findViewById(R.id.peoplework);
             developerIV = itemView.findViewById(R.id.peoplephotos);
+            itemView.setOnTouchListener(new OnSwipeTouchListener(context){
+                @Override
+                public void onSwipeLeft() {
+                    super.onSwipeLeft();
+                    AlertDialog.Builder builder=new AlertDialog.Builder(context);
+                    builder.setTitle("Confirm");
+                    builder.setMessage("Remove Contributors from about us?");
+                    builder.setCancelable(false);
+                    builder.setIcon(R.drawable.ic_baseline_exit_to_app_48);
+                    builder.setPositiveButton("Remove", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            int position=getPosition();
+                            developerModelArrayList.remove(position);
+                            notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, developerModelArrayList.size());
+                        }
+                    });
+                    builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alert=builder.create();
+                    alert.show();
+                }
+            });
+
         }
     }
 

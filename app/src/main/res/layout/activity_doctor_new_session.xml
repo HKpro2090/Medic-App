@@ -8,6 +8,23 @@
     android:padding="20dp"
     tools:context=".DoctorNewSessionActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/suceessco2"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:elevation="10dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.773"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/successcons"
+        app:lottie_speed="1.5" />
+
     <TextView
         android:id="@+id/newsessiontv"
         android:layout_width="wrap_content"
@@ -24,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.037" />
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -37,7 +54,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newsessiontv"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/newsession"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/session"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
@@ -51,6 +70,7 @@
         android:hint="Date (DD/MM/YY)"
         android:padding="10dp"
         android:textSize="16sp"
+        android:textColor="?attr/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.069"
@@ -64,7 +84,6 @@
         android:id="@+id/SessionsSelectFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/textview_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.4"

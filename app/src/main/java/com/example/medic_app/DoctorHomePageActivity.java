@@ -43,7 +43,7 @@ public class DoctorHomePageActivity extends AppCompatActivity {
     Animation fromBottomleft;
     String email="";
     String e_key="email";
-
+    public static boolean homeornot = true;
 
 
     @Override
@@ -107,11 +107,13 @@ public class DoctorHomePageActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case (R.id.miHome):
                         load_doc_sessions_frag(new DoctorHomeFragment());
+                        homeornot = true;
                         break;
 
 
                     case (R.id.miSessions):
                         load_doc_sessions_frag(new DoctorSessionsFragment());
+                        homeornot = false;
                         break;
                 }
                 return true;
@@ -124,7 +126,10 @@ public class DoctorHomePageActivity extends AppCompatActivity {
             public void onRefresh() {
                 Toast.makeText(getApplicationContext(),"Refreshed",Toast.LENGTH_LONG).show();
                 swipeRefreshLayout.setRefreshing(false);
-                load_doc_sessions_frag(new DoctorHomeFragment());
+                if(homeornot)
+                    load_doc_sessions_frag(new DoctorHomeFragment());
+                else
+                    load_doc_sessions_frag(new DoctorSessionsFragment());
             }
         });
 

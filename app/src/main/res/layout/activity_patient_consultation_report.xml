@@ -135,9 +135,10 @@
 
     <TextView
         android:id="@+id/doctornotes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="332dp"
+        android:layout_height="124dp"
         android:fontFamily="@font/nunito_bold"
+        android:padding="10dp"
         android:text="Notes / Diagnosis"
         android:textColor="?attr/text_color"
         android:textSize="16sp"
@@ -150,9 +151,10 @@
 
     <TextView
         android:id="@+id/doctormedicines"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="334dp"
+        android:layout_height="212dp"
         android:fontFamily="@font/nunito_bold"
+        android:padding="10dp"
         android:text="Medicines"
         android:textColor="?attr/text_color"
         android:textSize="16sp"

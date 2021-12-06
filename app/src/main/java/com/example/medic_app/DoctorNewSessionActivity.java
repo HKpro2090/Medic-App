@@ -11,11 +11,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -51,6 +53,8 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
     int Year, Month, Day;
 
 //    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+    private static int SPLASH_SCREEN_TIME_OUT=2250;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -163,13 +167,22 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
                 user_col.document("user_"+doctor_email).collection("Sessions").document(selected_date).set(session_slots).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), "Session Created Successfully", Toast.LENGTH_SHORT).show();
-                        Intent doctor_home = new Intent(getApplicationContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
-                        doctor_home.putExtra("email", doctor_email);
-                        startActivity(doctor_home);
+                        LottieAnimationView successview = (LottieAnimationView)findViewById(R.id.suceessco2);
+                        successview.playAnimation();
+                        successview.setVisibility(View.VISIBLE);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Session Created Successfully", Toast.LENGTH_SHORT).show();
+                                Intent doctor_home = new Intent(getApplicationContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
+                                doctor_home.putExtra("email", doctor_email);
+                                startActivity(doctor_home);
+                                finish();
+                            }
+                        },SPLASH_SCREEN_TIME_OUT);
                     }
                 });
-                Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
             }
             }
         });

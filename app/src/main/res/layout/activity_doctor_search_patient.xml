@@ -8,6 +8,21 @@
     android:padding="20dp"
     tools:context=".DoctorSearchPatientActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/emptysearch2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patientSearchView"
+        app:layout_constraintVertical_bias="0.53"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/searchpatient" />
+
     <TextView
         android:id="@+id/patientstv"
         android:layout_width="wrap_content"
