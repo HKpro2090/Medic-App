@@ -34,6 +34,7 @@ public class SettingsPageActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
     TextView user_text;
+    String user_type="";
     SwitchCompat dmode;
 
     SharedPreferences shp;
@@ -47,20 +48,23 @@ public class SettingsPageActivity extends AppCompatActivity {
         //email = intent.getStringExtra(e_key);
         shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
         email = shp.getString("username","");
+        user_type = shp.getString("type","Patient");
 
         ImageView editprofile=(ImageView)findViewById(R.id.imageView3);
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(user_type.matches("Patient")){
                 Intent i=new Intent(getApplicationContext(),PatientEditProfileActivity.class);
                 //i.putExtra(e_key,email);
                 startActivity(i);
+                }else {
+                    Intent i=new Intent(getApplicationContext(),DoctorEditProfileActivity.class);
+                    //i.putExtra(e_key,email);
+                    startActivity(i);
+                }
             }
         });
-
-
-
-
 
         TextView logout=(TextView) findViewById(R.id.textview9);
         user_text = (TextView) findViewById(R.id.profilepagename);

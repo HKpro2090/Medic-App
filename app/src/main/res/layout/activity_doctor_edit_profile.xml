@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".DoctorEditProfileActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/editDoctorProfileUpdateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#FFF700"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        app:srcCompat="@drawable/ic_baseline_update_48"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
@@ -233,8 +218,8 @@
                 android:editable="false"
                 android:ems="10"
                 android:fontFamily="@font/nunito_bold"
-                android:inputType="none"
-                android:text="Name"
+                android:inputType="number"
+                android:text="Phone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.27"
@@ -383,10 +368,10 @@
                 android:background="?attr/background_color"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.391"
+                app:layout_constraintHorizontal_bias="0.3"
                 app:layout_constraintStart_toEndOf="@+id/doctorProfileAbout"
                 app:layout_constraintTop_toBottomOf="@+id/editDphone"
-                app:layout_constraintVertical_bias="0.596"
+                app:layout_constraintVertical_bias="0.475"
                 app:srcCompat="@drawable/ic_outline_edit_24"
                 app:tint="?attr/text_color" />
 
@@ -443,6 +428,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView14"
                 app:layout_constraintVertical_bias="0.428" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/editDoctorProfileUpdateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="#FFF700"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editDabout"
+                app:layout_constraintVertical_bias="0.973"
+                app:srcCompat="@drawable/ic_baseline_update_48"
+                tools:ignore="SpeakableTextPresentCheck" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -473,7 +473,7 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="@+id/doctorEditDP"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/PatientEditDP"
+        app:layout_constraintStart_toStartOf="@+id/doctorEditDP"
         app:layout_constraintTop_toTopOf="@+id/doctorEditDP"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_outline_edit_24"

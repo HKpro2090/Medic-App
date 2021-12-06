@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_consultation_report.xml" value="0.25" />
+        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_edit_profile.xml" value="0.33" />
+        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_home_page.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_new_session.xml" value="0.3532608695652174" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_patient_info_page.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_prescribe_medicine.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_doctor_upcoming_consultation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_new_consultation.xml" value="0.2015625" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_patient_dinfo.xml" value="0.2015625" />
+        <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/activity_settings_page.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/change_password_fragment_layout.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_complete_profile.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/Gautam/AndroidStudioProjects/Medic-App/app/src/main/res/layout/fragment_doctor_complete_profile.xml" value="0.36666666666666664" />
