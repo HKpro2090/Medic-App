@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -117,6 +118,16 @@ public class DoctorHomePageActivity extends AppCompatActivity {
             }
         });
 
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.refreshLayout2);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Toast.makeText(getApplicationContext(),"Refreshed",Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+                load_doc_sessions_frag(new DoctorHomeFragment());
+            }
+        });
+
     }
 
 //            @Override
@@ -132,10 +143,11 @@ public class DoctorHomePageActivity extends AppCompatActivity {
     public void load_doc_sessions_frag(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+        ft.setCustomAnimations(R.anim.fade_in,R.anim.fade_out);
         Bundle email_trans = new Bundle();
         email_trans.putString(e_key,email);
         fragment.setArguments(email_trans);
-        Toast.makeText(getApplicationContext(),"Inside load Fragment:"+email,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),"Inside load Fragment:"+email,Toast.LENGTH_LONG).show();
         ft.replace(R.id.DoctorHPContainer,fragment);
         ft.setReorderingAllowed(true).commit();
     }

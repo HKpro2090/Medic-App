@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MedicApp">
         <activity
+            android:name=".DoctorEditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".DoctorConsultationReportActivity"
             android:exported="false" />
         <activity

@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -86,6 +88,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
 
     SharedPreferences shp;
     SharedPreferences.Editor ed;
+    private static int SPLASH_SCREEN_TIME_OUT=2250;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -358,11 +361,19 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
                                         user_col.document("user_" + doc_email).collection("Sessions")
                                                 .document(selected_date).update(selected_slot,"Booked");
 
+                                        LottieAnimationView successview = (LottieAnimationView) findViewById(R.id.suceessco);
+                                        successview.playAnimation();
+                                        successview.setVisibility(View.VISIBLE);
                                         Toast.makeText(getApplicationContext(),"Consultation Booked Successfully",Toast.LENGTH_LONG).show();
-                                        Intent back_to_home = new Intent( getApplicationContext(),PatientHomePageActivity.class);
-                                        back_to_home.putExtra("email",patient_email);
-                                        startActivity(back_to_home);
-                                        finish();
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent back_to_home = new Intent( getApplicationContext(),PatientHomePageActivity.class);
+                                                back_to_home.putExtra("email",patient_email);
+                                                startActivity(back_to_home);
+                                                finish();
+                                            }
+                                        },SPLASH_SCREEN_TIME_OUT);
 
                                     }
                                 });

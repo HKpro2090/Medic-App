@@ -53,6 +53,7 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
         search=(SearchView)findViewById(R.id.doctorSearchView);
         lv=(ListView)findViewById(R.id.doclistview);
         doctorArrayList=new ArrayList<Doctor>();
+        lv.setEmptyView(findViewById(R.id.emptysearch));
 
         //patient_email = getIntent().getStringExtra("email");
         shp = getSharedPreferences("sp", Context.MODE_PRIVATE);

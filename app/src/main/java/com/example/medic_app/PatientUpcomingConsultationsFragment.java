@@ -97,7 +97,7 @@ public class PatientUpcomingConsultationsFragment extends Fragment {
             }
         });
 
-        View empty_view = view.findViewById(R.id.empty);
+        View empty_view = view.findViewById(R.id.empty1);
         lv.setEmptyView(empty_view);
         lv.setAdapter(lv_adapter);
 

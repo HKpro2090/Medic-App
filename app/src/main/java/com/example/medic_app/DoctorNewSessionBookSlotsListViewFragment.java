@@ -1,7 +1,12 @@
 package com.example.medic_app;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -61,6 +66,7 @@ public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
 //        });
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(!(bookedSlots.contains(slots[position]))) {
@@ -69,7 +75,23 @@ public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
                 }
                 else{
                     bookedSlots.remove(slots[position]);
-                    view.setBackgroundColor(getResources().getColor(R.color.cardview_light_background));
+                    int nightModeFlags =
+                            getContext().getResources().getConfiguration().uiMode &
+                                    Configuration.UI_MODE_NIGHT_MASK;
+                    switch (nightModeFlags) {
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            view.setBackground(getResources().getDrawable(R.drawable.textview_border));
+                            break;
+
+                        case Configuration.UI_MODE_NIGHT_NO:
+                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                            break;
+
+                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                            break;
+                    }
+
                 }
             }
         });

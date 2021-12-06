@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,10 +42,14 @@ public class PatientRecentConsultationsFragment extends Fragment {
     ArrayList<String> appointment_id = new ArrayList<>();
     ArrayList<Integer> imgid = new ArrayList<>();
 
+    TextView title;
+
     PatientRecentListAdapter lv_adapter;
     ListView lv;
     SharedPreferences shp;
     SharedPreferences.Editor ed;
+    //View empty_view;
+    public static boolean homeornot = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,6 +66,7 @@ public class PatientRecentConsultationsFragment extends Fragment {
             patient_email = "";
         }
         lv=(ListView) view.findViewById(R.id.RecentConsultationList);
+        title = (TextView) view.findViewById(R.id.textView);
         //Toast.makeText(getContext(), patient_email, Toast.LENGTH_SHORT).show();
 
 
@@ -102,12 +108,25 @@ public class PatientRecentConsultationsFragment extends Fragment {
                 }
             }
         });
+        if(homeornot == true) {
+            View empty_view = view.findViewById(R.id.empty);
+            title.setVisibility(View.VISIBLE);
+            lv.setEmptyView(empty_view);
+            lv.setAdapter(lv_adapter);
 
-        View empty_view = view.findViewById(R.id.empty2);
-        lv.setEmptyView(empty_view);
-        lv.setAdapter(lv_adapter);
+        }
+        else{
+            View empty_view = view.findViewById(R.id.empty2);
+            title.setVisibility(View.INVISIBLE);
+            lv.setEmptyView(empty_view);
+            lv.setAdapter(lv_adapter);
+        }
+
+        //lv.setAdapter(lv_adapter);
 
 
         return view;
     }
+
+
 }

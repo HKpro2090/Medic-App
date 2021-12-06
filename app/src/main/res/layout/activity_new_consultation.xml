@@ -8,7 +8,7 @@
     android:background="?attr/background_color">
 
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/imageView6"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,7 +21,10 @@
         app:layout_constraintHeight_percent="0.31"
         app:layout_constraintTop_toBottomOf="@+id/newconsultiontitle"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/consultation"
+        app:lottie_rawRes="@raw/newconsultation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_scale="2"
         tools:ignore="ImageContrastCheck" />
 
     <TextView
@@ -177,5 +180,22 @@
         app:layout_constraintStart_toEndOf="@+id/ncbookbutton"
         app:layout_constraintTop_toBottomOf="@+id/ncsymptoms"
         app:layout_constraintVertical_bias="0.174" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/suceessco"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.655"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
+        app:lottie_speed="1.5"
+        app:lottie_rawRes="@raw/successcons" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

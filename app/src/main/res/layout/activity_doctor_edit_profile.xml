@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoctorEditProfileActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editDoctorProfileUpdateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFF700"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95"
+        app:srcCompat="@drawable/ic_baseline_update_48"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doctorEditDP"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.095"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.01999998" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Age"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.092"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorProfileName"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Gender"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.098"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorProfileAge"
+                app:layout_constraintVertical_bias="0.023" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Department"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.107"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorProfileGender"
+                app:layout_constraintVertical_bias="0.04" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Qualification"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.097"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorprofiledept"
+                app:layout_constraintVertical_bias="0.036" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Phone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.097"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorProfilequalification"
+                app:layout_constraintVertical_bias="0.04000002" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="Email"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.097"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorPhoneNumber"
+                app:layout_constraintVertical_bias="0.04000002" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/nunito_semibold"
+                android:text="About"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.097"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorprofileemail"
+                app:layout_constraintVertical_bias="0.01999998" />
+
+            <EditText
+                android:id="@+id/doctorProfileName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:layout_constraintVertical_bias="0.009"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorProfileAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10"
+                app:layout_constraintVertical_bias="0.016"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorProfileGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                app:layout_constraintVertical_bias="0.022"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorprofiledept"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14"
+                app:layout_constraintVertical_bias="0.029999971"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorProfilequalification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView13"
+                app:layout_constraintVertical_bias="0.04000002"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19"
+                app:layout_constraintVertical_bias="0.04000002"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorprofileemail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <EditText
+                android:id="@+id/doctorProfileAbout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:editable="false"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="none"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView16"
+                app:layout_constraintVertical_bias="0.04000002"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <ImageButton
+                android:id="@+id/editDname"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.413"
+                app:layout_constraintStart_toEndOf="@+id/doctorProfileName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.054"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <ImageButton
+                android:id="@+id/editDAge"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.41"
+                app:layout_constraintStart_toEndOf="@+id/doctorProfileAge"
+                app:layout_constraintTop_toBottomOf="@+id/editDname"
+                app:layout_constraintVertical_bias="0.069"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <ImageButton
+                android:id="@+id/editDgender"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/doctorProfileGender"
+                app:layout_constraintTop_toBottomOf="@+id/editDAge"
+                app:layout_constraintVertical_bias="0.084"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <ImageButton
+                android:id="@+id/editDdept"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintStart_toEndOf="@+id/doctorprofiledept"
+                app:layout_constraintTop_toBottomOf="@+id/editDgender"
+                app:layout_constraintVertical_bias="0.119"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <ImageButton
+                android:id="@+id/editDqual"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.304"
+                app:layout_constraintStart_toEndOf="@+id/doctorProfilequalification"
+                app:layout_constraintTop_toBottomOf="@+id/editDdept"
+                app:layout_constraintVertical_bias="0.144"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <ImageButton
+                android:id="@+id/editDphone"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.304"
+                app:layout_constraintStart_toEndOf="@+id/doctorprofiledept"
+                app:layout_constraintTop_toBottomOf="@+id/editDqual"
+                app:layout_constraintVertical_bias="0.167"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/editPemail"-->
+            <!--                android:layout_width="40dp"-->
+            <!--                android:layout_height="40dp"-->
+            <!--                android:background="?attr/background_color"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintHorizontal_bias="0.304"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/patientProfileEmail"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/editPPhno"-->
+            <!--                app:layout_constraintVertical_bias="0.258"-->
+            <!--                app:srcCompat="@drawable/ic_outline_edit_24"-->
+            <!--                app:tint="?attr/text_color" />-->
+
+            <ImageButton
+                android:id="@+id/editDabout"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/background_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.391"
+                app:layout_constraintStart_toEndOf="@+id/doctorProfileAbout"
+                app:layout_constraintTop_toBottomOf="@+id/editDphone"
+                app:layout_constraintVertical_bias="0.596"
+                app:srcCompat="@drawable/ic_outline_edit_24"
+                app:tint="?attr/text_color" />
+
+            <Button
+                android:id="@+id/editDoctorProfileUpdateButtonNull"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:backgroundTint="#FFF700"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Update"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doctorProfileAbout"
+                app:layout_constraintVertical_bias="0.48000002" />
+
+            <Spinner
+                android:id="@+id/PatientEditDoctorProfileGenderspinner"
+                style="@style/SpinnerTheme"
+                android:layout_width="279dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="520dp"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                app:layout_constraintVertical_bias="0.354" />
+
+            <Spinner
+                android:id="@+id/DoctorEditProfileQulaificationSpinner"
+                style="@style/SpinnerTheme"
+                android:layout_width="279dp"
+                android:layout_height="65dp"
+                android:layout_marginBottom="424dp"
+                android:ems="10"
+                android:fontFamily="@font/nunito_semibold"
+                android:padding="10dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.27"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14"
+                app:layout_constraintVertical_bias="0.428" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/doctorEditDP"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView36"
+        app:layout_constraintVertical_bias="0.038"
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/patient1"
+        app:strokeColor="#707070"
+        app:strokeWidth="0.5dp"
+        tools:src="@tools:sample/avatars" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFF700"
+        android:clickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="@+id/doctorEditDP"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/PatientEditDP"
+        app:layout_constraintTop_toTopOf="@+id/doctorEditDP"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_outline_edit_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_bold"
+        android:text="Edit Profile"
+        android:textAllCaps="false"
+        android:textColor="?attr/text_color"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.121"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
+</androidx.constraintlayout.widget.ConstraintLayout>
