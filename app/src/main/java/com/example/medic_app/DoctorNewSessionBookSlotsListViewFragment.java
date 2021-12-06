@@ -46,16 +46,30 @@ public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
 //        View v2 = (View)lv.getItemAtPosition(index2);
 //        v.setBackgroundColor(getResources().getColor(R.color.teal_200));
 //        v2.setBackgroundColor(getResources().getColor(R.color.teal_200));
+//        lv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                bookedSlots.add(slots[position]);
+//                view.setBackgroundColor(getResources().getColor(R.color.teal_200));
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                bookedSlots.clear();
+//            }
+//
+//        });
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(!(bookedSlots.contains(slots[position]+"-"+slot_timings[position]))) {
-                    bookedSlots.add(slots[position] + "-" + slot_timings[position]);
+                if(!(bookedSlots.contains(slots[position]))) {
+                    bookedSlots.add(slots[position]);
                     view.setBackgroundColor(getResources().getColor(R.color.teal_200));
                 }
                 else{
-                    bookedSlots.remove(slots[position] + "-" + slot_timings[position]);
-                    view.setBackgroundColor(getResources().getColor(R.color.white));
+                    bookedSlots.remove(slots[position]);
+                    view.setBackgroundColor(getResources().getColor(R.color.cardview_light_background));
                 }
             }
         });
