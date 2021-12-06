@@ -234,6 +234,7 @@ public class LoginFragment extends Fragment {
                                                 Intent patient_home = new Intent(getContext(), PatientHomePageActivity.class);
                                                 //patient_home.putExtra("email", email);
                                                 startActivity(patient_home);
+                                                getActivity().finish();
                                             }
                                         },SPLASH_SCREEN_TIME_OUT);
 
@@ -246,6 +247,7 @@ public class LoginFragment extends Fragment {
                                                 Intent doctor_home = new Intent(getContext(), DoctorHomePageActivity.class);     //Change Doctor Page Here
                                                 doctor_home.putExtra("email", email);
                                                 startActivity(doctor_home);
+                                                getActivity().finish();
                                             }
                                         },SPLASH_SCREEN_TIME_OUT);
                                     }
