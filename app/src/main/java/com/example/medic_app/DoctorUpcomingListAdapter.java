@@ -25,7 +25,11 @@ public class DoctorUpcomingListAdapter extends ArrayAdapter<String> {
         this.maintitle=maintitle;
         this.subtitle=subtitle;
 
+    }
 
+    public void setdata(ArrayList maintitle,ArrayList subtitle){
+        this.maintitle=maintitle;
+        this.subtitle=subtitle;
     }
 
     public View getView(int position,View view,ViewGroup parent) {
