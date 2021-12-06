@@ -39,13 +39,13 @@ public class DoctorConsultationReportActivity extends AppCompatActivity {
         text_consultation_notes.setMovementMethod(new ScrollingMovementMethod());
 
         Intent data_in = getIntent();
-        doctor_email = data_in.getStringExtra("doc_email");
+        //doctor_email = data_in.getStringExtra("doc_email");
         patient_email = data_in.getStringExtra("patient_email");
         appointment_id = data_in.getStringExtra("appointment_id");
         patient_name = data_in.getStringExtra("patient_name");
         date_time_slot = data_in.getStringExtra("date_time_slot");
 
-        user_col.document("user_"+doctor_email).collection("Consultations").document(appointment_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        user_col.document("user_"+patient_email).collection("Consultations").document(appointment_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){

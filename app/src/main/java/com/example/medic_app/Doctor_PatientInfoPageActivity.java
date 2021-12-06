@@ -2,6 +2,7 @@ package com.example.medic_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -84,12 +85,14 @@ public class Doctor_PatientInfoPageActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-//        FragmentManager fm=getSupportFragmentManager();
-//        FragmentTransaction ft= fm.beginTransaction();
-//        ft.replace(R.id.pinforecentconsultationview,new Doctor_PatientHistoryListFragment());
-//        ft.commit();
+        FragmentManager fm=getSupportFragmentManager();
+        FragmentTransaction ft= fm.beginTransaction();
+        Bundle pat_email = new Bundle();
+        pat_email.putString("patient_email",patient_email);
+        pat_email.putString("patient_name",name);
+        Fragment patient_history_frag = new Doctor_PatientHistoryListFragment();
+        patient_history_frag.setArguments(pat_email);
+        ft.replace(R.id.pinforecentconsultationview,patient_history_frag);
+        ft.commit();
     }
 }
