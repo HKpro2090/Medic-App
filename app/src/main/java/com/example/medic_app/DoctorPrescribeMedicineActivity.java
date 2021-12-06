@@ -72,22 +72,29 @@ public class DoctorPrescribeMedicineActivity extends AppCompatActivity {
                 sessions_date = split[0];
                 slot_key = split[1];
 
-                user_col.document("user_"+doctor_email).collection("Consultations").document(appointment_id).set(prescription, SetOptions.merge());
-                user_col.document("user_"+patient_email).collection("Consultations").document(appointment_id).set(prescription, SetOptions.merge());
-                user_col.document("user_"+doctor_email).collection("Sessions").document(sessions_date).update(slot_key,"Completed").addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getApplicationContext(),"Prescription added successfully!",Toast.LENGTH_SHORT).show();
-                            Intent doctor_home = new Intent(getApplicationContext(), DoctorHomePageActivity.class);
-                            doctor_home.putExtra("email", doctor_email);
-                            startActivity(doctor_home);
-                            finish();
-                        }else{
-                            Toast.makeText(getApplicationContext(), "FireBase Connection Error!", Toast.LENGTH_SHORT).show();
+                if(notes.isEmpty()||medicine.isEmpty())
+                {
+                 Toast.makeText(getApplicationContext(),"Notes/Medicine cannot be Empty!",Toast.LENGTH_SHORT).show();
+                 edit_notes.setError("");
+                 edit_medicines.setError("");
+                }else {
+                    user_col.document("user_" + doctor_email).collection("Consultations").document(appointment_id).set(prescription, SetOptions.merge());
+                    user_col.document("user_" + patient_email).collection("Consultations").document(appointment_id).set(prescription, SetOptions.merge());
+                    user_col.document("user_" + doctor_email).collection("Sessions").document(sessions_date).update(slot_key, "Completed").addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(getApplicationContext(), "Prescription added successfully!", Toast.LENGTH_SHORT).show();
+                                Intent doctor_home = new Intent(getApplicationContext(), DoctorHomePageActivity.class);
+                                doctor_home.putExtra("email", doctor_email);
+                                startActivity(doctor_home);
+                                finish();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "FireBase Connection Error!", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
 
