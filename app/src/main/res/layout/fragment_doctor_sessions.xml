@@ -46,46 +46,65 @@
         app:strokeWidth="0.5dp"
         tools:src="@tools:sample/avatars" />
 
-        <Spinner
-            android:id="@+id/DateSpinner"
-            style="@style/SpinnerTheme"
-            android:layout_width="0dp"
-            android:layout_height="65dp"
-            android:tooltipText="Gender"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.275"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DoctorSTitle"
-            app:layout_constraintVertical_bias="0.032"
-            app:layout_constraintWidth_percent="1" />
+<!--        <Spinner-->
+<!--            android:id="@+id/DateSpinner"-->
+<!--            style="@style/SpinnerTheme"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="65dp"-->
+<!--            android:tooltipText="Gender"-->
+<!--            android:visibility="invisible"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.275"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/DoctorSTitle"-->
+<!--            app:layout_constraintVertical_bias="0.032"-->
+<!--            app:layout_constraintWidth_percent="1" />-->
 
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
+        <!--        <DatePicker-->
+<!--            android:id="@+id/datePickerView"-->
+<!--            android:layout_width="307dp"-->
+<!--            android:layout_height="73dp"-->
+<!--            android:background="@drawable/textview_border"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHeight_percent="0.35"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/DoctorSTitle"-->
+<!--            app:layout_constraintVertical_bias="0.052" />-->
+
+        <TextView
+            android:id="@+id/datePickerView"
+
+            android:layout_width="307dp"
+            android:layout_height="73dp"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/textview_border"
+            android:fontFamily="@font/nunito_semibold"
+            android:gravity="center_vertical"
+            android:hint="Date (DD/MM/YY)"
+            android:padding="10dp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.35"
+            app:layout_constraintHorizontal_bias="0.442"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DoctorSTitle"
-            app:layout_constraintVertical_bias="0.049"
-            android:background="@drawable/textview_border"
-            app:layout_constraintHeight_percent="0.35"
-            />
+            app:layout_constraintVertical_bias="0.095" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/SessionsPreviewFragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="328dp"
+            android:layout_height="469dp"
             android:background="@drawable/textview_border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.35"
-            app:layout_constraintHorizontal_bias="0.575"
+            app:layout_constraintHorizontal_bias="0.576"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarView"
-            app:layout_constraintVertical_bias="0.153" />
+            app:layout_constraintTop_toBottomOf="@+id/datePickerView"
+            app:layout_constraintVertical_bias="0.304" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
