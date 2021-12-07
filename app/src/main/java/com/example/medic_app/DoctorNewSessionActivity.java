@@ -153,7 +153,7 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
             @Override
             public void onClick(View v) {
                 ArrayList<String> bookedslots=frag.bookedSlots;
-                if(selected_date.isEmpty())
+                if(selected_date==null)
                 {
                     Toast.makeText(getApplicationContext(), "Select Date First!", Toast.LENGTH_SHORT).show();
                 }else if(bookedslots.isEmpty()){

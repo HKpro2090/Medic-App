@@ -9,9 +9,13 @@ import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -29,7 +33,7 @@ public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
     ArrayList<String> bookedSlots=new ArrayList<>();
 //    ArrayList<String> blockedSlots=new ArrayList<>();
     PatientUpcomingListAdapter lv_adapter;
-    ListView lv;
+    AbsListView lv;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,6 +68,38 @@ public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
 //            }
 //
 //        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(!(bookedSlots.contains(slots[position]))) {
+                    bookedSlots.add(slots[position]);
+                    view.setBackgroundColor(getResources().getColor(R.color.teal_200));
+                }
+                else{
+                    bookedSlots.remove(slots[position]);
+                    view.setBackground(getResources().getDrawable(R.drawable.textview_border));
+//                    int nightModeFlags =
+//                            getContext().getResources().getConfiguration().uiMode &
+//                                    Configuration.UI_MODE_NIGHT_MASK;
+//                    switch (nightModeFlags) {
+//                        case Configuration.UI_MODE_NIGHT_YES:
+//                            view.setBackground(getResources().getDrawable(R.drawable.textview_border));
+//                            break;
+//
+//                        case Configuration.UI_MODE_NIGHT_NO:
+//                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//                            break;
+//
+//                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
+//                            view.setBackgroundColor(Color.parseColor("#FFFFFF"));
+//                            break;
+//                    }
+
+                }
+            }
+        });
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @SuppressLint("ResourceType")
