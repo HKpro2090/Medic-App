@@ -66,6 +66,7 @@ public class DoctorDailyAppointmentsListFragment extends Fragment {
                     lv_adapter.notifyDataSetChanged();
                     lv.setAdapter(lv_adapter);
                 }else{
+
                     Toast.makeText(getContext(),"FireBase Error!",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -76,7 +77,8 @@ public class DoctorDailyAppointmentsListFragment extends Fragment {
 //        ap_status.add("Free");
 //        ap_status.add("Booked");
 //        ap_status.add("Booked");
-
+        View emptyview = view.findViewById(R.id.empty);
+        lv.setEmptyView(emptyview);
         lv.setAdapter(lv_adapter);
         return view;
     }

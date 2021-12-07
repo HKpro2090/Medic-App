@@ -53,6 +53,22 @@ public class DoctorSessionsFragment extends Fragment  implements DatePickerDialo
         doctor_email = getArguments().getString("email");
         ArrayList<Calendar> doc_avail_dates_calendar = new ArrayList<Calendar>();
 
+        Date date_today = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        selected_date = sdf.format(date_today);
+        SimpleDateFormat tv_date = new SimpleDateFormat("dd/MM/yyyy");
+        String selected_date_textview = tv_date.format(date_today);
+        text_date_picker.setText(selected_date_textview);
+
+        FragmentManager fm=getChildFragmentManager();
+        FragmentTransaction ft= fm.beginTransaction();
+        Bundle data = new Bundle();
+        data.putString("doc_email",doctor_email);
+        data.putString("session_date",selected_date);
+        Fragment Sessions_List = new DoctorDailyAppointmentsListFragment();
+        Sessions_List.setArguments(data);
+        ft.replace(R.id.SessionsPreviewFragmentContainer,Sessions_List);
+        ft.commit();
 
         text_date_picker.setOnClickListener(new View.OnClickListener() {
             @Override
