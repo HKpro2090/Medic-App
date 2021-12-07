@@ -142,6 +142,7 @@ public class SettingsPageActivity extends AppCompatActivity {
                     ed.putInt("nightmode", AppCompatDelegate.MODE_NIGHT_NO);
                     ed.commit();
                 }
+                restartAlert();
             }
         });
 
@@ -162,6 +163,31 @@ public class SettingsPageActivity extends AppCompatActivity {
             }
         });
         builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert=builder.create();
+        alert.show();
+    }
+
+    private void restartAlert(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("Confirm");
+        builder.setMessage("Do you want to restart the app to see changes");
+        builder.setCancelable(false);
+        builder.setIcon(R.drawable.ic_baseline_exit_to_app_48);
+        builder.setPositiveButton("Restart App", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent in=new Intent(getApplicationContext(),SplashScreenActivity.class);
+                startActivity(in);
+                finishAffinity();
+                Toast.makeText(getApplicationContext(),"Restart Successfull!",Toast.LENGTH_LONG).show();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
