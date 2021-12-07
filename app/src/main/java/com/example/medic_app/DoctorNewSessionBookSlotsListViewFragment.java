@@ -32,16 +32,14 @@ import java.util.List;
 public class DoctorNewSessionBookSlotsListViewFragment extends Fragment {
     String[] slots = {"Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8",
             "Slot9","Slot10","Slot11","Slot12","Slot13","Slot14","Slot15","Slot16"};
-    List<String> slot_timings_list = Arrays.asList("09:00 to 09:30", "09:30 to 10:00","10:00 to 10:30","10:30 to 11:00","11:00 to 11:30",
-            "11:30 to 12:00","12:00 to 12:30","12:30 to 13:00","14:00 to 14:30","14:30 to 15:00","15:00 to 15:30",
-            "15:30 to 16:00", "16:00 to 16:30","16:30 to 17:00","17:00 to 17:30","17:30 to 18:00");
-    String[] slot_timings = {"09:00 to 09:30", "09:30 to 10:00","10:00 to 10:30","10:30 to 11:00","11:00 to 11:30",
-            "11:30 to 12:00","12:00 to 12:30","12:30 to 13:00","14:00 to 14:30","14:30 to 15:00","15:00 to 15:30",
-            "15:30 to 16:00", "16:00 to 16:30","16:30 to 17:00","17:00 to 17:30","17:30 to 18:00"};
+    String[] slot_timings = {"Slot 1 - 09:00 to 09:30", "Slot 2 - 09:30 to 10:00","Slot 3 - 10:00 to 10:30","Slot 4 - 10:30 to 11:00","Slot 5 - 11:00 to 11:30",
+            "Slot 6 - 11:30 to 12:00","Slot 7 - 12:00 to 12:30","Slot 8 - 12:30 to 13:00","Slot 9 - Slot14:00 to 14:30","Slot 10 - 14:30 to 15:00","Slot 11 - 15:00 to 15:30",
+            "Slot 12 - 15:30 to 16:00", "Slot 13 - 16:00 to 16:30","Slot 14 - 16:30 to 17:00","Slot 15 - 17:00 to 17:30","Slot 16 - 17:30 to 18:00"};
 
     ArrayList<String> slotsAL = new ArrayList<>();
     ArrayList<String> slot_timingsAL = new ArrayList<>();
-    ArrayList<String> bookedSlots=new ArrayList<>();
+
+    //  ArrayList<String> bookedSlots=new ArrayList<>();
 //    ArrayList<String> blockedSlots=new ArrayList<>();
 
     ArrayAdapter<String> lv_adapter;

@@ -171,6 +171,7 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
                 }
 
                 Toast.makeText(getApplicationContext(), session_slots.toString(), Toast.LENGTH_SHORT).show();
+
                 user_col.document("user_"+doctor_email).collection("Sessions").document(selected_date).set(session_slots).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -189,7 +190,7 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
                         },SPLASH_SCREEN_TIME_OUT);
                     }
                 });
-                Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
             }
             }
         });
@@ -208,7 +209,7 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
         selected_date = dtf.format(now);
         tvdate.setText(selected_date_textview);
 
-        Toast.makeText(getApplicationContext(), "Selected Date:"+selected_date, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Selected Date:"+selected_date_textview, Toast.LENGTH_SHORT).show();
 
 
     }
