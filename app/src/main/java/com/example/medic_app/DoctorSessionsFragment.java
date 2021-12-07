@@ -1,6 +1,7 @@
 package com.example.medic_app;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,17 +44,32 @@ public class DoctorSessionsFragment extends Fragment  implements DatePickerDialo
     ArrayList<String> existing_session_dates = new ArrayList<String>();
     int Year, Month, Day;
     DatePickerDialog datePickerDialog;
+    ImageView drdp;
     TextView text_date_picker;
+    public DoctorHomePageActivity dha;
+    public String e_key;
+    public String email;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_doctor_sessions, container, false);
-
+        dha=(DoctorHomePageActivity) getActivity();
+        e_key= dha.e_key;
+        email=dha.email;
         text_date_picker = (TextView) view.findViewById(R.id.datePickerView);
         doctor_email = getArguments().getString("email");
         ArrayList<Calendar> doc_avail_dates_calendar = new ArrayList<Calendar>();
-
+        drdp=(ImageView)view.findViewById(R.id.DoctorSProfilePic);
+        drdp.setImageResource(R.drawable.doctor1);
+        drdp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent doctor_settings_page = new Intent(getActivity(), SettingsPageActivity.class);
+                doctor_settings_page.putExtra(e_key, email);
+                startActivity(doctor_settings_page);
+            }
+        });
         Date date_today = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         selected_date = sdf.format(date_today);

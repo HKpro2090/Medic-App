@@ -50,7 +50,7 @@ public class PatientEditProfileActivity extends AppCompatActivity {
     String age,pht,pweit;
     ImageView dp;
     int SELECT_PICTURE = 200;
-    int patientdp=R.drawable.patient2;
+    int patientdp=R.drawable.patient1;
     EditText pname,page,pgen,pbgrp,pheight,pweight,pemail,pphno;
     Spinner pg,pb;
     FirebaseFirestore db = FirebaseFirestore.getInstance();

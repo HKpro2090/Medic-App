@@ -36,7 +36,7 @@ public class DoctorHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_doctor_home, container, false);
         DocDP = (ShapeableImageView)view.findViewById(R.id.DoctorHProfilePic);
-        DocDP.setImageResource(R.drawable.patient1);
+        DocDP.setImageResource(R.drawable.doctor1);
         DocDP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

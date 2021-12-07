@@ -38,7 +38,7 @@ public class DoctorEditProfileActivity extends AppCompatActivity {
     String name,gender,department,phone,email,age,qualification,about;
     ImageView dp;
     int SELECT_PICTURE = 200;
-    int patientdp=R.drawable.patient2;
+    int patientdp=R.drawable.doctor1;
     EditText dname,dage,dqual,dphno,demail,dabout,dgen,ddept;
     Spinner dg,dd;
     FirebaseFirestore db = FirebaseFirestore.getInstance();

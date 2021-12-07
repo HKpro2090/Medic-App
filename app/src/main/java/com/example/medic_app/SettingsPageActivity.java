@@ -37,7 +37,7 @@ public class SettingsPageActivity extends AppCompatActivity {
     TextView user_text;
     String user_type="";
     SwitchCompat dmode;
-
+    ImageView dp;
     SharedPreferences shp;
     SharedPreferences.Editor ed;
     @Override
@@ -50,7 +50,13 @@ public class SettingsPageActivity extends AppCompatActivity {
         shp = getSharedPreferences("sp", Context.MODE_PRIVATE);
         email = shp.getString("username","");
         user_type = shp.getString("type","Patient");
-
+        dp=(ImageView) findViewById(R.id.PatientProfilePic);
+        if(user_type.matches("Patient")){
+            dp.setImageResource(R.drawable.patient1);
+        }
+        else{
+            dp.setImageResource(R.drawable.doctor1);
+        }
         ImageView editprofile=(ImageView)findViewById(R.id.imageView3);
         editprofile.setOnClickListener(new View.OnClickListener() {
             @Override

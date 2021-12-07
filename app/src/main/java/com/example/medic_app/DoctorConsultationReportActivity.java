@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,7 @@ public class DoctorConsultationReportActivity extends AppCompatActivity {
 
     String doctor_email,patient_email,patient_name,date_time_slot,appointment_id,consultation_status,consultation_notes,prescription_meds="";
     TextView text_doc_name,text_date_time_slot,text_slot_status,text_consultation_notes,text_prescription_meds;
-
+    ImageView patientdp;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
@@ -37,7 +38,8 @@ public class DoctorConsultationReportActivity extends AppCompatActivity {
 
         //Make the textview scrollable
         text_consultation_notes.setMovementMethod(new ScrollingMovementMethod());
-
+        patientdp=(ImageView)findViewById(R.id.consreportpatientphoto);
+        patientdp.setImageResource(R.drawable.patient1);
         Intent data_in = getIntent();
         //doctor_email = data_in.getStringExtra("doc_email");
         patient_email = data_in.getStringExtra("patient_email");

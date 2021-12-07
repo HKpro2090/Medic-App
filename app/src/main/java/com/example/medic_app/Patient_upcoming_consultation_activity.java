@@ -47,7 +47,7 @@ public class Patient_upcoming_consultation_activity extends AppCompatActivity {
 
         cancel_appointment = (Button) findViewById(R.id.CancelConsultationButton);
         dp=(ImageView)findViewById(R.id.doctorinfoimge);
-        dp.setImageResource(R.drawable.patient1);
+        dp.setImageResource(R.drawable.doctor1);
         Intent data_in = getIntent();
         patient_email = data_in.getStringExtra("patient_email");
         doctor_email = data_in.getStringExtra("doc_email");

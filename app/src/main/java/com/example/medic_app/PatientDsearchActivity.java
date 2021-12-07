@@ -24,6 +24,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class PatientDsearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private SearchView search;
@@ -38,7 +40,7 @@ public class PatientDsearchActivity extends AppCompatActivity implements SearchV
 
 //    String[] ids={"Doctor ID:11525","Doctor ID:21222","Doctor ID:18626"};
 //    String[] doctors={"Dr.abc","Dr.pqr","Dr.xyz"};
-    Integer[] imgid={R.drawable.patient1,R.drawable.patient2,R.drawable.patient1};
+    Integer[] imgid={R.drawable.doctor1,R.drawable.doctor2,R.drawable.doctor1};
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");

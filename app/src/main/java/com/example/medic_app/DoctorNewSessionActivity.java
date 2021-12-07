@@ -170,7 +170,7 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
                     session_slots.put(slots[clickedItemPositions.keyAt(i)],"Free");
                 }
 
-                Toast.makeText(getApplicationContext(), session_slots.toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), session_slots.toString(), Toast.LENGTH_SHORT).show();
 
                 user_col.document("user_"+doctor_email).collection("Sessions").document(selected_date).set(session_slots).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

@@ -114,14 +114,12 @@ public class PatientDsearchListAdapter extends BaseAdapter implements Filterable
                 String doc_email = temp_doc.getId();
                 String doc_name = temp_doc.getName();
                 String doc_department = temp_doc.getDepartment();
-
                 Intent in=new Intent(context.getApplicationContext(),PatientDinfoActivity.class);
 
                 in.putExtra("doc_email",doc_email);
                 in.putExtra("doc_department",doc_department);
                 in.putExtra("doc_name",doc_name);
                 in.putExtra("email",patient_email);
-
                 context.startActivity(in);
                 //Toast.makeText(context.getApplicationContext(),doctorArrayList.get(position).getName(),Toast.LENGTH_LONG).show();
             }

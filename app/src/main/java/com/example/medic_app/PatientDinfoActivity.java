@@ -43,8 +43,9 @@ public class PatientDinfoActivity extends AppCompatActivity {
         patient_email = shp.getString("username","");
         doc_email=i.getStringExtra("doc_email");
         doc_name = i.getStringExtra("doc_name");
+        int doc_dp=R.drawable.doctor1;
         doc_image=(ImageView)findViewById(R.id.doctorinfoimge);
-        doc_image.setImageResource(R.drawable.patient1);
+        doc_image.setImageResource(doc_dp);
 //        int image=i.getIntExtra("dp",R.drawable.patient2);
 //        doc_image=(ImageView)findViewById(R.id.doctorinfoimge);
 //        doc_image.setImageResource(image);

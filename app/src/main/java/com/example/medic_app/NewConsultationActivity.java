@@ -114,7 +114,7 @@ public class NewConsultationActivity extends AppCompatActivity implements DatePi
         spinner_doc_list = (Spinner)findViewById(R.id.new_consul_doc_spinner);
         spinner_slot_list = (Spinner)findViewById(R.id.time_slot_spinner);
         docdp=(ImageView)findViewById(R.id.PatientProfilePic);
-        docdp.setImageResource(R.drawable.patient1);
+        docdp.setImageResource(R.drawable.doctor1);
         doc_list_adap = new ArrayAdapter(this,R.layout.my_selected_item);
         slot_list_adap = new ArrayAdapter(this, R.layout.my_selected_item);
         doc_dept_list_adap = new ArrayAdapter(this,R.layout.my_selected_item,doc_dept);
