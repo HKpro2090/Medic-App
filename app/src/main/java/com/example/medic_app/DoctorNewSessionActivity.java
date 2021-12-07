@@ -167,7 +167,9 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
                 String msg="";
                 Map<String,Object> session_slots = new HashMap<>();
                 for(int i=0;i<clickedItemPositions.size();i++){
-                    session_slots.put(slots[clickedItemPositions.keyAt(i)],"Free");
+                    if(clickedItemPositions.valueAt(i)) {
+                        session_slots.put(slots[clickedItemPositions.keyAt(i)], "Free");
+                    }
                 }
 
 //                Toast.makeText(getApplicationContext(), session_slots.toString(), Toast.LENGTH_SHORT).show();
