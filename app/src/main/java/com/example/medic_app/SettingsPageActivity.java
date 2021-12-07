@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -123,18 +124,26 @@ public class SettingsPageActivity extends AppCompatActivity {
         });
 
         dmode=(SwitchCompat) findViewById(R.id.switch1);
-//        dmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (isChecked) {
-//                    // The toggle is enabled
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//                } else {
-//                    // The toggle is disabled
-//                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//                }
-//            }
-//        });
+        dmode.setChecked((shp.getInt("nightmode",-1) == AppCompatDelegate.MODE_NIGHT_YES)? true:false);
+        dmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Toast.makeText(getApplicationContext(),"Restart the App for changes!",Toast.LENGTH_LONG);
+                if (isChecked) {
+                    // The toggle is enabled
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    ed = shp.edit();
+                    ed.putInt("nightmode", AppCompatDelegate.MODE_NIGHT_YES);
+                    ed.commit();
+                } else {
+                    // The toggle is disabled
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    ed = shp.edit();
+                    ed.putInt("nightmode", AppCompatDelegate.MODE_NIGHT_NO);
+                    ed.commit();
+                }
+            }
+        });
 
     }
     private void logoutAlert(){
