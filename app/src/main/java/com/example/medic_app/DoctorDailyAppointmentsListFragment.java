@@ -47,6 +47,7 @@ public class DoctorDailyAppointmentsListFragment extends Fragment {
         selected_date = getArguments().getString("session_date");
 
         lv=(ListView) view.findViewById(R.id.DoctorDailyAppointments);
+
         lv_adapter = new PatientUpcomingListAdapter(this, appointment_date_slot, ap_status);
         Toast.makeText(getContext(),doctor_email+" " + selected_date,Toast.LENGTH_SHORT).show();
         user_col.document("user_"+doctor_email).collection("Sessions").document(selected_date).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

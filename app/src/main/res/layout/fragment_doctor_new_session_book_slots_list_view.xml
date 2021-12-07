@@ -15,6 +15,7 @@
         android:padding="10dp"
         android:divider="@android:color/transparent"
         android:dividerHeight="10dp"
+        android:choiceMode="multipleChoice"
         />
 
 </FrameLayout>

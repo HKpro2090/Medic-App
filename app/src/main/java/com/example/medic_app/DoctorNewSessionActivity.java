@@ -12,6 +12,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -51,6 +52,9 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
     ArrayList<String> existing_session_dates = new ArrayList<String>();
     TextView tvdate;
     int Year, Month, Day;
+
+    String[] slots = {"Slot1","Slot2","Slot3","Slot4","Slot5","Slot6","Slot7","Slot8",
+            "Slot9","Slot10","Slot11","Slot12","Slot13","Slot14","Slot15","Slot16"};
 
 //    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyyMMdd");
 
@@ -152,18 +156,21 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
         bookbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ArrayList<String> bookedslots=frag.bookedSlots;
+                SparseBooleanArray clickedItemPositions = frag.lv.getCheckedItemPositions();
+               // ArrayList<String> bookedslots=frag.bookedSlots;
                 if(selected_date==null)
                 {
                     Toast.makeText(getApplicationContext(), "Select Date First!", Toast.LENGTH_SHORT).show();
-                }else if(bookedslots.isEmpty()){
+                }else if(clickedItemPositions.size()==0){
                     Toast.makeText(getApplicationContext(),"Select Slots!",Toast.LENGTH_SHORT).show();
                 }else{
                 String msg="";
                 Map<String,Object> session_slots = new HashMap<>();
-                for(int i=0;i<bookedslots.size();i++){
-                    session_slots.put(bookedslots.get(i),"Free");
+                for(int i=0;i<clickedItemPositions.size();i++){
+                    session_slots.put(slots[clickedItemPositions.keyAt(i)],"Free");
                 }
+
+                Toast.makeText(getApplicationContext(), session_slots.toString(), Toast.LENGTH_SHORT).show();
                 user_col.document("user_"+doctor_email).collection("Sessions").document(selected_date).set(session_slots).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -182,7 +189,7 @@ public class DoctorNewSessionActivity extends AppCompatActivity implements DateP
                         },SPLASH_SCREEN_TIME_OUT);
                     }
                 });
-                //Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_LONG).show();
             }
             }
         });
