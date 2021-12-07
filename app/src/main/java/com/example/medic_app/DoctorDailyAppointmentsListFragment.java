@@ -78,7 +78,7 @@ public class DoctorDailyAppointmentsListFragment extends Fragment {
 //        ap_status.add("Free");
 //        ap_status.add("Booked");
 //        ap_status.add("Booked");
-        View emptyview = view.findViewById(R.id.empty);
+        View emptyview = view.findViewById(R.id.empty5);
         lv.setEmptyView(emptyview);
         lv.setAdapter(lv_adapter);
         return view;

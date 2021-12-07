@@ -1,6 +1,8 @@
 package com.example.medic_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,6 +48,9 @@ public class SignupFragment extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
 
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class SignupFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.signup_fragment_layout, container, false);
+        shp = getActivity().getSharedPreferences("sp", Context.MODE_PRIVATE);
 
         signup_btn=(Button)view.findViewById(R.id.SignupPasswordButton);
         signin_btn=(Button)view.findViewById(R.id.SignInButton);
@@ -138,6 +144,24 @@ public class SignupFragment extends Fragment {
                                         user_sign_up_details.put("user_type_key",user_type);
                                         user_col.document("user_"+email).set(user_sign_up_details);
                                         Toast.makeText(getActivity(), "User Created Successfully!", Toast.LENGTH_SHORT).show();
+                                        if(!shp.contains("intialized")){
+                                            ed = shp.edit();
+                                            ed.putBoolean("intialized",true);
+                                            ed.putString("username",email);
+                                            ed.putString("passwd",password);
+                                            ed.putString("type",user_type);
+                                            ed.commit();
+                                        }
+                                        else {
+                                            ed = shp.edit();
+                                            ed.remove("username");
+                                            ed.remove("passwd");
+                                            ed.remove("type");
+                                            ed.apply();
+                                            ed.putString("username",email);
+                                            ed.putString("passwd",password);
+                                            ed.commit();
+                                        }
 
                                         Bundle frag_trans = new Bundle();
                                         frag_trans.putString(e_key,email);

@@ -1,6 +1,8 @@
 package com.example.medic_app;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -41,12 +43,15 @@ public class ChangePasswordFragment extends Fragment {
     boolean user_exists_check = false;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference user_col = db.collection("users");
+    SharedPreferences shp;
+    SharedPreferences.Editor ed;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.change_password_fragment_layout, container, false);
+        shp = getActivity().getSharedPreferences("sp", Context.MODE_PRIVATE);
 
         Button cancel=(Button)view.findViewById(R.id.CancelChangePasswordButton);
         Button change =(Button)view.findViewById(R.id.ChangePasswordButton);
@@ -107,6 +112,12 @@ public class ChangePasswordFragment extends Fragment {
                                                         public void onSuccess(Void unused) {
 
                                                             if (b.getString(settings_key)!=null){
+                                                                ed = shp.edit();
+                                                                ed.remove("intialized");
+                                                                ed.remove("username");
+                                                                ed.remove("passwd");
+                                                                ed.remove("type");
+                                                                ed.apply();
 
                                                                 Intent in=new Intent(getContext(),MainActivity.class);
                                                                 startActivity(in);
@@ -114,8 +125,15 @@ public class ChangePasswordFragment extends Fragment {
                                                             }else{
                                                             Bundle email_carrier = new Bundle();
                                                             email_carrier.putString(e_key,email);
+                                                                ed = shp.edit();
+                                                                ed.remove("intialized");
+                                                                ed.remove("username");
+                                                                ed.remove("passwd");
+                                                                ed.remove("type");
+                                                                ed.apply();
 
-                                                            Toast.makeText(getActivity(), "Password Changed Successfully!", Toast.LENGTH_SHORT).show();
+
+                                                                Toast.makeText(getActivity(), "Password Changed Successfully!", Toast.LENGTH_SHORT).show();
                                                             ((MainActivity) getActivity()).imageresize(0.32f);
                                                             ((MainActivity)getActivity()).reloadimg(R.raw.dcoa);
                                                             ((MainActivity) getActivity()).makefragmentbig(0.54f);
